@@ -1,0 +1,7 @@
+- Couvrir les scénarios nominaux, limites et erreurs.
+- Tester explicitement les invariants métier.
+- Ajouter un test de non-régression pour chaque bug corrigé.
+- Éviter les mocks excessifs.
+- Préférer des doubles simples et des tests lisibles.
+- Préserver les comportements existants sauf changement explicitement demandé.
+- 
