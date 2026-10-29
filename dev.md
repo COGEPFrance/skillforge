@@ -112,4 +112,60 @@ standardisée existe déjà.
   concerné afin de corriger la cause plutôt que l’unique ligne signalée.
 - Si une suggestion dégrade le typage, l’architecture ou la lisibilité,
   expliquer pourquoi et proposer une meilleure solution.
+- Préférer un fonctionnalité native au lieu de créer une méthode spécifique.
+- Interdire `# mypy: ignore-errors` au niveau d'un module de production
+- Interdire les suppressions de typage globales destinées à faire passer Mypy.
+- Toute exception de typage doit être locale, minimale, justifiée et associée à
+  un code d'erreur Mypy précis.
+- Lorsqu'un mixin dépend d'une surface limitée de son hôte, définir un `Protocol`
+  étroit plutôt qu'une classe fictive, `Any`, un cast large ou une désactivation
+  de Mypy. 
+- L'arborescence des tests unitaires doit refléter l'arborescence des modules
+  testés.
+- Lorsque deux modèles ont le même contrat et la même responsabilité, 
+  factoriser les champs et comportements dans un modèle commun. 
+- Un use case orchestre les services,mais ne compose pas lui-même plusieurs sources de données pour construire un contexte technique d'exécution. Lorsqu'un ensemble de données est préparé pour un autre service, créer un service de préparation dédié.
+Une méthode privée de use case doit être remise en question lorsqu'elle récupère plusieurs dépendances, applique des transformations et construit un DTO destiné à un autre service. 
+- Un use case ne lit pas directement le filesystem, ne manipule pas `Path`, ne parse pas JSON et ne connaît pas le format de stockage d'une configuration. Les données externes sont lues par un adapter derrière un port.
+Ajouter un test d'architecture interdisant `pathlib`, `json`, `tempfile`, les clients HTTP et les adapters concrets dans `core/use_cases/`. 
+- Toute classe qui transporte des données structurées doit être un modèle Pydantic, y compris si elle est interne et technique.
+Lorsqu'un comportement varie selon un type de configuration fermé, utiliser un registre typé type de configuration -> fonction ou stratégie.
+Interdire dataclass dans core/ et adapters/ avec une règle Ruff ou un test AST. Ajouter un test d'exhaustivité vérifiant que chaque type de StopConditionConfig possède un handler. 
+- Une logique utilisée par un seul composant doit rester privée dans ce composant. Un module partagé est justifié seulement avec plusieurs consommateurs ou une abstraction autonome claire.
+Lorsqu'un module est créé, vérifier qu'il a plusieurs consommateurs réels ou qu'il représente un concept autonome. 
+- Un use case ne parse pas, ne sélectionne pas et ne sérialise pas des payloads de protocole. Une transformation technique stateless doit être extraite dans un helper explicitement nommé.
+Le test d'architecture interdisant l'import json dans core/use_cases/ détecterait ce cas.
+- Un nouveau use case est créé uniquement lorsqu'il représente une intention métier autonome avec son propre contrat d'entrée et de sortie. Une variante technique ou un sous-processus devient un service, un helper ou une stratégie.
+- Interdire les mixins Pydantic de comportement pour découper les méthodes
+  d’un même agrégat. Une classe `*Mixin` ne doit pas hériter de `BaseEntity`,
+  `BaseModel` ou d’une base d’agrégat afin d’être recombinée dans une entité.
+- Les agrégats, value objects, commandes métier et DTO internes transportent
+  des données structurées via des modèles Pydantic explicitement typés.
+- Un use case manipule des agrégats Pydantic, des commandes, des queries et des
+  DTO. Il ne reçoit ni ne retourne un document de persistance
+  (`dict[str, Any]`, `_id`, forme Mongo, champ historique, document brut). 
+  Un port de repository retourne un agrégat, un value object ou un DTO de
+  lecture typé. Interdire les signatures de ports de type `-> dict`,
+  `-> list[dict]`, `document: dict[...]` ou `payload: dict[...]` pour représenter
+  un objet métier ou persistant.
+  Seul un adapter de persistance convertit :
+  `document Mongo -> entité Pydantic`
+  et
+  `entité Pydantic -> document Mongo`.
+- Les mappers Mongo vivent dans `adapters/output/`. Ils portent les noms,
+  formats historiques, `_id`, encodages BSON, dates et index techniques. Ces
+  détails ne sont pas connus de `core/domain/` ni de `core/use_cases/`. 
+- Un use case ne doit jamais appeler `to_document()` ou `from_document()`.
+  Il demande une entité typée au repository, applique une opération métier,
+  puis sauvegarde l'entité typée. 
+- Interdire les merges du type `{**entity.to_document(), **updates}` dans le
+  core. Toute mise à jour passe par une méthode métier explicitement nommée,
+  qui valide les invariants et les transitions associées. 
+- `model_dump()` est autorisé uniquement :
+  1. à une frontière d'adapter ;
+  2. pour des logs structurés ;
+  3. pour construire un autre modèle Pydantic immédiatement validé, lorsque
+     les contrats sont distincts et qu'aucune projection typée n'est possible.
+  Il ne doit pas servir à contourner une mise à jour métier typée.
+-  Tout traitement auxiliaire déclaré “best effort” et exécuté après une opération métier, comme le tracking, la télémétrie ou une notification, doit être filtré avant exécution et isolé de la réponse métier. Une erreur de préparation, de validation ou de publication doit être journalisée sans faire échouer une commande déjà exécutée. Les opérations éligibles doivent avoir une source unique, et des tests doivent couvrir les opérations incluses, exclues et les défaillances du traitement secondaire.
 - 
