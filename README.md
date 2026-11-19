@@ -55,10 +55,12 @@ découpage des skills sont proposés ; les dossiers de skills et de workflows ne
 sont pas encore créés. Le référentiel `references/quality-criteria.md` existe.
 Le format de distribution et d’installation sera défini séparément.
 
-Les skills de `dev/` combinent l’initialisation du socle, des tâches de changement
-(implémenter, corriger, refactorer) et des tâches spécialisées selon le besoin : modèles,
-configuration, échanges, persistance, résilience et instrumentation. Il n’est
-pas nécessaire de tous les exécuter pour chaque modification.
+Les skills de `dev/` combinent l’initialisation du socle et des tâches
+d’implémentation spécialisées : lib, entités, ports, use cases, adapters et
+assemblage. Configuration, échanges, persistance, résilience et instrumentation
+ont également leurs tâches dédiées. Il n’est pas nécessaire de tous les exécuter
+pour chaque modification. La réalisation complète d’une fonctionnalité relève
+d’un workflow, sans skill global `implement-feature`.
 
 Les revues sont séparées par responsabilité. La revue d’architecture vérifie
 l’implémentation hexagonale et les frontières des microservices ; elle n’ajoute
@@ -73,10 +75,14 @@ skillforge/
 │   ├── dev/
 │   │   ├── scaffold-arclith-service/SKILL.md
 │   │   ├── apply-arclith-blueprint/SKILL.md
-│   │   ├── implement-feature/SKILL.md
+│   │   ├── implement-lib/SKILL.md
+│   │   ├── implement-entity/SKILL.md
+│   │   ├── implement-port/SKILL.md
+│   │   ├── implement-usecase/SKILL.md
+│   │   ├── implement-adapter/SKILL.md
+│   │   ├── integrate-service-components/SKILL.md
 │   │   ├── fix-bug/SKILL.md
 │   │   ├── refactor/SKILL.md
-│   │   ├── implement-domain-models/SKILL.md
 │   │   ├── implement-configuration/SKILL.md
 │   │   ├── implement-messaging/SKILL.md
 │   │   ├── implement-persistence/SKILL.md
@@ -102,7 +108,12 @@ skillforge/
 │   │   ├── review-service-foundation/SKILL.md
 │   │   ├── review-architecture/SKILL.md
 │   │   ├── review-code/SKILL.md
+│   │   ├── review-lib/SKILL.md
 │   │   ├── review-domain-models/SKILL.md
+│   │   ├── review-ports/SKILL.md
+│   │   ├── review-usecases/SKILL.md
+│   │   ├── review-adapters/SKILL.md
+│   │   ├── review-service-integration/SKILL.md
 │   │   ├── review-configuration/SKILL.md
 │   │   ├── review-messaging/SKILL.md
 │   │   ├── review-data-consistency/SKILL.md
@@ -138,6 +149,8 @@ skillforge/
 │       └── python-arclith.md        # Pydantic, socle Arclith, délégation
 └── workflows/
     ├── service-initialization.md   # scaffold → blueprint → revue du socle
+    ├── feature-implementation.md   # lib → entités → ports → use cases → adapters
+    ├── refactoring-scope.md        # changement nécessaire ou issue avec impact
     ├── production-sequences.md     # code d’abord ou tests d’abord, puis doc
     ├── review-sequences.md         # agents sélectionnés, ordre et dépendances
     ├── review-result.md            # verdict, preuves, constats, corrections
@@ -177,6 +190,40 @@ Arclith les opérations propres au framework, sans les recopier.
 Sur un service existant, on vérifie le socle et les écarts utiles sans relancer
 une génération qui écraserait le code en place.
 
+### Implémenter par composants
+
+Après validation du socle, le workflow de fonctionnalité suit les dépendances :
+lib si nécessaire → entités → ports → use cases → adapters → assemblage.
+Chaque étape applicable peut être confiée à un agent spécialisé, reçoit une
+première revue avant la suivante et suit les mêmes règles de blocage et de correction.
+Les tests et validations complémentaires suivent le parcours choisi ; la revue
+intermédiaire d’un composant ne garantit pas le fonctionnement de l’ensemble.
+
+| Skill de production | Résultat attendu | Revue spécialisée |
+| --- | --- | --- |
+| `implement-lib` | Composant autonome réutilisable réellement nécessaire, absent d’Arclith et des dépendances retenues | `review-lib` |
+| `implement-entity` | Entités Pydantic, identité, invariants et opérations métier | `review-domain-models` |
+| `implement-port` | Contrats des dépendances nécessaires aux use cases, sans adapter concret | `review-ports` |
+| `implement-usecase` | Intention applicative implémentée au travers des entités et des ports | `review-usecases` |
+| `implement-adapter` | Implémentation d’un port et conversions aux frontières techniques | `review-adapters` |
+| `integrate-service-components` | Assemblage des composants dans le service existant et vérification de leur intégration | `review-service-integration` |
+
+L’étape lib ne crée pas systématiquement une bibliothèque ou un paquet. Elle
+réutilise l’existant en priorité ; une capacité générique propre à Arclith doit
+être traitée dans son projet, sans réimplémentation locale concurrente. Le
+workflow vérifie ses prérequis avant de poursuivre.
+
+Les tâches de configuration, messages, persistance, résilience et instrumentation
+interviennent au niveau du composant concerné, sous leur responsabilité propre,
+sans dupliquer sa logique. Le workflow précise l’ordre effectif selon les
+dépendances ; un composant existant conforme n’est pas recréé.
+
+Un refactoring nécessaire à la fonctionnalité reste dans son périmètre et suit
+les revues applicables. Un refactoring indépendant donne lieu à une issue dédiée
+avec une analyse d’impact : problème, composants et consommateurs affectés,
+risques de compatibilité ou de migration, périmètre et validations attendues.
+Il n’est pas implémenté dans le changement courant.
+
 Les frontières des revues devront être explicites : `review-code` porte sur
 la qualité locale du code ; `review-tests` sur la pertinence des tests ;
 `review-data-consistency` sur les transactions et les effets persistés ;
@@ -187,8 +234,9 @@ restent des revues dédiées.
 Exemple de parcours à préciser pour une modification de code, après validation
 du socle lors de l’initialisation du service :
 
-1. Production du code et revues préliminaires de structure : architecture, code,
-   modèles et configuration selon le périmètre.
+1. Production du code par composants, avec les revues spécialisées intermédiaires,
+   puis revues de structure transverses : architecture, code et configuration
+   selon le périmètre.
 2. Production et revue des tests ; revues spécialisées applicables : échanges,
    cohérence des données, résilience, observabilité, sécurité, compatibilité et
    performance, avec leurs preuves d’exécution.

@@ -115,6 +115,11 @@ skills. Le cadrage et la conception ne sont pas des thèmes du catalogue à ce s
   ou de correction lorsque le changement le nécessite.
 - Maîtriser les versions des dépendances et éviter les ajouts sans besoin réel.
 - Limiter chaque changement au besoin traité, sans refonte opportuniste.
+- Réaliser le refactoring nécessaire au besoin dans le changement courant.
+  Pour un refactoring indépendant, préparer une analyse d’impact et ouvrir une
+  issue dédiée selon les règles du projet, sans l’implémenter immédiatement.
+  L’analyse précise problème, composants et consommateurs affectés, risques,
+  migrations éventuelles, périmètre et validations attendues.
 
 ## Production et validation par étapes
 
@@ -123,6 +128,13 @@ skills. Le cadrage et la conception ne sont pas des thèmes du catalogue à ce s
 - Pour un nouveau service, commencer par scaffold Arclith → application du
   blueprint → revue du socle. Cette validation précède le parcours de production
   de la première fonctionnalité ; elle ne garantit pas son comportement futur.
+- Décomposer une fonctionnalité en tâches spécialisées, ordonnées selon leurs
+  dépendances : lib si nécessaire → entités → ports → use cases → adapters →
+  assemblage. Réutiliser les composants existants conformes. Ne pas créer une
+  lib ni réimplémenter une capacité d’Arclith uniquement pour remplir une étape.
+- Faire porter l’enchaînement par un workflow plutôt que par un skill global
+  d’implémentation. Chaque étape applicable reçoit une revue spécialisée avant
+  de passer à la suivante ; les validations comportementales restent nécessaires.
 - Parcours de référence : code → revue structurelle et contrôles statiques →
   tests et revue des tests → validation du comportement et des risques →
   documentation et revue documentaire → livraison.
