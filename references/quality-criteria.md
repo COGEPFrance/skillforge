@@ -15,8 +15,17 @@ skills. Le cadrage et la conception ne sont pas des thèmes du catalogue à ce s
 - Garder le domaine indépendant des transports, du stockage et des adapters
   concrets. Isoler les conversions de formats externes aux frontières.
 - Injecter les dépendances et centraliser leur assemblage.
-- Utiliser Arclith comme socle pour les services Python concernés. Vérifier et
+- Arclith est la base du code des services visés par ce catalogue. Vérifier et
   réutiliser ses capacités avant de créer un mécanisme équivalent.
+- Avant la première implémentation métier, générer le scaffold Arclith, appliquer
+  un blueprint existant identifié et compatible, puis faire valider le socle.
+  Distinguer ces tâches pour permettre leur exécution par des agents spécialisés.
+- Vérifier la structure, l’assemblage, la configuration, le démarrage et les
+  signaux d’observabilité de base avant d’autoriser la première fonctionnalité.
+  Un échec bloque l’implémentation ; un blueprint manquant constitue un blocage
+  à résoudre, sans invention silencieuse d’une architecture de remplacement.
+- Réutiliser les procédures spécifiques de la marketplace Arclith. Sur un
+  service existant, vérifier les écarts sans écraser le code par un nouveau scaffold.
 - Distinguer la disponibilité d’un mécanisme dans Arclith de son intégration
   correcte dans le service : configuration, instrumentation, comportement et
   garanties doivent être vérifiés pour le cas d’usage réel.
@@ -111,6 +120,9 @@ skills. Le cadrage et la conception ne sont pas des thèmes du catalogue à ce s
 
 - Séparer les étapes pour ne pas investir dans les suivantes tant que leur base
   n’a pas reçu une première validation adaptée.
+- Pour un nouveau service, commencer par scaffold Arclith → application du
+  blueprint → revue du socle. Cette validation précède le parcours de production
+  de la première fonctionnalité ; elle ne garantit pas son comportement futur.
 - Parcours de référence : code → revue structurelle et contrôles statiques →
   tests et revue des tests → validation du comportement et des risques →
   documentation et revue documentaire → livraison.

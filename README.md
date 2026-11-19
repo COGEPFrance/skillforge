@@ -15,6 +15,10 @@ Les thèmes retenus sont **dev**, **test**, **review**, **documentation** et
 **delivery**. Le thème **diagnostic** reste envisagé. Le cadrage et la conception
 sont laissés de côté pour le moment.
 
+Arclith est le socle du code des services visés par ce catalogue. Avant la
+première fonctionnalité, un parcours dédié initialise le service : scaffold
+Arclith, application d’un blueprint identifié, puis validation du socle obtenu.
+
 ## Production et revue
 
 Les skills de production ont des skills de revue correspondants, spécialisés
@@ -51,8 +55,8 @@ découpage des skills sont proposés ; les dossiers de skills et de workflows ne
 sont pas encore créés. Le référentiel `references/quality-criteria.md` existe.
 Le format de distribution et d’installation sera défini séparément.
 
-Les skills de `dev/` combinent des tâches de changement (implémenter, corriger,
-refactorer) et des tâches spécialisées mobilisables selon le besoin : modèles,
+Les skills de `dev/` combinent l’initialisation du socle, des tâches de changement
+(implémenter, corriger, refactorer) et des tâches spécialisées selon le besoin : modèles,
 configuration, échanges, persistance, résilience et instrumentation. Il n’est
 pas nécessaire de tous les exécuter pour chaque modification.
 
@@ -67,6 +71,8 @@ skillforge/
 ├── README.md
 ├── skills/
 │   ├── dev/
+│   │   ├── scaffold-arclith-service/SKILL.md
+│   │   ├── apply-arclith-blueprint/SKILL.md
 │   │   ├── implement-feature/SKILL.md
 │   │   ├── fix-bug/SKILL.md
 │   │   ├── refactor/SKILL.md
@@ -93,6 +99,7 @@ skillforge/
 │   │   ├── prepare-release/SKILL.md
 │   │   └── prepare-deployment/SKILL.md
 │   ├── review/
+│   │   ├── review-service-foundation/SKILL.md
 │   │   ├── review-architecture/SKILL.md
 │   │   ├── review-code/SKILL.md
 │   │   ├── review-domain-models/SKILL.md
@@ -113,6 +120,7 @@ skillforge/
 ├── references/
 │   ├── quality-criteria.md          # synthèse retenue, déjà présente
 │   ├── architecture.md             # hexagonal, microservices, réutilisation
+│   ├── service-foundation.md        # scaffold, blueprint, critères de passage
 │   ├── code-quality.md             # SRP, KISS, DRY, typage, erreurs, périmètre
 │   ├── domain-models.md             # entités, invariants, mutations
 │   ├── configuration.md            # sources, validation, secrets
@@ -129,6 +137,7 @@ skillforge/
 │   └── profiles/
 │       └── python-arclith.md        # Pydantic, socle Arclith, délégation
 └── workflows/
+    ├── service-initialization.md   # scaffold → blueprint → revue du socle
     ├── production-sequences.md     # code d’abord ou tests d’abord, puis doc
     ├── review-sequences.md         # agents sélectionnés, ordre et dépendances
     ├── review-result.md            # verdict, preuves, constats, corrections
@@ -141,6 +150,33 @@ règles. Les skills de production et de revue utiliseront les mêmes référence
 Le profil Python/Arclith précisera les choix technologiques communs aux projets
 consommateurs et renverra aux skills Arclith pour ses procédures spécifiques.
 
+### Initialiser avant d’implémenter
+
+Le parcours d’initialisation prépare une base exécutable pour le premier
+développement métier. Il reste dans `dev/` et n’introduit pas un thème de
+conception générale.
+
+1. `scaffold-arclith-service` génère le squelette du service à partir des
+   capacités et procédures Arclith disponibles, avec des versions identifiées.
+2. `apply-arclith-blueprint` applique un blueprint existant, identifié et
+   compatible : structure, composants techniques, assemblage des dépendances,
+   configuration et instrumentation nécessaires au service. Il ne crée pas un
+   blueprint inédit ni la première fonctionnalité métier. Si aucun blueprint
+   adapté n’est disponible, il signale le blocage.
+3. `review-service-foundation` vérifie la conformité au blueprint, la structure
+   attendue, l’assemblage, la configuration, le démarrage et la production des
+   signaux d’observabilité de base, avec des preuves adaptées. Cette revue ne
+   remplace pas les futures revues du comportement métier, de sécurité, de
+   performance ou de résilience.
+4. La première implémentation est autorisée une fois le socle validé. Un échec
+   bloque ce passage et suit la boucle de correction commune.
+
+Chaque skill pourra être exécuté par un agent spécialisé distinct. Le workflow
+porte leur enchaînement ; les skills délèguent aux procédures de la marketplace
+Arclith les opérations propres au framework, sans les recopier.
+Sur un service existant, on vérifie le socle et les écarts utiles sans relancer
+une génération qui écraserait le code en place.
+
 Les frontières des revues devront être explicites : `review-code` porte sur
 la qualité locale du code ; `review-tests` sur la pertinence des tests ;
 `review-data-consistency` sur les transactions et les effets persistés ;
@@ -148,7 +184,8 @@ la qualité locale du code ; `review-tests` sur la pertinence des tests ;
 sur les signaux effectivement exploitables. Sécurité, performance et compatibilité
 restent des revues dédiées.
 
-Exemple de parcours à préciser pour une modification de code :
+Exemple de parcours à préciser pour une modification de code, après validation
+du socle lors de l’initialisation du service :
 
 1. Production du code et revues préliminaires de structure : architecture, code,
    modèles et configuration selon le périmètre.
