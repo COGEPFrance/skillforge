@@ -7,9 +7,11 @@
 - Examiner l'architecture, les dépendances et les implémentations existantes avant
   d'écrire du code.
 - Les règles de ce document priment sur les habitudes du code existant. Conserver
-  une convention locale seulement si elle respecte ces règles et répond au besoin ;
-  sinon, corriger la dette directement liée au changement sans lancer de refonte
-  globale. Préserver la compatibilité sans reproduire les mauvaises pratiques.
+  une convention locale seulement si elle est cohérente dans des contextes
+  comparables, respecte ces règles et répond au besoin. Ne pas confondre
+  répétition et bonne pratique, ni cas isolé et erreur. Sinon, corriger la dette
+  directement liée au changement sans lancer de refonte globale. Préserver la
+  compatibilité sans reproduire les mauvaises pratiques.
 - En cas d'ambiguïté ayant un impact architectural, demander une clarification,
   analyser la réponse et proposer une règle réutilisable si elle évite la même
   ambiguïté dans d'autres projets.
@@ -29,6 +31,10 @@
 
 ## Architecture et responsabilités
 
+- Respecter les décisions architecturales du projet. Si une divergence est
+  nécessaire pour répondre à un besoin concret, expliquer avant l'implémentation
+  les limites de l'approche existante, l'alternative proposée et ses impacts.
+  Faire valider les changements structurants avant de les engager.
 - Définir clairement la responsabilité de chaque composant et séparer logique
   métier, orchestration, transformation et infrastructure.
 - Respecter la direction des dépendances : le métier dépend de contrats, jamais
@@ -60,9 +66,15 @@
 - Utiliser un `Protocol` lorsqu'un besoin réel de typage structurel existe, par
   exemple pour accepter une implémentation externe sans héritage ou typer la
   surface limitée attendue par un mixin.
-- Ne pas utiliser de mixin pour fragmenter ou recomposer le comportement d'un
-  modèle Pydantic. Une classe `*Mixin` ne doit pas hériter de `BaseEntity`,
-  `BaseModel` ou d'une base d'agrégat afin d'être recombinée dans une entité.
+- Conserver une seule chaîne d'héritage Pydantic, y compris pour les agrégats
+  métier. Ne pas combiner plusieurs branches ni utiliser de mixin pour assembler
+  des champs, comportements, validateurs, sérialiseurs ou configurations. Une
+  classe `*Mixin` ne doit pas hériter de `BaseEntity`, `BaseModel` ou d'une base
+  d'agrégat afin d'être recombinée dans une entité. Définir ces éléments
+  directement dans le modèle ou dans une base cohérente. Réutiliser des fonctions
+  pour les traitements communs et préférer la composition lorsqu'elle représente
+  une véritable relation entre objets, en préservant les contrats de données
+  attendus.
 - Lorsqu'un mixin non-Pydantic répond à un besoin démontré, typer la surface
   minimale de son hôte avec un `Protocol` étroit plutôt qu'avec une classe fictive,
   `Any`, un cast large ou une désactivation de Mypy.
@@ -73,11 +85,22 @@
   explicitement typé, y compris pour des données internes ou techniques.
 - Une entité représente un concept métier doté d'une identité, d'un cycle de vie
   et d'invariants ; elle vit dans `core/domain/entity/`.
+- Lorsqu'une mise à jour touche des champs participant à un invariant, valider
+  l'ensemble de l'état proposé avant de remplacer l'état existant. Pour plusieurs
+  champs interdépendants, privilégier la construction d'une nouvelle instance
+  validée. Ne pas considérer une copie ou un appel à `model_validate()` sur une
+  instance existante comme une garantie de revalidation.
 - Un DTO transporte des données entre composants sans identité métier ; il vit
   dans `core/domain/dto/` et porte le suffixe `Dto`.
 - Choisir selon le besoin entre entité, agrégat, value object, commande, query,
   DTO et contexte. Ne jamais placer un DTO dans `entity/` ni considérer un objet
   de contexte comme une entité.
+- Séparer les agrégats métier des contrats Pydantic d'API et d'événements
+  d'intégration, ainsi que de leur représentation de persistance. Effectuer les
+  conversions explicitement aux frontières concernées. Construire les sorties
+  depuis les données métier nécessaires et les événements depuis le fait métier
+  survenu et son contexte, sans exposer automatiquement l'état complet de
+  l'agrégat.
 - Lorsqu'au moins quatre paramètres représentent un même concept, rechercher un
   objet métier ou de contexte existant avant d'en créer un.
 - Remplacer les valeurs métier répétées par un type, un enum ou une constante.
@@ -116,6 +139,10 @@
 - Utiliser un registre typé lorsque les stratégies sont extensibles, nombreuses ou
   enregistrées séparément. En Python, utiliser directement les classes comme clés,
   selon le principe de `Strategy::class` en PHP.
+- Ne pas faire dépendre l'enregistrement de composants d'un ordre d'import
+  implicite. Utiliser une initialisation explicite ou le mécanisme prévu par le
+  framework, avec un ordre d'initialisation maîtrisé lorsque des dépendances
+  l'exigent.
 - Typer précisément les configurations, stratégies et retours, puis refuser tout
   type non enregistré avec une erreur claire.
 - Tester que chaque configuration supportée possède un handler lorsque le choix
@@ -138,9 +165,13 @@
 - Un use case n'appelle jamais `to_document()` ou `from_document()` : il demande
   une entité typée au repository, applique une opération métier, puis sauvegarde
   l'entité typée.
-- Interdire dans le core les merges tels que `{**entity.to_document(), **updates}`.
-  Toute mise à jour passe par une méthode métier nommée qui valide les invariants
-  et les transitions.
+- Dans les règles métier, ne pas modifier une entité par export en dictionnaire
+  puis reconstruction ad hoc. Interdire notamment dans le core les merges tels
+  que `{**entity.to_document(), **updates}`. Toute mise à jour passe par une méthode
+  métier nommée qui contrôle les modifications autorisées et valide les
+  invariants et les transitions. Une mise à jour typée ou un helper de
+  reconstruction ne peut être utilisé que derrière cette méthode et doit
+  valider l'état final, sans modifier l'état existant en cas d'échec.
 - Autoriser `model_dump()` uniquement à une frontière d'adapter, pour des logs
   structurés ou pour construire immédiatement un autre modèle Pydantic validé
   lorsque les contrats sont distincts et qu'aucune projection typée n'est adaptée.

@@ -119,6 +119,10 @@ Exemple :
 
 - Nommage : `test_<ce_qui_est_testé>_<contexte>`.
   Exemple : `test_update_dossier_raises_when_uuid_missing`.
+  Chaque nom décrit le comportement vérifié. Ne pas utiliser de séparateurs
+  décoratifs dans les tests ; utiliser si nécessaire les regroupements du
+  framework pour structurer les scénarios. Réserver les commentaires aux
+  explications utiles que les noms et la structure ne rendent pas évidentes.
 - Pour les tests asynchrones, utilise `@pytest.mark.asyncio`
   et `async def`.
 - Pour vérifier les appels asynchrones, utilise les assertions
@@ -148,14 +152,15 @@ l'objet de tests ciblés.
 - Ne génère pas de tests triviaux ou inutiles. Tester qu'un objet
   s'instancie sans erreur n'est pertinent que si son initialisation
   contient une logique réelle à valider.
-- Chaque test doit vérifier un comportement observable :
-  une valeur retournée, une exception levée, un état modifié
-  ou une interaction attendue avec une dépendance.
+- Chaque test doit vérifier les résultats, erreurs et effets de bord attendus
+  à travers les interfaces du composant : une valeur retournée, une exception
+  levée, un état modifié ou une interaction attendue avec une dépendance.
 - Vérifie les interactions uniquement lorsqu'elles font partie
   du comportement attendu : arguments transmis, absence d'appel
   en cas de validation échouée, attente d'une opération asynchrone.
 - Évite les assertions sur les détails internes, les méthodes privées
-  ou l'ordre des appels lorsque cet ordre n'a pas d'importance métier.
+  ou l'ordre des appels, sauf lorsqu'elles vérifient une exigence explicite.
+  Ne vérifie pas l'ordre des appels lorsqu'il n'a pas d'importance métier.
 - Un test ne doit pas seulement vérifier qu'un mock retourne la valeur
   configurée : il doit vérifier le comportement du composant testé.
 - Ne duplique pas les tests existants. Si un comportement est déjà
@@ -166,11 +171,27 @@ l'objet de tests ciblés.
   significatives.
 - Les TU ne doivent effectuer aucun appel réseau réel ni dépendre
   d'une infrastructure externe ou de délais réels.
-- Tester explicitement les invariants métier.
+- Tester explicitement les invariants métier. Pour chaque invariant portant sur
+  des champs modifiables, vérifier son respect à la création et par les chemins
+  de mise à jour exposés. Couvrir les cas valides, invalides et les limites
+  pertinentes. Vérifier qu'une mise à jour refusée laisse l'état existant
+  inchangé.
 - Ajouter un test de non-régression pour chaque bug corrigé.
 - Privilégie des mocks simples, configurés uniquement pour le scénario,
   et des tests lisibles.
 - Préserver les comportements existants sauf changement explicitement demandé.
+
+---
+
+## Tests d'architecture
+
+- Définir explicitement le périmètre des sources et des éventuels artefacts issus
+  d'une préparation explicite et reproductible analysés par les tests
+  d'architecture. Inclure les nouvelles sources de ce périmètre, même non encore
+  ajoutées à Git. Exclure les caches, fichiers temporaires, dépendances externes
+  et autres fichiers étrangers à l'analyse. À sources et préparation identiques,
+  les résidus locaux ne doivent pas influencer le résultat. Ne pas assimiler
+  automatiquement un fichier ou un répertoire à un module du projet.
 
 ---
 

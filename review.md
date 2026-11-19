@@ -27,8 +27,11 @@
   `model_copy()` ne revalide pas les données mises à jour. 
 - Interdire `# mypy: ignore-errors` au niveau d'un module de production
 - Interdire les suppressions de typage globales destinées à faire passer Mypy.
-- Toute modification Python doit satisfaire `ruff format --check` sur les
-  fichiers touchés. 
+- Les fichiers ajoutés ou modifiés par une PR et inclus dans le périmètre du
+  formatteur doivent passer sa vérification sans modification, avec la
+  configuration et la version prévues par le projet. Pour Python, utiliser
+  `ruff format --check` sur les fichiers touchés. Toute exclusion doit être
+  explicite dans la configuration de l'outil.
 - La CI ou la cible `make lint` doit exécuter `ruff format --check` en plus de
   `ruff check`. 
 -  Une classe de champs Pydantic partagée est autorisée seulement si :
