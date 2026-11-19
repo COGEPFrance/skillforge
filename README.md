@@ -45,15 +45,23 @@ Tous les agents sélectionnés devront valider leur étape.
   dont les conclusions sont affectées par la correction doivent aussi être rejouées.
 - Une revue impossible à exécuter ne vaut pas validation : le parcours reste bloqué.
 
-Le choix des agents, les critères bloquants et l’ordre exact des revues restent
-à préciser. L’orchestration n’est pas encore implémentée.
+Les workflows définissent un ordre de référence, les verdicts et les règles de
+reprise. Chaque besoin sélectionne ses agents et enregistre leur ordre avant
+exécution. Les définitions exécutables d’agents et leur moteur d’orchestration
+restent à implémenter.
 
-## Arborescence proposée — à valider
+## Arborescence du catalogue
 
-Cette structure représente l’organisation logique du catalogue. Les noms et le
-découpage des skills sont proposés ; les dossiers de skills et de workflows ne
-sont pas encore créés. Le référentiel `references/quality-criteria.md` existe.
-Le format de distribution et d’installation sera défini séparément.
+Le catalogue contient une première version de 48 skills, 17 référentiels et
+7 workflows documentaires, fondée uniquement sur les décisions de cette proposition.
+Les anciens fichiers de règles restent inchangés et ne sont pas incorporés.
+Les deux skills de diagnostic figurant ci-dessous restent prévus, non créés.
+
+Le format de distribution et d’installation sera défini séparément. Pour le
+moment, les skills et leurs références forment un ensemble à conserver dans
+cette arborescence : copier un seul dossier de skill ne suffit pas à embarquer
+ses références communes. Aucun enregistrement de marketplace ni moteur d’agents
+n’est activé par ces fichiers.
 
 Les skills de `dev/` combinent l’initialisation du socle et des tâches
 d’implémentation spécialisées : lib, entités, ports, use cases, adapters et
@@ -125,11 +133,11 @@ skillforge/
 │   │   ├── review-compatibility/SKILL.md
 │   │   ├── review-documentation/SKILL.md
 │   │   ├── review-delivery/SKILL.md
-│   │   └── review-diagnostic/SKILL.md # optionnel, à confirmer
-│   └── diagnostic/                  # optionnel, à confirmer
+│   │   └── review-diagnostic/SKILL.md # prévu, non créé
+│   └── diagnostic/                  # prévu, non créé
 │       └── diagnose-failure/SKILL.md
 ├── references/
-│   ├── quality-criteria.md          # synthèse retenue, déjà présente
+│   ├── quality-criteria.md          # index des référentiels partagés
 │   ├── architecture.md             # hexagonal, microservices, réutilisation
 │   ├── service-foundation.md        # scaffold, blueprint, critères de passage
 │   ├── code-quality.md             # SRP, KISS, DRY, typage, erreurs, périmètre
@@ -157,11 +165,12 @@ skillforge/
     └── correction-loop.md          # blocage, correction, revues à rejouer
 ```
 
-Les référentiels détaillés seront extraits progressivement de la synthèse
-`quality-criteria.md`, qui en deviendra le point d’entrée, sans dupliquer les
-règles. Les skills de production et de revue utiliseront les mêmes références.
-Le profil Python/Arclith précisera les choix technologiques communs aux projets
-consommateurs et renverra aux skills Arclith pour ses procédures spécifiques.
+`quality-criteria.md` est le point d’entrée des référentiels détaillés. Les
+skills de production et de revue utilisent les mêmes références. Le profil
+Python/Arclith porte les choix technologiques communs aux projets consommateurs
+et renvoie aux procédures Arclith effectivement disponibles dans l’environnement.
+Les règles seront enrichies progressivement à partir des anciens documents,
+après examen, sans duplication.
 
 ### Initialiser avant d’implémenter
 
@@ -224,7 +233,7 @@ avec une analyse d’impact : problème, composants et consommateurs affectés,
 risques de compatibilité ou de migration, périmètre et validations attendues.
 Il n’est pas implémenté dans le changement courant.
 
-Les frontières des revues devront être explicites : `review-code` porte sur
+Les frontières des revues sont explicites : `review-code` porte sur
 la qualité locale du code ; `review-tests` sur la pertinence des tests ;
 `review-data-consistency` sur les transactions et les effets persistés ;
 `review-resilience` sur les défaillances et la reprise ; `review-observability`
@@ -243,11 +252,11 @@ du socle lors de l’initialisation du service :
 3. Production puis revue de la documentation.
 4. Préparation de la livraison puis revue de delivery.
 
-Chaque groupe sera décliné en une liste ordonnée d’agents. Tous les agents
+Chaque groupe est décliné dans le workflow en une liste ordonnée d’agents. Tous les agents
 sélectionnés doivent valider leur étape avant la suivante ; les groupes ne sont
 pas des exécutions parallèles. Le parcours tests d’abord aura sa propre séquence.
-Les workflows préciseront aussi les blocages, corrections et validations à
-rejouer. Ils décriront l’orchestration attendue, sans présumer de son moteur ni
+Les workflows précisent aussi les blocages, corrections et validations à
+rejouer. Ils décrivent l’orchestration attendue, sans présumer de son moteur ni
 du format technique des futures définitions d’agents.
 
 ## Commun à l’équipe, spécifique au projet
