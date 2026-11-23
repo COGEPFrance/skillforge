@@ -19,7 +19,11 @@ Examiner les contrats typés entre use cases et implémentations. Identifier les
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Partir du besoin du consommateur et vérifier types, erreurs et garanties du port.
 3. Rechercher fuites de protocole, stockage ou adapter concret ; vérifier que le contrat ne nécessite pas une capacité implicite absente.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+
+## Points ciblés Python
+
+Contrôler le [choix ABC / Protocol](../../../references/architecture.md#contrats-python-et-dispatch) selon le besoin réel. Signaler les documents de stockage ou objets métier connus cachés derrière `dict`/`Any` ; ne pas interdire une table de correspondance réellement dynamique.
 
 ## Restitution
 

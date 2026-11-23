@@ -18,7 +18,11 @@ Examiner la pertinence et la fiabilité des tests et de leurs assertions. Identi
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Relier les scénarios aux comportements, risques, erreurs et limites du changement.
 3. Vérifier que les assertions détectent le défaut utile, que le composant testé reste réel et que le niveau de test prouve la garantie annoncée.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+
+## Points ciblés
+
+Pour Python, appliquer les [critères mocks et fixtures](../../../references/testing.md#tests-unitaires-python). Vérifier le composant réel, l’indépendance des doubles et les assertions d’attente asynchrones pertinentes. Les [contrôles d’architecture](../../../references/testing.md#contrôles-darchitecture-et-couverture) analysent les sources du périmètre, y compris non ajoutées à Git, sans dépendre des caches locaux. Ne pas exiger une migration de fakes ni un seuil de couverture absent du projet.
 
 ## Restitution
 

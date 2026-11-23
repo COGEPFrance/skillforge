@@ -14,9 +14,10 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Identifier les pages, contrats, exemples et procédures affectés par le changement.
-2. Corriger les informations obsolètes en préservant leurs sources de vérité et liens existants.
-3. Vérifier la cohérence avec la version implémentée et les autres pages liées sans réécriture indépendante.
+1. Identifier les documents, contrats, options et procédures affectés par l’implémentation finale, après ses validations pertinentes.
+2. Pour une configuration modifiée, vérifier déclaration, alias, consommateur effectif, défauts, exemples et documentation. Ne documenter aucune variable inexistante ou inutilisée ; garder les secrets hors exemples.
+3. Après un changement d’architecture ou un retrait d’option, rechercher les anciens noms dans le dépôt et corriger les descriptions obsolètes selon la [vérification ciblée](../../../references/documentation.md#configuration-et-architecture). Préserver les références historiques utiles.
+4. Vérifier cohérence des pages, liens et exemples sans réécriture indépendante ; conserver une source de vérité par information.
 
 ## Résultat et passage de relais
 

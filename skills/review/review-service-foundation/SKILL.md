@@ -5,6 +5,8 @@ description: "Examiner le socle d’un service avant la première fonctionnalit�
 
 # review-service-foundation
 
+Ce parcours s’applique lorsque le brief d’architecture technique retient Arclith. Utiliser ses skills disponibles ou sa documentation pour ses procédures propres.
+
 ## Périmètre
 
 Examiner le socle d’un service avant la première fonctionnalité. Identifier les fichiers, contrats et preuves utiles ; ne pas élargir cette revue en audit général.
@@ -19,7 +21,7 @@ Examiner le socle d’un service avant la première fonctionnalité. Identifier 
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Comparer versions et blueprint au socle généré, sans lancer une nouvelle génération.
 3. Vérifier assemblage, validation de configuration, démarrage et signaux réellement émis ; limiter le verdict à ce socle.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 

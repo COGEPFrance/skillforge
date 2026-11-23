@@ -19,7 +19,7 @@ Examiner les contrats et garanties d’un flux asynchrone. Identifier les fichie
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Suivre producteur, consommateur, contrat, acquittement, retries et échec définitif.
 3. Examiner doublons, ordre utile et coexistence de versions ; transmettre les défauts de cohérence ou de reprise aux revues concernées sans en présumer le résultat.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 

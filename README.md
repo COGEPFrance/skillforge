@@ -1,8 +1,11 @@
 # Skillforge
 
-Catalogue de skills partagés par les équipes pour développer des services basés
-sur Arclith. Les projets conservent leurs skills spécifiques dans leurs propres
-marketplaces.
+Catalogue de skills partagés pour les développements et agents autonomes. Le
+brief projet définit le besoin et le brief technique les choix applicables.
+Pour Python, Pydantic est une dépendance assumée pour les données structurées.
+Arclith est une bibliothèque privilégiée lorsque le brief la retient ; ses
+propres skills portent ses procédures. Les projets conservent leurs skills
+spécifiques dans leurs propres marketplaces.
 
 ## Catalogue
 
@@ -26,6 +29,7 @@ optionnel et ses skills ne sont pas encore créés.
 ## Documents antérieurs
 
 Les documents de règles antérieurs et la proposition détaillée sont conservés
-dans [_rules/](_rules/). Leur contenu n’est pas automatiquement incorporé aux
-skills : il sera examiné et intégré progressivement. Le README de ce dossier
-conserve un instantané de la proposition initiale.
+dans [_rules/](_rules/). Leur contenu a été examiné règle par règle et réparti
+dans les skills et leurs détails conditionnels, avec les [arbitrages justifiés](docs/skill-personalization-decisions.md).
+Les sources restent inchangées pour traçabilité ; leurs anciennes consignes ne
+sont pas à exécuter en bloc. Leur README conserve la proposition initiale.

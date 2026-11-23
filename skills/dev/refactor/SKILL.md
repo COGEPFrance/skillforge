@@ -7,7 +7,7 @@ description: "Refactorer le code nécessaire au besoin courant sans modifier le 
 
 ## Références
 
-Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
+Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
 
 - [code-quality](../../../references/code-quality.md)
 - [architecture](../../../references/architecture.md)
@@ -15,9 +15,10 @@ Commencer par la [sélection des exigences communes](../../../references/quality
 
 ## Exécution
 
-1. Établir pourquoi le refactoring est nécessaire au besoin courant ; sinon suivre le workflow de périmètre.
-2. Identifier les comportements et contrats à préserver puis modifier uniquement les composants concernés.
-3. Comparer les garanties avant et après, exécuter les vérifications existantes et signaler les impacts.
+1. Établir le lien avec la demande ou le refactoring explicitement demandé ; consigner la dette importante indépendante selon le workflow de périmètre.
+2. Préserver les contrats et invariants. Ne pas fusionner des modèles parce que leurs champs se ressemblent ; une sous-classe sans ajout peut porter une identité publique ou un schéma utile : vérifier les consommateurs avant suppression.
+3. Mutualiser une fonction stateless pour un concept partagé, ou un service lorsqu’il possède des collaborateurs. Garder dans l’agrégat ses invariants et opérations métier ; ne pas créer des mixins ou micro-fonctions pour réduire une métrique.
+4. Comparer comportements avant/après et exécuter les contrôles affectés. Pour des modèles Python, conserver une chaîne Pydantic unique et une mise à jour validant l’état final.
 
 Consulter le [périmètre de refactoring](../../../workflows/refactoring-scope.md) avant de modifier le code.
 

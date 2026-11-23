@@ -15,9 +15,10 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Relier critères attendus et risques aux composants et contrats concernés.
-2. Choisir les niveaux pertinents et les dépendances nécessaires, sans imposer toutes les catégories à chaque changement.
-3. Définir cas nominaux, erreurs et limites, preuves attendues et place des tests dans le parcours choisi.
+1. Relier critères d’acceptation, invariants, risques et frontières modifiées aux scénarios de preuve ; éviter un inventaire systématique de tous les niveaux.
+2. Choisir unité pour la logique isolée, intégration pour les garanties de composants réels et contrats pour les consommateurs concernés ; ajouter crash ou charge selon les effets et objectifs. Prioriser les comportements à risque, pas une catégorie de composants par principe.
+3. Pour Python, lire les [tests unitaires](../../../references/testing.md#tests-unitaires-python) et, si nécessaire, les [contrôles d’architecture](../../../references/testing.md#contrôles-darchitecture-et-couverture). Reprendre les seuils et exclusions du projet sans exclure automatiquement entités ou DTO porteurs de validations.
+4. Définir prérequis, assertions et place des tests dans le parcours code ou tests d’abord ; distinguer comportement absent, test invalide et environnement indisponible.
 
 ## Résultat et passage de relais
 

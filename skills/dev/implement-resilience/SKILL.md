@@ -7,7 +7,7 @@ description: "Implémenter les protections et la reprise d’un traitement face 
 
 ## Références
 
-Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
+Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
 
 - [resilience](../../../references/resilience.md)
 - [data-consistency](../../../references/data-consistency.md)

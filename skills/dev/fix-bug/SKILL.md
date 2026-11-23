@@ -7,16 +7,16 @@ description: "Corriger un défaut identifié dans un périmètre limité en cons
 
 ## Références
 
-Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
+Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
 
 - [code-quality](../../../references/code-quality.md)
 - [testing](../../../references/testing.md)
 
 ## Exécution
 
-1. Établir comportement attendu, reproduction et cause avant correction ; séparer faits et hypothèses.
-2. Corriger le composant responsable et examiner les occurrences de la même cause dans le périmètre.
-3. Exécuter les tests existants pertinents et transmettre le scénario de régression à la phase de tests, ou l’écrire d’abord si le parcours le prévoit.
+1. Établir comportement attendu, reproduction et cause ; distinguer faits et hypothèses avant correction.
+2. Corriger la cause dans les composants du périmètre, y compris les occurrences révélées par une review. Challenger une suggestion qui dégrade typage, architecture ou lisibilité et proposer une correction adaptée.
+3. Exécuter les vérifications existantes pertinentes ; conserver une preuve avant/après et prévoir un test de non-régression qui détecte le défaut. L’écrire dans cette étape si la demande le couvre, sinon transmettre le scénario à la phase de tests ; ne pas annoncer la régression couverte avant exécution. Pour un défaut comportemental testable, la validation finale inclut la non-régression exécutée.
 
 ## Résultat et passage de relais
 

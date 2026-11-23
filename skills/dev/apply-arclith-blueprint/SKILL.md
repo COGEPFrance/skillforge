@@ -5,9 +5,11 @@ description: "Appliquer un blueprint Arclith existant à un squelette de service
 
 # apply-arclith-blueprint
 
+Ce parcours s’applique lorsque le brief d’architecture technique retient Arclith. Utiliser ses skills disponibles ou sa documentation pour ses procédures propres.
+
 ## Références
 
-Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
+Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
 
 - [service-foundation](../../../references/service-foundation.md)
 - [profiles/python-arclith](../../../references/profiles/python-arclith.md)

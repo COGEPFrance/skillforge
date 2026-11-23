@@ -13,9 +13,9 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Définir public, tâche et emplacement dans la documentation du projet.
-2. Rédiger à partir du comportement vérifié et des sources propriétaires, après les validations requises du parcours.
-3. Vérifier liens et exemples ; identifier clairement les commandes non exécutées et garanties non établies.
+1. Définir public, tâche et emplacement du document à partir du comportement validé et des sources propriétaires.
+2. Documenter décisions, invariants, risques et procédures non évidentes ; éviter de paraphraser le code et préférer un renvoi à une information dupliquée. Employer le même vocabulaire métier que le code et les tests.
+3. Pour une option, appliquer la [vérification de configuration](../../../references/documentation.md#configuration-et-architecture) ; vérifier liens, exemples et commandes dans leur contexte, et distinguer exécuté, proposé et non vérifié.
 
 ## Résultat et passage de relais
 

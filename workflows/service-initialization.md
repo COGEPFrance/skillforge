@@ -1,4 +1,8 @@
-# Initialisation d’un service
+# Initialisation d’un service Arclith
+
+Ce parcours concerne les projets dont le brief technique retient Arclith. Les
+autres projets vérifient leur propre socle ; ils ne requièrent pas de blueprint
+Arclith.
 
 ## Entrées
 

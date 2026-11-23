@@ -18,7 +18,7 @@ Examiner les transitions de versions et contrats affectés par le changement. Id
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Identifier consommateurs et versions des API, événements, données et configurations modifiés.
 3. Examiner coexistence, migration, rejeu et retour arrière ; signaler les combinaisons non vérifiées.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 

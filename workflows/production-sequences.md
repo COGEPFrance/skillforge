@@ -1,8 +1,13 @@
 # Parcours de production
 
+Une invocation isolée s’arrête au résultat et au relais de son skill. Une demande
+de tâche complète autorise la poursuite des étapes applicables du parcours dans
+le périmètre demandé. Les artefacts précèdent leurs revues ; ni un relais ni un
+verdict ne donnent d’autorisation de publication supplémentaire.
+
 ## Code d’abord
 
-1. Pour un nouveau service, terminer [service-initialization.md](service-initialization.md).
+1. Pour un nouveau service dont le brief retient Arclith, terminer [service-initialization.md](service-initialization.md).
 2. Définir la stratégie de tests pertinente sans rédiger prématurément toute la suite ; produire le code par composants et ses revues intermédiaires selon [feature-implementation.md](feature-implementation.md).
 3. Exécuter les contrôles statiques et tests existants pendant le développement. Passer les revues de structure applicables.
 4. Écrire et exécuter les nouveaux tests pertinents : unitaires, intégration, contrats, crash ou mesures de performance selon le risque. Faire `review-tests`.

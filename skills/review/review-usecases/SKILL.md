@@ -20,7 +20,11 @@ Examiner l’orchestration et les effets d’un use case. Identifier les fichier
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Suivre entrées, décisions, appels aux ports, résultat et erreurs de l’intention applicative.
 3. Rechercher accès directs à l’infrastructure, invariants contournés et effets partiels incohérents ; rester sur ce use case.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+
+## Points ciblés
+
+Vérifier les contrats Pydantic pour Python, les autorisations au périmètre métier et leurs refus. Rechercher parsing de protocole, accès fichier/réseau et conversions de persistance dans l’orchestration. Une boucle simple ou plusieurs ports ne suffisent pas à imposer un nouveau service ; démontrer une responsabilité technique distincte.
 
 ## Restitution
 

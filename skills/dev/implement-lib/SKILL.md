@@ -7,17 +7,17 @@ description: "Implémenter un composant réutilisable autonome lorsque la capaci
 
 ## Références
 
-Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
+Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
 
 - [architecture](../../../references/architecture.md)
 - [code-quality](../../../references/code-quality.md)
-- [profiles/python-arclith](../../../references/profiles/python-arclith.md)
+- Si le brief retient Arclith : [profil et délégation](../../../references/profiles/python-arclith.md)
 
 ## Exécution
 
-1. Vérifier l’absence de capacité équivalente dans Arclith et les dépendances retenues.
-2. Définir responsabilité et contrat propres ; ne pas créer un paquet distinct sans besoin réel.
-3. Implémenter le composant sans transport ou stockage imposé à ses consommateurs. Une évolution propre au framework doit être traitée dans Arclith, sans modification de ce dépôt externe hors périmètre.
+1. Identifier la capacité manquante dans le socle, les dépendances et la bibliothèque standard des versions ciblées. Ne pas changer une implémentation seulement pour employer une API plus récente.
+2. Définir responsabilité, contrat typé et consommateurs réels ; mutualiser un concept autonome ou partagé, pas seulement du code qui se ressemble. Préférer composition ou fonction stateless ; utiliser l’héritage pour une spécialisation qui respecte le contrat parent.
+3. Si un dispatch est nécessaire, lire les [critères de contrat et registre](../../../references/architecture.md#contrats-python-et-dispatch). Garder le composant sans transport ou stockage imposé ; une évolution propre à un framework se propose à son propriétaire sans modification externe hors périmètre.
 
 ## Résultat et passage de relais
 

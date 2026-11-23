@@ -4,8 +4,10 @@ Ce document est le point d’entrée des règles retenues collectivement pour
 Skillforge. Les règles détaillées sont portées par les références ci-dessous,
 utilisées par les skills de production et de revue sans copie concurrente.
 
-Les anciens fichiers Markdown conservés dans `_rules/` ne sont pas intégrés à cette première
-version. Leur contenu sera examiné progressivement. Le cadrage et la conception
+Les règles de `_rules/` ont été examinées pour cette personnalisation ; les arbitrages
+sont consignés dans le [journal](../docs/skill-personalization-decisions.md).
+Ces sources restent conservées pour traçabilité, pas chargées comme un ancien
+prompt à exécuter en bloc. Le cadrage et la conception
 ne sont pas des thèmes du catalogue ; la vérification de l’architecture et la
 mise en place du socle font partie du développement et de sa revue.
 
@@ -28,9 +30,17 @@ mise en place du socle font partie du développement et de sa revue.
 | Scénarios, niveaux et preuves d’exécution | [Tests](testing.md) |
 | Public, exactitude et comportement validé | [Documentation](documentation.md) |
 | Commits, PR, releases, déploiements et reprise | [Livraison](delivery.md) |
-| Arclith comme base du code, Pydantic et délégation | [Profil Python / Arclith](profiles/python-arclith.md) |
+| Profil conditionnel Python / Arclith et délégation | [Profil Python / Arclith](profiles/python-arclith.md) |
 
 ## Sélection des exigences en production
+
+Partir du brief projet, du brief d’architecture technique et des conventions
+établies. Une répétition locale ne justifie pas une pratique défectueuse ; corriger
+la dette liée à la tâche sans refonte générale. Faire préciser une contradiction
+ou valider une divergence structurante avant de l’engager, sans redemander les
+décisions déjà prises. Pour Python, les classes de données structurées utilisent
+Pydantic explicitement typé, avec une dépendance assumée dans le domaine.
+Pour du Python modifié, appliquer aussi les [contrôles de typage et outils](code-quality.md#typage-python-et-contrôles) ; aucune suppression globale ne doit masquer les erreurs de production.
 
 Chaque skill de développement commence par cette sélection, y compris lorsqu’il
 est invoqué seul. Lire les critères de [sécurité](security.md) et examiner leur
@@ -40,14 +50,17 @@ secrets. Les intégrer pendant l’implémentation ; ne pas attendre la revue fi
 Parcourir le tableau ci-dessus pour identifier les autres exigences applicables,
 notamment compatibilité, cohérence des données, résilience, observabilité et
 performance, puis lire les sections pertinentes des références retenues.
-Consigner dans le résultat les critères retenus, les motifs des exclusions utiles
-et les preuves disponibles ou manquantes pour la revue. Cette sélection reste
+Consigner les critères retenus, les exclusions qui demandent une explication
+et les preuves disponibles ou manquantes pour la revue, sans matrice exhaustive
+pour une modification locale. Cette sélection reste
 limitée au changement demandé ; elle ne déclenche pas un audit général.
 
 ## Production et validation
 
-Arclith est la base des services visés. Le [parcours d’initialisation](../workflows/service-initialization.md)
-valide le socle avant la première fonctionnalité. L’[implémentation par composants](../workflows/feature-implementation.md)
+Le brief technique indique si Arclith est retenu. Dans ce cas, utiliser ses skills
+spécialisés et le [parcours d’initialisation](../workflows/service-initialization.md)
+pour un nouveau service. Sinon, vérifier le socle choisi par le projet sans
+imposer Arclith ni ce parcours. L’[implémentation par composants](../workflows/feature-implementation.md)
 sépare lib si nécessaire, entités, ports, use cases, adapters et assemblage.
 
 Le [parcours de production](../workflows/production-sequences.md) distingue

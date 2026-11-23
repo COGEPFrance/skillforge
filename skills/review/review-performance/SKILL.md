@@ -18,7 +18,7 @@ Examiner les objectifs et preuves de performance du changement. Identifier les f
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Comparer charge, environnement, résultats et référence ; examiner saturation et dépendances.
 3. Distinguer gain mesuré, risque de complexité et hypothèse ; ne pas certifier un objectif absent ou non mesuré.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 
