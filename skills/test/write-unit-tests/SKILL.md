@@ -13,9 +13,9 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Identifier comportement public et scénarios utiles, en consultant les tests existants.
-2. Isoler les dépendances du composant sans simuler la logique testée ; utiliser des assertions sur les effets pertinents.
-3. Exécuter les tests et démontrer qu’ils détectent le comportement incorrect, sans dépendance réelle à une infrastructure externe.
+1. Identifier comportement public et défaut que les assertions doivent détecter ; consulter les tests existants sans recopier la structure interne du code.
+2. Isoler les dépendances sans simuler la logique testée ; couvrir erreurs et limites pertinentes. Une garantie de transaction, de broker ou de protocole réel relève d’une intégration.
+3. Exécuter avec les outils configurés, conserver commande et résultat. Vérifier que les assertions différencient le comportement incorrect sans imposer une campagne de mutations à chaque changement.
 
 ## Résultat et passage de relais
 

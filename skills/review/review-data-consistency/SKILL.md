@@ -17,8 +17,8 @@ Examiner la cohérence des effets durables et des publications. Identifier les f
 
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Identifier transactions, concurrence, conversions et propriétaire des données modifiées.
-3. Examiner coupures entre écritures et messages, migrations et rejeu ; demander les preuves des garanties annoncées.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+3. Examiner les fenêtres entre effets durables, les garanties transactionnelles réelles, migrations et rejeu. Distinguer rollback du code, données transformées et effets irréversibles ; ne pas imposer un pattern de publication si une garantie plus simple suffit.
+4. Utiliser les contrôles pertinents disponibles dans un environnement de test isolé et autorisé ; ne pas modifier la production ni les systèmes partagés hors du périmètre de la tâche. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 

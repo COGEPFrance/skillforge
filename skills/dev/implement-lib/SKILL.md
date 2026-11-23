@@ -7,17 +7,16 @@ description: "Implémenter un composant réutilisable autonome lorsque la capaci
 
 ## Références
 
-Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
+Même en invocation isolée, appliquer le [filtre transverse](../../../references/quality-criteria.md), puis consulter uniquement les détails pertinents ci-dessous.
 
 - [architecture](../../../references/architecture.md)
 - [code-quality](../../../references/code-quality.md)
-- [profiles/python-arclith](../../../references/profiles/python-arclith.md)
 
 ## Exécution
 
-1. Vérifier l’absence de capacité équivalente dans Arclith et les dépendances retenues.
-2. Définir responsabilité et contrat propres ; ne pas créer un paquet distinct sans besoin réel.
-3. Implémenter le composant sans transport ou stockage imposé à ses consommateurs. Une évolution propre au framework doit être traitée dans Arclith, sans modification de ce dépôt externe hors périmètre.
+1. Identifier le manque réel et examiner le socle et les dépendances retenus. Mutualiser un concept partagé, pas seulement des traitements qui se ressemblent.
+2. Définir responsabilité, contrat typé, erreurs et consommateurs ; ne créer un paquet ou une abstraction distincte que si ce besoin le justifie.
+3. Implémenter sans imposer de transport ou de stockage au consommateur. Si la capacité relève du framework, proposer le bon emplacement ; ne pas modifier un dépôt externe sans autorisation. Son absence ne bloque que les garanties qui en dépendent effectivement.
 
 ## Résultat et passage de relais
 

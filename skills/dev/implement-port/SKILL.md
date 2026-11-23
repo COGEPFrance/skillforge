@@ -7,16 +7,16 @@ description: "Définir un contrat typé de dépendance pour un use case sans ada
 
 ## Références
 
-Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
+Même en invocation isolée, appliquer le [filtre transverse](../../../references/quality-criteria.md), puis consulter uniquement les détails pertinents ci-dessous.
 
 - [architecture](../../../references/architecture.md)
 - [domain-models](../../../references/domain-models.md)
 
 ## Exécution
 
-1. Identifier les opérations requises par le consommateur et vérifier les ports existants.
-2. Définir entrées, sorties, erreurs et garanties utiles sans détails de protocole ou de stockage.
-3. Placer le contrat selon les conventions du socle ; éviter une interface sans besoin ou un contrat dicté par un client technique.
+1. Partir des opérations réellement nécessaires au consommateur ; réutiliser les contrats existants sans créer une interface pour remplir une couche.
+2. Définir entrées, sorties, erreurs et garanties observables : absence de résultat, conflit ou rejouabilité si ces cas existent. Éviter types de driver, protocole et adapter concret.
+3. Placer le port selon les conventions du projet et identifier ses consommateurs affectés avant de changer un contrat existant.
 
 ## Résultat et passage de relais
 

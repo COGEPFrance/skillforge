@@ -7,17 +7,17 @@ description: "Implémenter un port à la frontière d’un transport, stockage o
 
 ## Références
 
-Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
+Même en invocation isolée, appliquer le [filtre transverse](../../../references/quality-criteria.md), puis consulter uniquement les détails pertinents ci-dessous.
 
 - [architecture](../../../references/architecture.md)
 - [compatibility](../../../references/compatibility.md)
-- [profiles/python-arclith](../../../references/profiles/python-arclith.md)
 
 ## Exécution
 
-1. Lire le port et les garanties attendues ; réutiliser un adapter Arclith s’il répond au besoin.
-2. Isoler protocole, conversions et erreurs techniques dans l’adapter sans y déplacer la décision métier.
-3. Prévoir les défaillances de la dépendance et exposer les erreurs attendues au consommateur.
+1. Lire le port et les garanties attendues ; examiner les capacités du socle et des dépendances choisis par le projet avant de développer un équivalent.
+2. Garder protocole, conversions de formats et erreurs techniques à la frontière ; restituer les erreurs prévues par le port sans déplacer la décision métier.
+3. Valider les entrées non fiables et utiliser les privilèges nécessaires à cette intégration. Pour un appel distant, définir timeout et erreurs temporaires ou définitives ; ajouter des retries seulement si les effets peuvent être répétés sans danger.
+4. Identifier les consommateurs touchés par un changement de format. Réserver les garanties dépendant du système réel à une vérification d’intégration adaptée.
 
 ## Résultat et passage de relais
 

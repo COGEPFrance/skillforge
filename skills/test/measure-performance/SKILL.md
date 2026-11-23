@@ -1,6 +1,6 @@
 ---
 name: measure-performance
-description: "Mesurer un chemin critique sous une charge et des objectifs identifiés."
+description: "Mesurer un chemin critique sous une charge identifiée, pour un objectif ou une exploration."
 ---
 
 # measure-performance
@@ -15,9 +15,9 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Définir scénario, volumes, objectifs et environnement de mesure isolé.
-2. Exécuter des mesures reproductibles avec instrumentation adaptée ; relever latence, débit et ressources pertinentes.
-3. Comparer aux objectifs et à la référence disponible ; expliciter bruit, limites et saturation sans extrapolation non mesurée.
+1. Définir chemin critique, scénario, volumes et environnement isolé ; identifier l’objectif ou annoncer une mesure exploratoire qui ne pourra pas certifier un objectif.
+2. Mesurer latence individuelle, débit, accumulation et ressources utiles avec jeu de données, versions et instrumentation identifiés ; observer saturation et dépendances.
+3. Comparer à l’objectif s’il est défini et à une référence disponible dans des conditions comparables. Décrire bruit et limites ; l’asynchronisme seul ou un déplacement du goulot ne prouve pas un gain.
 
 ## Résultat et passage de relais
 

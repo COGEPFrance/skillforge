@@ -15,9 +15,9 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Identifier propriétaires, versions et consommateurs couverts par le contrat.
-2. Tester formes, sémantique utile, erreurs et compatibilité des combinaisons de versions pertinentes.
-3. Indiquer quelles garanties proviennent de tests de contrat et lesquelles nécessitent encore une intégration réelle.
+1. Identifier propriétaires, consommateurs et versions concernés par le contrat modifié.
+2. Tester formes, sémantique utile et erreurs ; couvrir les combinaisons de versions réellement attendues pendant la transition, y compris anciens messages si le rejeu est permis.
+3. Exécuter et conserver la matrice couverte et ses résultats ; distinguer conformité du contrat et garanties nécessitant encore une intégration réelle.
 
 ## Résultat et passage de relais
 

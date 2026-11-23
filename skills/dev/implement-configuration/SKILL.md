@@ -7,16 +7,15 @@ description: "Centraliser et valider une variation de configuration utile à un 
 
 ## Références
 
-Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
+Même en invocation isolée, appliquer le [filtre transverse](../../../references/quality-criteria.md), puis consulter uniquement les détails pertinents ci-dessous.
 
 - [configuration](../../../references/configuration.md)
-- [profiles/python-arclith](../../../references/profiles/python-arclith.md)
 
 ## Exécution
 
-1. Identifier option, consommateurs, valeurs par défaut et sources autorisées.
-2. Utiliser le chargement typé du socle et un fichier lisible ; séparer les secrets et définir la priorité des sources.
-3. Relier le consommateur à la configuration validée et vérifier le rejet des valeurs invalides ; ne pas rendre les invariants métier optionnels.
+1. Identifier la variation utile, ses consommateurs, défauts et sources ; suivre le format et le mécanisme du projet, sans imposer YAML ni rendre chaque détail paramétrable.
+2. Centraliser le chargement, typer et valider au démarrage ; expliciter la priorité des sources. Fournir les secrets séparément des fichiers partagés et des exemples.
+3. Injecter les valeurs validées aux consommateurs ; ne pas disperser les lectures de fichiers ou d’environnement dans le métier ni transformer un invariant métier en option. Vérifier une valeur invalide et une surcharge de source.
 
 ## Résultat et passage de relais
 

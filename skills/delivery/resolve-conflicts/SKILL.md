@@ -14,9 +14,9 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Identifier opération, branches et intentions des modifications en conflit.
-2. Résoudre par le comportement attendu, sans choisir mécaniquement un côté ni écraser des changements indépendants.
-3. Vérifier le diff résultant, les contrats et les validations affectées ; ne pas réécrire un historique partagé sans autorisation.
+1. Identifier opération autorisée, branches et intentions des changements en conflit ; vérifier l’état distant si la résolution en dépend.
+2. Résoudre selon les comportements attendus sans choix mécanique d’un côté ni écrasement de modifications indépendantes.
+3. Examiner le diff résultant et rejouer les validations affectées, y compris celles déjà passées avant résolution. Ne pas réécrire un historique partagé sans autorisation ; transmettre le résultat à `review-delivery` avant publication.
 
 ## Résultat et passage de relais
 

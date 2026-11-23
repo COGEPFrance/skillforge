@@ -7,18 +7,18 @@ description: "Implémenter un échange asynchrone justifié et ses garanties app
 
 ## Références
 
-Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
+Même en invocation isolée, appliquer le [filtre transverse](../../../references/quality-criteria.md), puis consulter uniquement les détails pertinents ci-dessous.
 
 - [messaging](../../../references/messaging.md)
 - [data-consistency](../../../references/data-consistency.md)
 - [resilience](../../../references/resilience.md)
-- [profiles/python-arclith](../../../references/profiles/python-arclith.md)
 
 ## Exécution
 
-1. Définir bénéfice, contrat, producteur, consommateur et effets attendus.
-2. Réutiliser le socle et intégrer publication, consommation, acquittement et erreurs au bon niveau.
-3. Traiter doublons, ordre utile, retries et cohérence des effets ; identifier les scénarios de coupure à transmettre aux tests.
+1. Justifier le recours aux messages par découplage, différé ou charge ; définir producteurs, consommateurs, contrat et intention commande ou événement.
+2. Réutiliser les capacités du socle et du broker effectivement disponibles ; définir concurrence, ordre nécessaire, doublons, tentatives bornées et destination des messages invalides ou épuisés.
+3. Aligner acquittements sur les effets durables. Entre écriture et publication, identifier la fenêtre de perte ou duplication et choisir une garantie adaptée ; ne pas imposer systématiquement un outbox.
+4. Propager la corrélation sans secrets ; rendre visibles retard, accumulation et tentatives. Transmettre scénarios de doublon, coupure et coexistence de versions aux tests et revues concernés.
 
 ## Résultat et passage de relais
 

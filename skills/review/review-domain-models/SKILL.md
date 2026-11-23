@@ -17,8 +17,8 @@ Examiner les modèles métier et la préservation de leurs invariants. Identifie
 
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Distinguer entité, valeur, DTO et modèle externe ; examiner identité et invariants.
-3. Suivre création, transitions et mutations pour repérer validations contournées ou couplage au transport et au stockage.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+3. Suivre création, transitions, conversions et mutations ; vérifier un état invalide après mise à jour. Examiner couplage aux formats externes ; pour un projet Python, vérifier l’usage de Pydantic, sa version et les chemins qui contournent la validation dans le [détail conditionnel](../../../references/domain-models.md).
+4. Utiliser les contrôles pertinents disponibles dans un environnement de test isolé et autorisé ; ne pas modifier la production ni les systèmes partagés hors du périmètre de la tâche. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 

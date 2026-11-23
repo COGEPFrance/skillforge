@@ -1,13 +1,13 @@
-# Profil Python / Arclith
+# Profil conditionnel Python / Arclith
 
-- Arclith est le socle des services visés ; Pydantic est utilisé pour les entités. Les exigences transverses restent dans les référentiels dédiés.
-- Identifier dans le projet les versions Python, Arclith, Pydantic, le blueprint et les dépendances retenues avant de choisir une API.
-- Consulter les skills disponibles de la marketplace Arclith et sa documentation correspondant à ces versions pour scaffold, blueprint et intégrations.
-- N’utiliser qu’un skill effectivement disponible et adapté. Si la procédure manque, consulter la documentation propriétaire ; si elle ne permet pas l’opération, signaler le prérequis manquant sans inventer une commande.
-- Réutiliser les mécanismes de configuration, assemblage, messages, runtime et instrumentation réellement fournis par la version utilisée.
-- Vérifier activation, paramètres et comportement effectif ; une capacité du framework ne remplace pas les garanties applicatives de reprise et de cohérence.
-- Une capacité générique propre au framework se traite dans le projet Arclith, sans fork local silencieux ni modification externe hors périmètre.
+Les instructions opérationnelles sont dans [`scaffold-arclith-service`](../../skills/dev/scaffold-arclith-service/SKILL.md), [`apply-arclith-blueprint`](../../skills/dev/apply-arclith-blueprint/SKILL.md), [`review-service-foundation`](../../skills/review/review-service-foundation/SKILL.md).
 
-## Portée
+Charger ce profil lorsque le brief d’architecture technique retient Arclith. Arclith est une bibliothèque Python destinée à rationaliser une grande partie des développements Python ; elle n’est pas imposée à tous les projets. Ses propres skills portent ses procédures spécialisées.
 
-Ce profil porte les choix communs aux services consommateurs. Les procédures de maintenance du framework restent dans sa propre marketplace.
+Identifier versions Python, Arclith, dépendances et blueprint utile. Pour une opération propre à Arclith, consulter un skill Arclith réellement disponible et adapté à ces versions ; sinon utiliser sa documentation propriétaire. Ne pas inventer une API, une commande ou une option manquante.
+
+Examiner configuration, assemblage, messages, runtime et instrumentation fournis avant de développer un équivalent. Vérifier activation et comportement : la bibliothèque ne garantit pas les propriétés applicatives de cohérence ou de reprise.
+
+Si une procédure ou capacité indispensable manque, préciser la garantie ou l’opération bloquée et proposer la suite appropriée ; ne pas déclarer tout le projet bloqué par principe. Une évolution de la bibliothèque se propose dans Arclith, sans fork silencieux ni modification externe non autorisée. Pour l’application d’un blueprint, son absence ou incompatibilité bloque cette étape explicitement demandée.
+
+Pour les projets Python, Pydantic est le choix commun pour les entités et une dépendance assumée du domaine ; Arclith l’intègre dans son core. Ce choix vaut aussi sans Arclith. Ses contrôles de validation sont dans [modèles métier](../domain-models.md).

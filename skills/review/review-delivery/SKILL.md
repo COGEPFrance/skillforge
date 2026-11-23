@@ -18,8 +18,8 @@ Examiner le contenu et les prérequis d’un commit, d’une PR, d’une release
 
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Identifier le type de livraison, la révision exacte, le périmètre et les validations préalables requises.
-3. Examiner contenu, version, notes, configuration, migrations, ordre et reprise selon cet artefact ; ne pas publier pendant la revue.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+3. Examiner le contenu exact préparé et les conventions du dépôt ; ajouter version, notes, configuration, migrations, ordre et reprise seulement selon cet artefact. Vérifier les validations applicables et l’état distant si nécessaire ; ne pas publier pendant la revue.
+4. Utiliser les contrôles pertinents disponibles dans un environnement de test isolé et autorisé ; ne pas modifier la production ni les systèmes partagés hors du périmètre de la tâche. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 

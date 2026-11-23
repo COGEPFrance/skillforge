@@ -1,13 +1,13 @@
 ---
 name: implement-persistence
-description: "Implémenter la persistance derrière un port en préservant les invariants et la cohérence."
+description: "Implémenter la persistance selon les contrats du projet en préservant les invariants et la cohérence."
 ---
 
 # implement-persistence
 
 ## Références
 
-Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
+Même en invocation isolée, appliquer le [filtre transverse](../../../references/quality-criteria.md), puis consulter uniquement les détails pertinents ci-dessous.
 
 - [data-consistency](../../../references/data-consistency.md)
 - [architecture](../../../references/architecture.md)
@@ -15,9 +15,10 @@ Commencer par la [sélection des exigences communes](../../../references/quality
 
 ## Exécution
 
-1. Identifier agrégat ou données possédées, port et frontières transactionnelles.
-2. Implémenter stockage, conversions et concurrence dans l’adapter ; garder le domaine indépendant du schéma technique.
-3. Préparer migrations et reprise nécessaires, sans les exécuter sur un environnement non autorisé.
+1. Identifier propriétaire des données, invariants persistés, contrat existant et frontières transactionnelles ; ne pas accéder directement aux données internes d’un autre service.
+2. Garder schémas et conversions dans le composant de persistance prévu par le projet ; ne pas créer un port ou une couche pour satisfaire ce skill. Définir le comportement en concurrence, conflit ou mise à jour partielle en fonction des garanties réelles du stockage.
+3. Si une publication accompagne une écriture, expliciter leur cohérence et les fenêtres de panne. Choisir le mécanisme selon le besoin et les capacités disponibles.
+4. Préparer les migrations nécessaires et leur reprise en tenant compte des versions coexistantes. Distinguer retour arrière du code, réversibilité des données et effets irréversibles ; ne pas exécuter une migration hors environnement autorisé.
 
 ## Résultat et passage de relais
 

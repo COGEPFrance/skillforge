@@ -14,9 +14,9 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Identifier les pages, contrats, exemples et procédures affectés par le changement.
-2. Corriger les informations obsolètes en préservant leurs sources de vérité et liens existants.
-3. Vérifier la cohérence avec la version implémentée et les autres pages liées sans réécriture indépendante.
+1. Identifier pages, contrats, configuration, exemples et procédures affectés, ainsi que leur public.
+2. Actualiser à partir de la version validée, en préservant les sources de vérité ; supprimer les contradictions sans réécriture indépendante.
+3. Vérifier liens et cohérence des exemples avec leurs prérequis ; relever les commandes non exécutées et les garanties restant à établir.
 
 ## Résultat et passage de relais
 

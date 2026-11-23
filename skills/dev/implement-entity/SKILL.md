@@ -1,23 +1,22 @@
 ---
 name: implement-entity
-description: "Implémenter une entité métier Pydantic avec identité, invariants et transitions explicites."
+description: "Implémenter une entité métier avec identité, invariants et transitions explicites ; utiliser Pydantic dans les projets Python."
 ---
 
 # implement-entity
 
 ## Références
 
-Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
+Même en invocation isolée, appliquer le [filtre transverse](../../../references/quality-criteria.md), puis consulter uniquement les détails pertinents ci-dessous.
 
 - [domain-models](../../../references/domain-models.md)
 - [architecture](../../../references/architecture.md)
-- [profiles/python-arclith](../../../references/profiles/python-arclith.md)
 
 ## Exécution
 
-1. Identifier le concept métier et distinguer entité, objet valeur et DTO. Réutiliser les types pertinents existants.
-2. Exprimer champs et invariants dans le modèle, puis les opérations métier qui les préservent.
-3. Vérifier les chemins de création et de modification, sans exposer de format HTTP ou de stockage dans le domaine.
+1. Identifier identité, invariants, transitions et mutabilité du concept ; distinguer entité, objet valeur, DTO et contrat externe.
+2. Pour les projets Python, utiliser Pydantic comme dépendance assumée du domaine ; sinon employer les types et validations du projet. Exprimer les contraintes locales par les types et les champs ; réserver les validations croisées aux invariants qui les nécessitent. Garder transport et stockage hors du modèle métier.
+3. Préserver les invariants à la création et lors des mises à jour ; définir conversions acceptées et champs supplémentaires. Pour un projet Python, lire le [détail conditionnel](../../../references/domain-models.md).
 
 ## Résultat et passage de relais
 

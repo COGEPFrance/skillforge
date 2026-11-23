@@ -18,7 +18,7 @@ Examiner la pertinence et la fiabilité des tests et de leurs assertions. Identi
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Relier les scénarios aux comportements, risques, erreurs et limites du changement.
 3. Vérifier que les assertions détectent le défaut utile, que le composant testé reste réel et que le niveau de test prouve la garantie annoncée.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles dans un environnement de test isolé et autorisé ; ne pas modifier la production ni les systèmes partagés hors du périmètre de la tâche. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 

@@ -1,11 +1,9 @@
-# Documentation
+# Exactitude documentaire
 
-- Définir le public, la tâche et le résultat attendu du document.
-- Documenter le comportement validé, les contrats, la configuration et les procédures utiles sans inventer les garanties non vérifiées.
-- Préserver une source de vérité pour chaque information ; préférer les renvois à la duplication.
-- Produire ou actualiser la documentation après validation du code et des tests selon le parcours retenu.
-- Vérifier liens, exemples et commandes dans leur contexte ; distinguer procédures exécutées et exemples non vérifiés.
+Les instructions opérationnelles sont dans [`write-documentation`](../skills/documentation/write-documentation/SKILL.md), [`update-documentation`](../skills/documentation/update-documentation/SKILL.md), [`review-documentation`](../skills/review/review-documentation/SKILL.md).
 
-## Preuves attendues
+Consulter cette aide pour une procédure, un exemple exécutable ou une garantie annoncée.
 
-Relier les affirmations à l’implémentation ou à une source propriétaire, vérifier la cohérence des exemples et signaler les limites de vérification. Un document ne doit pas présenter une proposition comme déjà implémentée.
+La revue rapproche les affirmations de la version implémentée ou d’une source propriétaire et vérifie public, prérequis et résultat attendu. Identifier une proposition comme telle ; une procédure non exécutée ne devient pas une preuve.
+
+Garder une source de vérité par information. Vérifier liens et exemples dans leur contexte, sans exécuter une commande destructive ou externe uniquement pour certifier la documentation. Le parcours place la revue documentaire après préparation du document et validation du comportement décrit.

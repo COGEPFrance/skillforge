@@ -16,9 +16,9 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Identifier artefact ou révision, environnement cible, dépendances et autorisations de la tâche.
-2. Définir ordre, configuration, migrations, observabilité et critères de réussite ou d’arrêt.
-3. Préparer retour arrière ou correction en distinguant code et données ; ne pas lancer un déploiement par simple préparation du plan.
+1. Identifier artefact ou révision exacts, environnement cible, dépendances et autorisations de la tâche.
+2. Préparer ordre, configuration, migrations, signaux de vérification et critères de réussite ou d’arrêt ; distinguer rollback du code, réversibilité des données et effets externes irréversibles.
+3. Transmettre le plan à `review-delivery`. Le plan seul ne déclenche pas le déploiement ; son exécution requiert `PASS`, prérequis effectifs et autorisation pour la cible.
 
 ## Résultat et passage de relais
 

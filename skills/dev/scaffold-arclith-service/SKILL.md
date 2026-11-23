@@ -5,18 +5,20 @@ description: "Générer le squelette initial d’un nouveau service Arclith, ava
 
 # scaffold-arclith-service
 
+Le brief d’architecture technique doit retenir Arclith pour ce parcours. Pour ses opérations propres, utiliser les skills Arclith disponibles ou sa documentation correspondant aux versions du projet.
+
 ## Références
 
-Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
+Même en invocation isolée, appliquer le [filtre transverse](../../../references/quality-criteria.md), puis consulter uniquement les détails pertinents ci-dessous.
 
 - [service-foundation](../../../references/service-foundation.md)
 - [profiles/python-arclith](../../../references/profiles/python-arclith.md)
 
 ## Exécution
 
-1. Identifier destination et versions ; vérifier le contenu existant avant génération.
-2. Retrouver la procédure Arclith réellement disponible et générer uniquement le squelette demandé. Si la procédure manque, signaler le prérequis au lieu d’inventer une commande.
-3. Conserver les fichiers existants ; arrêter si la génération risque de les écraser. Transmettre le socle à l’étape blueprint.
+1. Identifier destination, versions Arclith et Python et contenu existant. Lire le [profil Arclith](../../../references/profiles/python-arclith.md) pour retrouver la procédure correspondant aux versions.
+2. Générer uniquement le squelette demandé avec une procédure réellement disponible ; si elle manque, signaler le prérequis au lieu d’inventer une commande.
+3. Ne pas écraser un service existant : comparer les écarts et arrêter une génération destructive. Conserver versions, fichiers et commandes réellement exécutées ; transmettre à l’étape blueprint sans fonctionnalité métier.
 
 ## Résultat et passage de relais
 

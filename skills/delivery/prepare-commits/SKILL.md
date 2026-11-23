@@ -14,9 +14,9 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Examiner diff et état du dépôt ; isoler les fichiers de la tâche sans emporter les changements d’autrui.
-2. Vérifier les validations requises et organiser le contenu et les messages selon les conventions du dépôt.
-3. Distinguer contenu préparé et commit effectivement créé ; créer le commit uniquement si la demande l’autorise.
+1. Examiner état du dépôt et diff exact ; préserver les modifications d’autrui et sélectionner uniquement le contenu de la tâche.
+2. Préparer des ensembles cohérents et leurs messages selon les conventions du dépôt ; joindre les validations du contenu exact à `review-delivery`.
+3. Créer les commits seulement après `PASS` de cette revue et dans le périmètre autorisé. Si le contenu change, faire réexaminer les validations affectées avant la livraison.
 
 ## Résultat et passage de relais
 

@@ -1,12 +1,9 @@
-# Résilience et reprise après crash
+# Défaillances et interruption brutale
 
-- Définir timeouts, retries bornés, limites de concurrence et conditions d’abandon ; distinguer erreurs temporaires et définitives.
-- Prendre en compte les défaillances dans le code, au-delà des garanties du framework, du broker et de l’infrastructure.
-- Pour chaque traitement concerné, identifier état durable, traitements partiels, point de reprise et opérations rejouables.
-- Préserver l’idempotence des effets lors des doublons et redémarrages ; aligner les acquittements sur les effets enregistrés.
-- Prévoir messages en échec, remise en traitement maîtrisée et absence de boucle infinie.
-- Prévoir l’arrêt propre sans supposer qu’il se produira lors d’une panne.
+Les instructions opérationnelles sont dans [`implement-resilience`](../skills/dev/implement-resilience/SKILL.md), [`test-crash-recovery`](../skills/test/test-crash-recovery/SKILL.md), [`review-resilience`](../skills/review/review-resilience/SKILL.md).
 
-## Preuves attendues
+Lire si une dépendance peut bloquer, un traitement est relancé ou des effets survivent au processus.
 
-Examiner un crash avant et après les principales écritures, publications et acquittements. Vérifier reprise, absence de perte silencieuse, maîtrise des effets dupliqués et visibilité des opérations bloquées. L’arrêt propre seul n’est pas une preuve de résistance au crash.
+Distinguer erreurs temporaires et définitives ; les retries ne conviennent qu’aux opérations rejouables. Pour des effets durables, identifier état partiel, point de reprise et conditions d’abandon. Pour les messages, maîtriser acquittements et remise en traitement.
+
+La revue examine les coupures avant et après les effets pertinents, publications et acquittements. Un crash de test vérifie reprise, pertes silencieuses, duplications métier et opérations bloquées. L’arrêt propre est utile mais ne prouve pas la résistance à une interruption brutale ; une opération pure sans effet durable n’impose pas un checkpoint.

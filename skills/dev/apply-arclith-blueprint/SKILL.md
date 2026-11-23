@@ -5,18 +5,20 @@ description: "Appliquer un blueprint Arclith existant à un squelette de service
 
 # apply-arclith-blueprint
 
+Le brief d’architecture technique doit retenir Arclith pour ce parcours. Pour ses opérations propres, utiliser les skills Arclith disponibles ou sa documentation correspondant aux versions du projet.
+
 ## Références
 
-Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
+Même en invocation isolée, appliquer le [filtre transverse](../../../references/quality-criteria.md), puis consulter uniquement les détails pertinents ci-dessous.
 
 - [service-foundation](../../../references/service-foundation.md)
 - [profiles/python-arclith](../../../references/profiles/python-arclith.md)
 
 ## Exécution
 
-1. Vérifier que le scaffold est disponible et identifier le blueprint et ses prérequis.
-2. Appliquer le blueprint compatible au travers des procédures Arclith disponibles ; ne pas concevoir un blueprint de remplacement si aucun ne convient.
-3. Vérifier assemblage, configuration, démarrage et signaux de base sans implémenter de fonctionnalité métier.
+1. Vérifier scaffold, blueprint existant et compatibilité des versions à partir des procédures Arclith disponibles.
+2. Appliquer le blueprint demandé sans architecture de remplacement. Blueprint absent ou incompatible : bloquer ce parcours Arclith et préciser le prérequis manquant.
+3. Vérifier structure, assemblage, configuration, démarrage et signaux de base ; enregistrer versions, blueprint, fichiers et commandes. Ne pas ajouter de fonctionnalité métier ni conclure sur les garanties futures du service.
 
 ## Résultat et passage de relais
 

@@ -13,14 +13,13 @@ Examiner la nécessité et le contrat d’un composant réutilisable ajouté ou 
 
 - [architecture](../../../references/architecture.md)
 - [code-quality](../../../references/code-quality.md)
-- [profiles/python-arclith](../../../references/profiles/python-arclith.md)
 
 ## Examen
 
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
-2. Vérifier la capacité manquante et les possibilités de réutilisation Arclith ou des dépendances.
+2. Vérifier le manque réel et les possibilités de réutilisation du socle et des dépendances du projet ; distinguer concept partagé et simple ressemblance.
 3. Examiner cohésion, contrat, couplage et consommateurs réels ; détecter un paquet ou une abstraction créé sans besoin.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles dans un environnement de test isolé et autorisé ; ne pas modifier la production ni les systèmes partagés hors du périmètre de la tâche. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 
