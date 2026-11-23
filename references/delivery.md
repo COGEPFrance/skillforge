@@ -1,6 +1,17 @@
 # Livraison
 
-- Organiser des changements cohérents, limités au besoin et revus avec leurs preuves de validation.
+- Limiter chaque PR à un sujet cohérent, de taille adaptée au besoin. Préférer
+  les plus petites livraisons autonomes et vérifiables possibles pour suivre
+  l’avancement et faciliter un rollback ; ne pas imposer une PR par use case.
+  Séparer les sujets indépendants et expliciter les dépendances entre PR.
+- Préserver un état livrable cohérent : ne pas publier du code incomplet ou un
+  découpage artificiel qui exige plusieurs déploiements simultanés pour fonctionner.
+  Pour une migration irréversible, expliciter la limite et le moyen de reprise.
+- Tenir un changelog précis selon le format du projet, avant livraison : effet
+  concret de chaque changement, corrections, migrations et incompatibilités,
+  avec liens vers les PR et version livrée. Avant release, garder les changements
+  dans une section non publiée plutôt qu’inventer une version ou annoncer une
+  livraison effectuée. Distinguer avancement intégré et travail encore prévu.
 - Vérifier le contenu exact à committer et publier ; préserver les modifications qui ne font pas partie de la tâche.
 - Utiliser les conventions et outils de versionnement du dépôt ; ne pas inventer une stratégie de branches ou de release. Réutiliser une branche de tâche adaptée lorsqu’elle existe ; pour une nouvelle branche, vérifier la base pertinente plutôt qu’imposer origin/main à chaque invocation.
 - Préparer les versions, notes de release, migrations, prérequis de déploiement et moyens de reprise nécessaires.

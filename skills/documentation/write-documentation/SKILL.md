@@ -1,6 +1,6 @@
 ---
 name: write-documentation
-description: "Rédiger un nouveau document pour un public et un comportement validé identifiés."
+description: "Rédiger un document ciblé en distinguant comportement vérifié et contrat à réaliser."
 ---
 
 # write-documentation
@@ -13,7 +13,7 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Définir public, tâche et emplacement du document à partir du comportement validé et des sources propriétaires.
+1. Définir public, tâche et emplacement du document à partir des sources propriétaires. Respecter la phase documentaire choisie ; si elle précède l’implémentation, présenter explicitement le contrat ou la conception à réaliser et réserver la vérification finale, sans coder ni écrire les tests.
 2. Documenter décisions, invariants, risques et procédures non évidentes ; éviter de paraphraser le code et préférer un renvoi à une information dupliquée. Employer le même vocabulaire métier que le code et les tests.
 3. Pour une option, appliquer la [vérification de configuration](../../../references/documentation.md#configuration-et-architecture) ; vérifier liens, exemples et commandes dans leur contexte, et distinguer exécuté, proposé et non vérifié.
 

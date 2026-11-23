@@ -14,8 +14,8 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Identifier la frontière que les tests unitaires ne prouvent pas et préparer une infrastructure isolée.
-2. Exercer composants et dépendances réels concernés, avec données et nettoyage maîtrisés.
+1. Identifier la frontière que les tests unitaires ne prouvent pas et préparer une infrastructure ou base dédiée aux tests, indépendante de la production.
+2. Exercer composants et dépendances réels concernés, avec jeux de données conçus pour les scénarios, préparation reproductible et réinitialisation entre tests. Prévoir un job CI distinct de la suite métier isolée.
 3. Vérifier résultats persistés et erreurs pertinentes ; ne pas prétendre valider un broker ou stockage entièrement simulé.
 
 ## Résultat et passage de relais

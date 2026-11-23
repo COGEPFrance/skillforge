@@ -16,7 +16,7 @@ Examiner l’exactitude et l’utilité d’un document pour son public. Identif
 ## Examen
 
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
-2. Comparer affirmations et exemples au comportement validé et aux sources propriétaires.
+2. Comparer affirmations et exemples aux sources propriétaires. Si la documentation précède le code, examiner le contrat proposé et ses réserves explicites ; ne pas exiger de produire le code pour valider cette phase préliminaire. À la clôture, confronter le document au comportement vérifié.
 3. Vérifier liens, commandes, prérequis et informations obsolètes ; distinguer proposition, exemple non exécuté et procédure vérifiée.
 4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 

@@ -22,7 +22,7 @@ Examiner la pertinence et la fiabilité des tests et de leurs assertions. Identi
 
 ## Points ciblés
 
-Pour Python, appliquer les [critères mocks et fixtures](../../../references/testing.md#tests-unitaires-python). Vérifier le composant réel, l’indépendance des doubles et les assertions d’attente asynchrones pertinentes. Les [contrôles d’architecture](../../../references/testing.md#contrôles-darchitecture-et-couverture) analysent les sources du périmètre, y compris non ajoutées à Git, sans dépendre des caches locaux. Ne pas exiger une migration de fakes ni un seuil de couverture absent du projet.
+Pour Python, appliquer les [critères mocks et fixtures](../../../references/testing.md#tests-unitaires-python). Vérifier le composant réel, l’indépendance des doubles et les assertions d’attente asynchrones pertinentes. Les [contrôles d’architecture](../../../references/testing.md#contrôles-darchitecture-et-couverture) analysent les sources du périmètre, y compris non ajoutées à Git, sans dépendre des caches locaux. Vérifier l’absence de fakes dans les nouveaux TU et ne pas imposer une migration hors périmètre. Contrôler 80 % minimum et 90 % visés sur le périmètre non exclu, ou le seuil supérieur du projet. Vérifier la suite métier et sa couverture séparées en CI, ainsi que l’infrastructure et les jeux de données reproductibles d’intégration. Une revue préliminaire réserve les mesures qui exigent un code encore absent.
 
 ## Restitution
 

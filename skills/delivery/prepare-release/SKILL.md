@@ -15,7 +15,7 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 ## Exécution
 
 1. Identifier conventions de version, contenu depuis la dernière release et consommateurs affectés.
-2. Préparer notes, version, dépendances et migrations nécessaires, sans annoncer de garanties non validées.
+2. Préparer notes, version, dépendances et migrations nécessaires à partir du changelog précis : changements concrets, corrections, incompatibilités et PR associées. Déplacer les entrées non publiées vers la version livrée lors de la release effective, sans annoncer de garanties non validées.
 3. Préciser reprise et risques ; distinguer préparation de tag, publication du tag et publication de release.
 
 ## Résultat et passage de relais

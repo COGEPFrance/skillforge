@@ -14,8 +14,8 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Vérifier branche source, cible, diff et état distant si accessible.
-2. Décrire la modification finale pour un lecteur sans le contexte du chat, avec validations et limites matérielles.
+1. Vérifier branche source, cible, diff et état distant si accessible. Garder un sujet cohérent et le plus petit incrément livrable possible ; séparer les sujets indépendants et expliciter dépendances et reprise, sans imposer une PR par use case.
+2. Décrire la modification finale pour un lecteur sans le contexte du chat, avec validations et limites matérielles. Vérifier l’entrée précise du changelog et sa traçabilité vers la PR, selon le format du projet ; ne pas présenter un changement non livré comme publié.
 3. Préparer titre et corps, puis transmettre les artefacts et leurs preuves à `review-delivery`.
 4. Publier la branche ou ouvrir la PR uniquement après un verdict `PASS` de `review-delivery` sur le contenu à publier et si l’action est autorisée, puis vérifier le résultat distant. Un verdict `FAIL` ou `BLOCKED` impose la [boucle de correction](../../../workflows/correction-loop.md) avant toute publication.
 

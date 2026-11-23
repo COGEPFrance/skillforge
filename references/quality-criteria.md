@@ -4,10 +4,10 @@ Ce document est le point d’entrée des règles retenues collectivement pour
 Skillforge. Les règles détaillées sont portées par les références ci-dessous,
 utilisées par les skills de production et de revue sans copie concurrente.
 
-Les règles de `_rules/` ont été examinées pour cette personnalisation ; les arbitrages
-sont consignés dans le [journal](../docs/skill-personalization-decisions.md).
-Ces sources restent conservées pour traçabilité, pas chargées comme un ancien
-prompt à exécuter en bloc. Le cadrage et la conception
+Les exigences applicables sont définies dans les références maintenues ci-dessous.
+Le [journal historique](../docs/skill-personalization-decisions.md) explique leur
+origine ; il n’est pas un prérequis d’exécution et ne remplace pas ces références.
+Le cadrage et la conception
 ne sont pas des thèmes du catalogue ; la vérification de l’architecture et la
 mise en place du socle font partie du développement et de sa revue.
 
@@ -63,10 +63,13 @@ pour un nouveau service. Sinon, vérifier le socle choisi par le projet sans
 imposer Arclith ni ce parcours. L’[implémentation par composants](../workflows/feature-implementation.md)
 sépare lib si nécessaire, entités, ports, use cases, adapters et assemblage.
 
-Le [parcours de production](../workflows/production-sequences.md) distingue
-première validation du code, tests, validation du comportement et des risques,
-documentation, puis livraison. Les tests peuvent précéder le code et les tests
-existants continuent à être exécutés pendant le développement.
+Le [parcours de production](../workflows/production-sequences.md) sépare code,
+tests et documentation en phases dont l’ordre est choisi avant exécution.
+Une seule phase est active ; sa production et sa validation doivent être
+terminées avant de passer à une autre, sans opération mêlant plusieurs phases
+ni agents travaillant sur ces phases en parallèle. Les tests existants peuvent
+être exécutés pour vérifier la phase courante. Une revue préliminaire réserve
+explicitement les garanties qui exigent une phase ultérieure.
 
 Sécurité, performance et compatibilité sont prises en compte dès la production
 et approfondies par des revues distinctes. Résilience et observabilité demandent

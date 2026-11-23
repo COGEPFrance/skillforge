@@ -16,7 +16,7 @@ Commencer par la [sélection des exigences communes](../../../references/quality
 
 1. Établir comportement attendu, reproduction et cause ; distinguer faits et hypothèses avant correction.
 2. Corriger la cause dans les composants du périmètre, y compris les occurrences révélées par une review. Challenger une suggestion qui dégrade typage, architecture ou lisibilité et proposer une correction adaptée.
-3. Exécuter les vérifications existantes pertinentes ; conserver une preuve avant/après et prévoir un test de non-régression qui détecte le défaut. L’écrire dans cette étape si la demande le couvre, sinon transmettre le scénario à la phase de tests ; ne pas annoncer la régression couverte avant exécution. Pour un défaut comportemental testable, la validation finale inclut la non-régression exécutée.
+3. Exécuter les vérifications existantes pertinentes ; conserver une preuve avant/après et prévoir un test de non-régression qui détecte le défaut. Transmettre le scénario à une phase de tests distincte, même si la demande inclut le correctif et sa non-régression ; ne pas annoncer la régression couverte avant exécution. Pour un défaut comportemental testable, la validation finale inclut la non-régression exécutée.
 
 ## Résultat et passage de relais
 

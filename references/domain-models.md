@@ -19,9 +19,8 @@ utilisent Pydantic explicitement typé ; cela n’impose pas de transformer tout
 algorithme, collection dynamique ou objet de comportement en modèle.
 
 - Séparer entité (identité, cycle de vie, invariants), valeur, agrégat, DTO,
-  commande, query et contexte. Suivre les emplacements du projet ; les chemins
-  `core/domain/entity/`, `core/domain/dto/` et le suffixe `Dto` sont des conventions
-  applicables si le projet les retient, pas une migration automatique.
+  commande, query et contexte. Les placer et les nommer selon leur responsabilité
+  et les conventions du projet, sans imposer de chemin ni de suffixe commun.
 - Préférer types et `Field` pour contraintes locales déclaratives. Employer un
   `field_validator` pour une transformation/validation locale non exprimable
   ainsi ; un `model_validator` pour un invariant réellement croisé. Ne pas

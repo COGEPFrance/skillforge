@@ -16,9 +16,9 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 ## Exécution
 
 1. Relier critères d’acceptation, invariants, risques et frontières modifiées aux scénarios de preuve ; éviter un inventaire systématique de tous les niveaux.
-2. Choisir unité pour la logique isolée, intégration pour les garanties de composants réels et contrats pour les consommateurs concernés ; ajouter crash ou charge selon les effets et objectifs. Prioriser les comportements à risque, pas une catégorie de composants par principe.
-3. Pour Python, lire les [tests unitaires](../../../references/testing.md#tests-unitaires-python) et, si nécessaire, les [contrôles d’architecture](../../../references/testing.md#contrôles-darchitecture-et-couverture). Reprendre les seuils et exclusions du projet sans exclure automatiquement entités ou DTO porteurs de validations.
-4. Définir prérequis, assertions et place des tests dans le parcours code ou tests d’abord ; distinguer comportement absent, test invalide et environnement indisponible.
+2. Choisir unité pour la logique isolée, intégration pour les garanties de composants réels et contrats pour les consommateurs concernés ; ajouter crash ou charge selon les effets et objectifs. Prioriser les règles métier sans reporter les garanties critiques des adaptateurs. Prévoir la [suite métier et les jobs CI distincts](../../../references/testing.md#tests-métier-et-intégration-en-ci), ainsi que l’infrastructure et les données dédiées aux tests d’intégration.
+3. Pour Python, lire les [tests unitaires](../../../references/testing.md#tests-unitaires-python) et, si nécessaire, les [contrôles d’architecture](../../../references/testing.md#contrôles-darchitecture-et-couverture). Conserver 80 % minimum et 90 % visés sur le périmètre non exclu, ou le seuil supérieur du projet ; justifier les exclusions sans écarter les modèles porteurs de validations.
+4. Définir prérequis, assertions et critères de sortie de la phase de tests, placée dans l’ordre choisi sans chevauchement avec code ou documentation. Distinguer comportement absent, test invalide et environnement indisponible ; réserver explicitement les preuves encore impossibles.
 
 ## Résultat et passage de relais
 

@@ -1,18 +1,26 @@
-# Initialisation d’un service Arclith
+# Délégation de l’initialisation d’un service Arclith
 
-Ce parcours concerne les projets dont le brief technique retient Arclith. Les
-autres projets vérifient leur propre socle ; ils ne requièrent pas de blueprint
-Arclith.
+Ce parcours concerne les projets dont le brief technique retient Arclith.
+Skillforge définit le périmètre et les passages de validation ; les skills
+publiés par Arclith possèdent les procédures de génération et d’intégration.
+Ne pas les réimplémenter dans ce catalogue.
 
-## Entrées
+1. Identifier destination, versions, état existant et résultat attendu. Retrouver
+   le skill propriétaire réellement disponible et compatible dans la marketplace
+   Arclith ; ne pas inventer son nom ou recopier ses commandes ici.
+2. Enregistrer les opérations nécessaires et les phases qu’elles produisent
+   selon [production-sequences.md](production-sequences.md). Déléguer uniquement
+   la phase active. Si un générateur produit aussi des tests ou de la
+   documentation, vérifier qu’il permet de les différer ou les séparer. Sinon,
+   signaler le blocage avant mutation ; ne pas considérer la génération comme
+   une exception implicite à la séparation des phases.
+3. Faire exécuter chaque opération par le skill Arclith approprié, recueillir
+   les artefacts et preuves, puis obtenir la validation de phase avant la suite.
+   La revue commune `review-service-foundation` examine les preuves du socle ;
+   les contrôles propres au framework restent délégués à Arclith.
+4. Transmettre le socle vérifié au [parcours de fonctionnalité](feature-implementation.md).
+   Un échec suit la [boucle de correction](correction-loop.md).
 
-Destination, besoin technique du service, versions Arclith et Python, blueprint existant identifié, configuration et dépendances de vérification disponibles.
-
-## Séquence
-
-1. `scaffold-arclith-service` génère le squelette sans écraser de code existant.
-2. `apply-arclith-blueprint` applique le blueprint compatible et conserve les versions et changements effectués.
-3. `review-service-foundation` vérifie structure, assemblage, configuration, démarrage et observabilité de base.
-4. Sur `PASS`, transmettre le socle et les preuves au [parcours de fonctionnalité](feature-implementation.md). Sinon appliquer la [boucle de correction](correction-loop.md).
-
-Ces deux tâches de production constituent le socle soumis à cette revue avant toute fonctionnalité. Les procédures Arclith restent la référence pour les opérations propres au framework. Sur un service existant, vérifier les écarts nécessaires plutôt que régénérer le projet. L’absence de blueprint adapté bloque le parcours.
+Sur un service existant, préserver les fichiers et appliquer uniquement les
+écarts nécessaires. Une procédure ou un blueprint requis manquant bloque les
+opérations qui en dépendent ; ne pas fabriquer de remplacement local.

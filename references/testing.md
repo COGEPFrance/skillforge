@@ -6,7 +6,7 @@
 - Cibler cas nominaux, erreurs et limites pertinentes, avec des assertions capables de détecter le défaut recherché.
 - Exécuter les tests existants dès le développement ; ne pas attendre la phase de création de nouveaux tests.
 - Conserver commandes, environnement et résultats observés ; un test non exécuté ou une dépendance absente ne vaut pas réussite.
-- Les tests peuvent précéder le code. Dans ce cas, distinguer un échec attendu sur le comportement absent d’un test lui-même défectueux.
+- Écrire ou adapter les tests uniquement pendant la phase de tests enregistrée. Elle peut précéder ou suivre code et documentation ; ne pas modifier ces artefacts en même temps. Distinguer un échec attendu sur le comportement absent d’un test défectueux. Si la production doit changer, suspendre la phase et appliquer la [boucle de correction](../workflows/correction-loop.md).
 
 ## Preuves attendues
 
@@ -23,12 +23,13 @@ mocks aux tests d’intégration ou de contrat.
   `assert_awaited...` pour les attentes contractuelles. Le composant testé et les
   données Pydantic restent réels. Injecter avant de recourir à `patch`, appliqué
   là où le symbole est utilisé ; configurer seulement le scénario nécessaire.
-- Ne pas créer un fake propre au scénario si un mock simple suffit. Un fake
-  existant ne déclenche pas sa migration automatique : la réserver au périmètre
-  où elle apporte une isolation ou une preuve utile, ou à une demande explicite.
-  Préserver scénarios et garanties ; ne pas modifier la production pour convertir
-  les doubles. L’interdiction historique d’un fichier `tests/test_helpers.py`
-  particulier ne s’étend pas à tous les projets.
+- Pour les nouveaux TU, utiliser des mocks pour les dépendances simulées :
+  ne pas créer de fakes ni réutiliser ceux d’un helper existant. Les infrastructures
+  réelles et leurs jeux de données dédiés appartiennent au niveau d’intégration décrit
+  ci-dessous ; ils ne remplacent pas cette isolation. Un fake déjà présent hors
+  du périmètre modifié ne déclenche pas une migration générale. Lors de sa
+  conversion dans les TU concernés, préserver scénarios et garanties sans
+  modifier la production pour adapter le double.
 - Lire la définition d’une fixture avant réemploi, l’injecter par paramètre et
   garder un état indépendant par test (scope `function` pour les mocks, sauf
   isolation équivalente démontrée). Réglages communs dans la fixture, scénario
@@ -45,6 +46,26 @@ mocks aux tests d’intégration ou de contrat.
   mise à jour valides/invalides pertinents, dont état inchangé après refus. Éviter
   les tests d’instanciation triviaux. Les TU n’appellent ni réseau réel ni
   infrastructure externe et ne dépendent pas d’attentes temporelles réelles.
+
+## Tests métier et intégration en CI
+
+Isoler les règles métier (use cases, invariants, calculs et validations des
+entités) dans une suite et un job CI dédiés, sans base ni réseau : composants
+métier et données réels, dépendances mockées. Séparer les tests techniques des
+adaptateurs et les tests d’intégration qui vérifient des composants réels.
+Prioriser les règles métier sans reporter les garanties critiques d’un
+adaptateur, comme l’isolation des données ou les transactions.
+
+Pour l’intégration, utiliser une base ou une infrastructure dédiée aux tests,
+avec jeux de données conçus pour les scénarios, préparation reproductible et
+réinitialisation entre tests. Ne pas utiliser de données ou services de
+production. Vérifier les contraintes et comportements du système réel.
+
+Les jobs peuvent s’exécuter en parallèle pour vérifier des artefacts déjà
+produits, avec les contrôles applicables requis avant fusion. Ce parallélisme CI
+n’autorise pas la production simultanée de code, tests et documentation. Mesurer
+et afficher la couverture métier séparément pour qu’une couverture technique
+élevée ne masque pas des règles métier insuffisamment testées.
 
 ## Contrôles d’architecture et couverture
 
@@ -64,9 +85,11 @@ style. Ne pas bannir tout import `pathlib`/`json` ou toute dataclass par une
 recherche textuelle aveugle : vérifier la responsabilité et le périmètre Python
 concernés, en conservant Pydantic pour les classes de données structurées.
 
-Les seuils et exclusions de couverture viennent de la configuration du projet.
-Les objectifs historiques 80/90 % et exclusions automatiques des entités, DTO ou
-du conteneur ne sont pas généralisés : ils peuvent masquer des invariants ou un
-assemblage important. Tester les comportements significatifs indépendamment du
-calcul de couverture et suivre l’organisation de tests établie sans migration
-systématique vers `tests/units/`.
+Conserver une couverture minimale de **80 %**, avec un objectif de **90 %**, sur
+le périmètre non exclu. Appliquer un seuil supérieur si le projet l’impose ; une
+configuration inférieure ne supprime pas l’objectif commun et son écart doit
+être signalé. Les exclusions doivent être explicites et justifiées ; ne pas
+exclure automatiquement entités, DTO ou assemblage porteurs de comportements.
+Tester les garanties significatives indépendamment du pourcentage. Suivre
+l’organisation du projet sans migration systématique vers un chemin de tests
+imposé.
