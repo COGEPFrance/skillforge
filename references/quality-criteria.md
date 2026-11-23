@@ -4,7 +4,7 @@ Ce document est le point d’entrée des règles retenues collectivement pour
 Skillforge. Les règles détaillées sont portées par les références ci-dessous,
 utilisées par les skills de production et de revue sans copie concurrente.
 
-Les anciens fichiers Markdown à la racine ne sont pas intégrés à cette première
+Les anciens fichiers Markdown conservés dans `_rules/` ne sont pas intégrés à cette première
 version. Leur contenu sera examiné progressivement. Le cadrage et la conception
 ne sont pas des thèmes du catalogue ; la vérification de l’architecture et la
 mise en place du socle font partie du développement et de sa revue.
