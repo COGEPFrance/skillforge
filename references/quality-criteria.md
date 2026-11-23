@@ -1,151 +1,65 @@
-# Principes de qualité retenus
+# Référentiel commun de qualité
 
-Ce référentiel synthétise les décisions prises pour Skillforge. Il servira de
-base aux skills de production et aux revues spécialisées. Il ne constitue pas
-encore une liste exhaustive de contrôles bloquants.
+Ce document est le point d’entrée des règles retenues collectivement pour
+Skillforge. Les règles détaillées sont portées par les références ci-dessous,
+utilisées par les skills de production et de revue sans copie concurrente.
 
-Les autres fichiers Markdown déjà présents dans le dépôt ne sont pas intégrés
-à cette synthèse. Leur contenu sera examiné et incorporé progressivement aux
-skills. Le cadrage et la conception ne sont pas des thèmes du catalogue à ce stade.
+Les anciens fichiers Markdown conservés dans `_rules/` ne sont pas intégrés à cette première
+version. Leur contenu sera examiné progressivement. Le cadrage et la conception
+ne sont pas des thèmes du catalogue ; la vérification de l’architecture et la
+mise en place du socle font partie du développement et de sa revue.
 
-## Architecture et réutilisation
+## Références
 
-- Adopter une architecture hexagonale stricte, aux responsabilités et frontières
-  explicites : domaine, cas d’usage, ports et adapters.
-- Garder le domaine indépendant des transports, du stockage et des adapters
-  concrets. Isoler les conversions de formats externes aux frontières.
-- Injecter les dépendances et centraliser leur assemblage.
-- Arclith est la base du code des services visés par ce catalogue. Vérifier et
-  réutiliser ses capacités avant de créer un mécanisme équivalent.
-- Avant la première implémentation métier, générer le scaffold Arclith, appliquer
-  un blueprint existant identifié et compatible, puis faire valider le socle.
-  Distinguer ces tâches pour permettre leur exécution par des agents spécialisés.
-- Vérifier la structure, l’assemblage, la configuration, le démarrage et les
-  signaux d’observabilité de base avant d’autoriser la première fonctionnalité.
-  Un échec bloque l’implémentation ; un blueprint manquant constitue un blocage
-  à résoudre, sans invention silencieuse d’une architecture de remplacement.
-- Réutiliser les procédures spécifiques de la marketplace Arclith. Sur un
-  service existant, vérifier les écarts sans écraser le code par un nouveau scaffold.
-- Distinguer la disponibilité d’un mécanisme dans Arclith de son intégration
-  correcte dans le service : configuration, instrumentation, comportement et
-  garanties doivent être vérifiés pour le cas d’usage réel.
-- Respecter SRP, KISS et DRY sans multiplier artificiellement couches,
-  interfaces ou abstractions. Une mutualisation répond à un besoin réel.
-- Retenir des pratiques maintenues, éprouvées et adaptées au besoin : c’est le
-  sens donné ici à SOTA, sans recherche systématique de nouveauté.
+| Sujet | Référence commune |
+| --- | --- |
+| Frontières hexagonales, microservices et réutilisation | [Architecture](architecture.md) |
+| Scaffold, blueprint et validation avant implémentation | [Socle du service](service-foundation.md) |
+| SRP, KISS, DRY, SOTA, typage et périmètre | [Qualité du code](code-quality.md) |
+| Entités, invariants et mutations | [Modèles métier](domain-models.md) |
+| Variations utiles, sources, validation et secrets | [Configuration](configuration.md) |
+| Asynchronisme, contrats et acquittements | [Messages](messaging.md) |
+| Transactions, concurrence, migrations et publications | [Cohérence des données](data-consistency.md) |
+| Défaillances, état durable et reprise après crash | [Résilience](resilience.md) |
+| Logs, métriques, traces et corrélation | [Observabilité](observability.md) |
+| Objectifs, charge et mesures | [Performance](performance.md) |
+| Autorisations, frontières et protection des secrets | [Sécurité](security.md) |
+| Contrats et transitions entre versions | [Compatibilité](compatibility.md) |
+| Scénarios, niveaux et preuves d’exécution | [Tests](testing.md) |
+| Public, exactitude et comportement validé | [Documentation](documentation.md) |
+| Commits, PR, releases, déploiements et reprise | [Livraison](delivery.md) |
+| Arclith comme base du code, Pydantic et délégation | [Profil Python / Arclith](profiles/python-arclith.md) |
 
-## Modèles, typage et contrats
+## Sélection des exigences en production
 
-- Utiliser Pydantic pour les entités ; cette dépendance du domaine est assumée.
-- Distinguer entités, objets valeur, DTO, commandes et modèles de configuration.
-  Ne pas partager automatiquement un même modèle entre toutes les frontières.
-- Définir des entrées, sorties et erreurs explicites et précisément typées.
-- Préciser les contraintes de champs, invariants entre champs, conversions
-  autorisées, champs supplémentaires et règles de mutabilité.
-- Préserver les invariants pendant tout le cycle de vie, y compris lors des
-  mises à jour. Ne pas contourner la validation sans justification explicite.
+Chaque skill de développement commence par cette sélection, y compris lorsqu’il
+est invoqué seul. Lire les critères de [sécurité](security.md) et examiner leur
+application au changement : autorisations métier, frontières, privilèges et
+secrets. Les intégrer pendant l’implémentation ; ne pas attendre la revue finale.
 
-## Configuration
+Parcourir le tableau ci-dessus pour identifier les autres exigences applicables,
+notamment compatibilité, cohérence des données, résilience, observabilité et
+performance, puis lire les sections pertinentes des références retenues.
+Consigner dans le résultat les critères retenus, les motifs des exclusions utiles
+et les preuves disponibles ou manquantes pour la revue. Cette sélection reste
+limitée au changement demandé ; elle ne déclenche pas un audit général.
 
-- Centraliser les variations utiles et identifiées dans une configuration
-  lisible, de préférence YAML ou un format équivalent adapté.
-- Rendre configurables les variations d’environnement, de déploiement et de
-  fonctionnement pertinentes, sans transformer chaque détail en option.
-- Typer et valider la configuration au démarrage ; définir les valeurs par
-  défaut et la priorité des différentes sources.
-- Éviter les paramètres dispersés et les lectures d’environnement dans le code
-  métier. Fournir les secrets séparément des fichiers de configuration partagés.
-- Ne pas transformer automatiquement les invariants métier en options désactivables.
+## Production et validation
 
-## Microservices et échanges
+Arclith est la base des services visés. Le [parcours d’initialisation](../workflows/service-initialization.md)
+valide le socle avant la première fonctionnalité. L’[implémentation par composants](../workflows/feature-implementation.md)
+sépare lib si nécessaire, entités, ports, use cases, adapters et assemblage.
 
-- Travailler en microservices avec une responsabilité métier claire, une
-  propriété explicite des données et une capacité de déploiement indépendante.
-- Limiter le couplage et la portée des changements. Ne pas accéder directement
-  aux données internes d’un autre service.
-- Privilégier les messages lorsque le traitement différé, le découplage ou
-  l’absorption de charge apporte un bénéfice identifié ; ne pas imposer
-  l’asynchronisme sans ce bénéfice.
-- Expliciter les contrats d’API et d’événements ainsi que leur évolution.
-- Définir les garanties de cohérence entre persistance et publication de messages,
-  les frontières transactionnelles et les moyens de reprise adaptés.
+Le [parcours de production](../workflows/production-sequences.md) distingue
+première validation du code, tests, validation du comportement et des risques,
+documentation, puis livraison. Les tests peuvent précéder le code et les tests
+existants continuent à être exécutés pendant le développement.
 
-## Résilience et reprise après crash
+Sécurité, performance et compatibilité sont prises en compte dès la production
+et approfondies par des revues distinctes. Résilience et observabilité demandent
+également des preuves applicatives, même si Arclith fournit les mécanismes.
 
-- Prendre en compte les défaillances dans le code applicatif, au-delà des
-  mécanismes fournis par le framework, le broker ou l’infrastructure.
-- Définir les timeouts, retries bornés, limites de concurrence et conditions
-  d’abandon. Distinguer erreurs temporaires et erreurs définitives.
-- Prévoir l’idempotence, les doublons, les traitements partiels et l’ordre des
-  messages lorsque celui-ci importe.
-- Pour chaque traitement concerné, préciser ce qui est durable, ce qui peut
-  être rejoué et comment retrouver les opérations interrompues après un crash.
-- Positionner les acquittements et points de reprise en cohérence avec les
-  effets réellement enregistrés. Prévenir les pertes silencieuses et les
-  effets métier dupliqués lors d’un redémarrage.
-- Prévoir le traitement des messages en échec et leur remise en traitement
-  maîtrisée ; ne pas créer de boucle de retry infinie.
-- Prévoir un arrêt propre, sans supposer qu’il aura lieu lors de chaque panne.
-- Vérifier les scénarios de crash, de redémarrage et de reprise pertinents.
-
-## Observabilité et performance
-
-- Instrumenter les services avec des logs structurés, des métriques et des traces
-  permettant de comprendre et de mesurer leur comportement.
-- Propager le contexte de corrélation et de trace entre appels et messages,
-  y compris pour les traitements asynchrones et leurs tentatives successives.
-- Rendre observables les erreurs, retries, abandons, reprises et traitements
-  bloqués. Ne pas masquer un échec derrière un faux succès.
-- Mesurer, selon le traitement, les latences, débits, erreurs, ressources,
-  accumulations de messages et délais de traitement.
-- Définir les volumes et objectifs attendus ; mesurer les chemins critiques
-  avant de conclure qu’une optimisation ou une architecture est performante.
-- Maîtriser le coût de l’instrumentation et la cardinalité des métriques.
-- Protéger secrets et données sensibles dans les logs, métriques et traces.
-- Réutiliser l’instrumentation d’Arclith lorsqu’elle convient et vérifier que
-  les signaux nécessaires sont effectivement produits et exploitables.
-
-## Sécurité, compatibilité et maîtrise des changements
-
-- Intégrer validation aux frontières, autorisations explicites et moindre
-  privilège dès la production ; approfondir ces contrôles en revue de sécurité.
-- Maîtriser l’évolution des API, événements, configurations et schémas persistés,
-  y compris pendant une transition entre versions de services.
-- Prévoir les migrations, reprises de données et possibilités de retour arrière
-  ou de correction lorsque le changement le nécessite.
-- Maîtriser les versions des dépendances et éviter les ajouts sans besoin réel.
-- Limiter chaque changement au besoin traité, sans refonte opportuniste.
-- Réaliser le refactoring nécessaire au besoin dans le changement courant.
-  Pour un refactoring indépendant, préparer une analyse d’impact et ouvrir une
-  issue dédiée selon les règles du projet, sans l’implémenter immédiatement.
-  L’analyse précise problème, composants et consommateurs affectés, risques,
-  migrations éventuelles, périmètre et validations attendues.
-
-## Production et validation par étapes
-
-- Séparer les étapes pour ne pas investir dans les suivantes tant que leur base
-  n’a pas reçu une première validation adaptée.
-- Pour un nouveau service, commencer par scaffold Arclith → application du
-  blueprint → revue du socle. Cette validation précède le parcours de production
-  de la première fonctionnalité ; elle ne garantit pas son comportement futur.
-- Décomposer une fonctionnalité en tâches spécialisées, ordonnées selon leurs
-  dépendances : lib si nécessaire → entités → ports → use cases → adapters →
-  assemblage. Réutiliser les composants existants conformes. Ne pas créer une
-  lib ni réimplémenter une capacité d’Arclith uniquement pour remplir une étape.
-- Faire porter l’enchaînement par un workflow plutôt que par un skill global
-  d’implémentation. Chaque étape applicable reçoit une revue spécialisée avant
-  de passer à la suivante ; les validations comportementales restent nécessaires.
-- Parcours de référence : code → revue structurelle et contrôles statiques →
-  tests et revue des tests → validation du comportement et des risques →
-  documentation et revue documentaire → livraison.
-- Autoriser les tests en premier lorsqu’ils permettent de préciser ou reproduire
-  le comportement attendu ; faire adapter le parcours à ce choix.
-- Continuer à exécuter les tests existants pendant le développement. Une première
-  revue du code ne remplace pas la validation du comportement par les tests.
-- Tout défaut découvert ultérieurement peut imposer un retour au code et la
-  répétition des validations affectées.
-- Maintenir des revues spécialisées, notamment pour la sécurité, la performance
-  et la compatibilité, plutôt qu’une revue unique chargée de tout contrôler.
-- Définir progressivement pour chaque règle son résultat attendu, ses preuves
-  de vérification et son caractère bloquant. Un contrôle impossible à réaliser
-  ne constitue pas une validation.
+Chaque revue décrit son périmètre et rend un [verdict avec preuves](../workflows/review-result.md).
+Un échec ou un prérequis indispensable manquant bloque la suite. Les corrections
+invalident les validations affectées selon la [boucle de reprise](../workflows/correction-loop.md).
+Ces fichiers décrivent les méthodes ; ils ne constituent pas un moteur d’agents.
