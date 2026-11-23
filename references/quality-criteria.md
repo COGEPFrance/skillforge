@@ -1,60 +1,65 @@
-# Exigences communes et sélection par le changement
+# Référentiel commun de qualité
 
-Le brief du projet définit le besoin et le brief d’architecture technique définit
-le socle, les bibliothèques et les frontières retenus. Les skills ne remplacent
-pas ces choix. Pour les projets Python, Pydantic est le choix commun pour les
-entités et une dépendance assumée du domaine, avec ou sans Arclith.
-Si un brief manque, utiliser les conventions établies et demander
-uniquement les décisions indispensables qui ne peuvent pas en être déduites.
-Si un brief contredit explicitement un choix commun comme Pydantic pour les
-entités Python, signaler le conflit et demander l’arbitrage nécessaire ; ne pas
-remplacer silencieusement le choix du projet ni engager une migration implicite.
-Le [profil Python / Arclith](profiles/python-arclith.md) s’applique lorsque ce
-socle est retenu ; ses procédures sont portées par les skills d’Arclith.
+Ce document est le point d’entrée des règles retenues collectivement pour
+Skillforge. Les règles détaillées sont portées par les références ci-dessous,
+utilisées par les skills de production et de revue sans copie concurrente.
+
+Les anciens fichiers Markdown conservés dans `_rules/` ne sont pas intégrés à cette première
+version. Leur contenu sera examiné progressivement. Le cadrage et la conception
+ne sont pas des thèmes du catalogue ; la vérification de l’architecture et la
+mise en place du socle font partie du développement et de sa revue.
+
+## Références
+
+| Sujet | Référence commune |
+| --- | --- |
+| Frontières hexagonales, microservices et réutilisation | [Architecture](architecture.md) |
+| Scaffold, blueprint et validation avant implémentation | [Socle du service](service-foundation.md) |
+| SRP, KISS, DRY, SOTA, typage et périmètre | [Qualité du code](code-quality.md) |
+| Entités, invariants et mutations | [Modèles métier](domain-models.md) |
+| Variations utiles, sources, validation et secrets | [Configuration](configuration.md) |
+| Asynchronisme, contrats et acquittements | [Messages](messaging.md) |
+| Transactions, concurrence, migrations et publications | [Cohérence des données](data-consistency.md) |
+| Défaillances, état durable et reprise après crash | [Résilience](resilience.md) |
+| Logs, métriques, traces et corrélation | [Observabilité](observability.md) |
+| Objectifs, charge et mesures | [Performance](performance.md) |
+| Autorisations, frontières et protection des secrets | [Sécurité](security.md) |
+| Contrats et transitions entre versions | [Compatibilité](compatibility.md) |
+| Scénarios, niveaux et preuves d’exécution | [Tests](testing.md) |
+| Public, exactitude et comportement validé | [Documentation](documentation.md) |
+| Commits, PR, releases, déploiements et reprise | [Livraison](delivery.md) |
+| Arclith comme base du code, Pydantic et délégation | [Profil Python / Arclith](profiles/python-arclith.md) |
 
 ## Sélection des exigences en production
 
-Même en invocation isolée, lire le [filtre de sécurité](security.md) et appliquer
-ses contrôles aux chemins touchés. Ne pas reporter une autorisation ou la
-protection d’un secret à la seule review.
+Chaque skill de développement commence par cette sélection, y compris lorsqu’il
+est invoqué seul. Lire les critères de [sécurité](security.md) et examiner leur
+application au changement : autorisations métier, frontières, privilèges et
+secrets. Les intégrer pendant l’implémentation ; ne pas attendre la revue finale.
 
-Puis choisir les détails utiles selon les effets du changement :
-
-| Déclencheur | Détail à consulter |
-| --- | --- |
-| Frontières, responsabilité ou réutilisation | [Architecture](architecture.md), [qualité locale](code-quality.md) |
-| Création ou mutation d’un modèle | [Modèles métier](domain-models.md) |
-| Option ou source de configuration | [Configuration](configuration.md) |
-| Message ou consommateur asynchrone | [Messages](messaging.md) |
-| Concurrence, effets durables ou migration | [Cohérence](data-consistency.md) ; [résilience](resilience.md) si interruption ou rejeu |
-| Appel distant ou traitement relancé | [Résilience](resilience.md) |
-| Signaux ou nouveau chemin opérationnel | [Observabilité](observability.md) |
-| Contrat ou dépendance pouvant affecter un consommateur | [Compatibilité](compatibility.md) |
-| Objectif de charge ou risque sur un chemin critique | [Performance](performance.md) |
-
-Ne pas lire tout le référentiel ni imposer tous les mécanismes. À la restitution,
-transmettre les risques retenus, les preuves et les limites qui changent la
-suite ; motiver une exclusion lorsqu’un risque plausible a été écarté. Pas de
-matrice d’exclusions exhaustive pour une modification locale.
+Parcourir le tableau ci-dessus pour identifier les autres exigences applicables,
+notamment compatibilité, cohérence des données, résilience, observabilité et
+performance, puis lire les sections pertinentes des références retenues.
+Consigner dans le résultat les critères retenus, les motifs des exclusions utiles
+et les preuves disponibles ou manquantes pour la revue. Cette sélection reste
+limitée au changement demandé ; elle ne déclenche pas un audit général.
 
 ## Production et validation
 
-Les instructions se trouvent dans les skills qui produisent ou examinent le
-composant ; les références gardent les détails conditionnels et les critères de
-preuve. [Tests](testing.md), [documentation](documentation.md) et
-[livraison](delivery.md) accompagnent leurs étapes respectives.
+Arclith est la base des services visés. Le [parcours d’initialisation](../workflows/service-initialization.md)
+valide le socle avant la première fonctionnalité. L’[implémentation par composants](../workflows/feature-implementation.md)
+sépare lib si nécessaire, entités, ports, use cases, adapters et assemblage.
 
-Suivre le [parcours de production](../workflows/production-sequences.md) et les
-[revues sélectionnées](../workflows/review-sequences.md). Les contrôles sont
-proportionnés au changement ; un prérequis indispensable manquant bloque la
-garantie concernée et les étapes qui en dépendent. Dans un parcours séquentiel
-sélectionné, `FAIL` ou `BLOCKED` arrête les étapes suivantes jusqu’à correction
-ou révision explicite du parcours ; cela ne constitue pas un verdict sur tout
-le projet. Les limites restent visibles.
-Les corrections invalident les validations affectées selon la
-[boucle de reprise](../workflows/correction-loop.md).
+Le [parcours de production](../workflows/production-sequences.md) distingue
+première validation du code, tests, validation du comportement et des risques,
+documentation, puis livraison. Les tests peuvent précéder le code et les tests
+existants continuent à être exécutés pendant le développement.
 
-Les fichiers `_rules/` restent historiques et hors de cette personnalisation.
-Les [arbitrages](../docs/skill-personalization-decisions.md) retracent le traitement
-des règles de cette version ; ce journal n’est pas un référentiel à charger par
-les agents consommateurs.
+Sécurité, performance et compatibilité sont prises en compte dès la production
+et approfondies par des revues distinctes. Résilience et observabilité demandent
+également des preuves applicatives, même si Arclith fournit les mécanismes.
+
+Chaque revue décrit son périmètre et rend un [verdict avec preuves](../workflows/review-result.md).
+Un échec ou un prérequis indispensable manquant bloque la suite. Les corrections
+invalident les validations affectées selon la [boucle de reprise](../workflows/correction-loop.md).
+Ces fichiers décrivent les méthodes ; ils ne constituent pas un moteur d’agents.

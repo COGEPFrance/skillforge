@@ -7,7 +7,7 @@ description: "Refactorer le code nécessaire au besoin courant sans modifier le 
 
 ## Références
 
-Même en invocation isolée, appliquer le [filtre transverse](../../../references/quality-criteria.md), puis consulter uniquement les détails pertinents ci-dessous.
+Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
 
 - [code-quality](../../../references/code-quality.md)
 - [architecture](../../../references/architecture.md)
@@ -15,9 +15,9 @@ Même en invocation isolée, appliquer le [filtre transverse](../../../reference
 
 ## Exécution
 
-1. Établir le lien avec le besoin courant ou le refactoring explicitement demandé ; pour une dette indépendante, suivre le workflow de périmètre.
-2. Identifier comportements, erreurs et contrats à préserver. Mutualiser uniquement les concepts partagés ; limiter les nouvelles abstractions à une responsabilité réelle.
-3. Comparer avant et après avec les outils configurés et les tests pertinents ; examiner consommateurs et transitions si des contrats ou données persistées changent.
+1. Établir pourquoi le refactoring est nécessaire au besoin courant ; sinon suivre le workflow de périmètre.
+2. Identifier les comportements et contrats à préserver puis modifier uniquement les composants concernés.
+3. Comparer les garanties avant et après, exécuter les vérifications existantes et signaler les impacts.
 
 Consulter le [périmètre de refactoring](../../../workflows/refactoring-scope.md) avant de modifier le code.
 

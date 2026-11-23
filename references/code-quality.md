@@ -1,9 +1,13 @@
-# Décisions locales et périmètre
+# Qualité du code et périmètre
 
-Les instructions opérationnelles sont dans [`implement-lib`](../skills/dev/implement-lib/SKILL.md), [`fix-bug`](../skills/dev/fix-bug/SKILL.md), [`refactor`](../skills/dev/refactor/SKILL.md), [`review-code`](../skills/review/review-code/SKILL.md).
+- SRP : chaque composant a une responsabilité et une raison principale de changer.
+- KISS : choisir la solution la plus simple qui satisfait le besoin et ses contraintes.
+- DRY : mutualiser un concept réellement partagé ; ne pas fusionner des traitements sur leur seule ressemblance.
+- SOTA signifie pratiques maintenues, éprouvées et adaptées au besoin, sans recherche systématique de nouveauté.
+- Définir des entrées, sorties et erreurs explicitement typées ; isoler les formats externes aux frontières.
+- Produire des erreurs actionnables, sans masquer un échec en faux succès. Ne pas ajouter d’abstraction ou de dépendance sans besoin identifié.
+- Limiter le changement au besoin traité. Le refactoring nécessaire peut accompagner ce changement ; le refactoring indépendant suit le [parcours dédié](../workflows/refactoring-scope.md).
 
-Consulter cette aide pour arbitrer une abstraction ou un refactoring contesté.
+## Vérification
 
-SRP, KISS, DRY et SOTA ne sont pas des verdicts. `review-code` demande un effet concret : responsabilités incompatibles, contrat ambigu, duplication d’un même concept ou complexité qui compromet le besoin. La simple ressemblance et la nouveauté d’une pratique ne justifient pas une mutualisation ou une migration.
-
-Utiliser les outils et conventions configurés dans le projet. Ne pas transformer une préférence de style en défaut bloquant. Le [parcours de refactoring](../workflows/refactoring-scope.md) traite la dette indépendante.
+Utiliser les outils statiques et conventions effectivement configurés dans le projet. Relier tout constat à un effet concret sur le changement, sans imposer une refonte hors périmètre.

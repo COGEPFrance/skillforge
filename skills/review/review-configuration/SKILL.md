@@ -18,7 +18,7 @@ Examiner les sources et consommateurs d’une configuration ajoutée ou modifié
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Tracer chaque option de sa source au consommateur avec type, défaut, priorité et validation au démarrage.
 3. Vérifier valeurs invalides, exemples sans secrets et absence de paramètres dispersés ou d’invariants désactivables.
-4. Utiliser les contrôles pertinents disponibles dans un environnement de test isolé et autorisé ; ne pas modifier la production ni les systèmes partagés hors du périmètre de la tâche. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 

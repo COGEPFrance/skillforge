@@ -7,7 +7,7 @@ description: "Implémenter les protections et la reprise d’un traitement face 
 
 ## Références
 
-Même en invocation isolée, appliquer le [filtre transverse](../../../references/quality-criteria.md), puis consulter uniquement les détails pertinents ci-dessous.
+Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
 
 - [resilience](../../../references/resilience.md)
 - [data-consistency](../../../references/data-consistency.md)
@@ -15,10 +15,9 @@ Même en invocation isolée, appliquer le [filtre transverse](../../../reference
 
 ## Exécution
 
-1. Identifier les défaillances atteignables, effets partiels et garanties requises du traitement ; une opération sans état durable ne nécessite pas un mécanisme de checkpoint.
-2. Pour les appels ou traitements concernés, définir timeouts, concurrence bornée, erreurs temporaires ou définitives, tentatives et abandon ; vérifier les protections fournies par le socle avant d’en ajouter.
-3. Lorsque des effets survivent au processus, définir état durable, point de reprise et rejouabilité. Aligner acquittements sur les effets enregistrés et maîtriser les duplications métier.
-4. Prévoir échec définitif et remise en traitement sans boucle infinie. Gérer l’arrêt propre et transmettre aussi les scénarios où il ne se produit pas.
+1. Identifier effets, état durable et fenêtres de panne du traitement concerné.
+2. Implémenter timeouts, tentatives bornées, idempotence et points de reprise nécessaires en réutilisant les mécanismes du socle.
+3. Prévoir échec définitif, rejeu maîtrisé et arrêt propre ; vérifier aussi le cas où cet arrêt ne se produit pas.
 
 ## Résultat et passage de relais
 

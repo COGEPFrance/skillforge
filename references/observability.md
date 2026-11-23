@@ -1,9 +1,12 @@
-# Signaux exploitables
+# Observabilité
 
-Les instructions opérationnelles sont dans [`instrument-service`](../skills/dev/instrument-service/SKILL.md), [`review-observability`](../skills/review/review-observability/SKILL.md).
+- Utiliser logs structurés, métriques et traces pour expliquer et mesurer les comportements utiles au service.
+- Propager la corrélation et le contexte de trace entre appels et messages, y compris traitements différés et tentatives successives.
+- Rendre observables erreurs, retries, abandons, reprises et traitements bloqués ; ne pas transformer les échecs en succès apparents.
+- Observer selon le besoin latence, débit, erreurs, ressources, accumulation des messages et délai de traitement.
+- Maîtriser le coût de l’instrumentation et la cardinalité des métriques. Protéger secrets et données sensibles dans tous les signaux.
+- Réutiliser l’instrumentation Arclith et vérifier les signaux effectivement produits, leur corrélation et leur accessibilité dans l’environnement de vérification.
 
-Lire si instrumentation, corrélation ou exploitation d’un traitement change.
+## Preuves attendues
 
-Choisir les signaux qui répondent aux questions d’exploitation. Selon le traitement, suivre corrélation entre appels, messages, différé et tentatives ; rendre visibles les échecs et blocages, sans succès apparent.
-
-Pour la revue, suivre un succès et un échec avec les signaux effectivement émis et consultables ; examiner secrets, données sensibles, cardinalité et coût. Un exporteur déclaré ou un collecteur indisponible ne valide pas la chaîne complète. Décrire la partie vérifiée et celle encore requise.
+Suivre un scénario nominal et un échec avec leurs signaux. Une déclaration de logger ou d’exporteur ne prouve ni l’émission ni l’exploitation des traces ; signaler les collecteurs ou outils indisponibles au lieu de conclure à une validation.

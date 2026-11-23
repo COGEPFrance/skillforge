@@ -1,6 +1,4 @@
-# Initialisation d’un service Arclith
-
-Ce parcours s’applique lorsque le brief d’architecture technique retient Arclith et que l’initialisation correspond à la demande. Les opérations propres à la bibliothèque utilisent ses skills disponibles ou sa documentation. Il n’est pas un prérequis pour les autres socles.
+# Initialisation d’un service
 
 ## Entrées
 

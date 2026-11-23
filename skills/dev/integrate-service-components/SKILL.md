@@ -1,23 +1,24 @@
 ---
 name: integrate-service-components
-description: "Assembler les composants existants d’un service et vérifier leur intégration."
+description: "Assembler des composants existants dans un service Arclith et vérifier leur intégration."
 ---
 
 # integrate-service-components
 
 ## Références
 
-Même en invocation isolée, appliquer le [filtre transverse](../../../references/quality-criteria.md), puis consulter uniquement les détails pertinents ci-dessous.
+Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
 
 - [architecture](../../../references/architecture.md)
 - [configuration](../../../references/configuration.md)
 - [observability](../../../references/observability.md)
+- [profiles/python-arclith](../../../references/profiles/python-arclith.md)
 
 ## Exécution
 
-1. Vérifier les contrats, composants et validations nécessaires ; identifier les implémentations et ressources à assembler.
-2. Relier ports, implémentations, configuration validée et points d’entrée à un point d’assemblage identifié, hors logique métier.
-3. Vérifier dépendances effectivement injectées, cycle de vie des ressources, démarrage et chemin représentatif. Ne pas réimplémenter un composant pour masquer un prérequis manquant.
+1. Vérifier que contrats et composants nécessaires sont disponibles et revus.
+2. Relier ports, implémentations, configuration et points d’entrée au point d’assemblage du service.
+3. Vérifier la résolution effective des dépendances, le démarrage et un chemin représentatif ; ne pas réimplémenter les composants pour les relier.
 
 ## Résultat et passage de relais
 

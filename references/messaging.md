@@ -1,9 +1,12 @@
-# Contrats et garanties asynchrones
+# Échanges asynchrones
 
-Les instructions opérationnelles sont dans [`implement-messaging`](../skills/dev/implement-messaging/SKILL.md), [`review-messaging`](../skills/review/review-messaging/SKILL.md).
+- Utiliser les messages lorsqu’ils apportent un bénéfice identifié : découplage, traitement différé ou absorption de charge.
+- Définir les contrats, producteurs, consommateurs et garanties nécessaires ; distinguer commande et événement selon leur intention.
+- Préciser doublons, idempotence, ordre utile, concurrence, retries bornés et destination des messages en échec.
+- Positionner les acquittements selon les effets réellement durables. Traiter explicitement la coupure entre persistance et publication, avec le référentiel de [cohérence des données](data-consistency.md).
+- Propager le contexte de corrélation sans secrets ; rendre visibles le retard, l’accumulation et les tentatives.
+- Réutiliser les mécanismes Arclith et du broker retenu ; leur présence ne démontre pas leur bonne configuration.
 
-Lire lorsqu’un échange asynchrone ou son consommateur change.
+## Preuves attendues
 
-Pour la revue, suivre un message du producteur aux effets durables : contrat, acquittement, doublon, message invalide, tentatives et échec définitif. Examiner l’ordre seulement lorsqu’il porte une garantie métier. Lire [cohérence](data-consistency.md) si une écriture et une publication sont séparées.
-
-Vérifier les mécanismes réellement activés dans le socle et le broker retenus. Leur existence ne prouve pas leur configuration. Ne pas promettre une unicité des effets ou une garantie de livraison non démontrée ; transmettre les fenêtres de coupure aux tests concernés.
+Suivre un message du producteur à ses effets persistés, puis examiner doublon, panne, message invalide et traitement interrompu. Ne pas promettre une garantie de livraison ou d’unicité non démontrée.

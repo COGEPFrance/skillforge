@@ -1,12 +1,11 @@
-# Filtre de sécurité en production
+# Sécurité
 
-Les instructions opérationnelles sont dans [`implement-adapter`](../skills/dev/implement-adapter/SKILL.md), [`implement-usecase`](../skills/dev/implement-usecase/SKILL.md), [`implement-configuration`](../skills/dev/implement-configuration/SKILL.md), [`instrument-service`](../skills/dev/instrument-service/SKILL.md), [`review-security`](../skills/review/review-security/SKILL.md).
+- Valider les données aux frontières et appliquer des autorisations explicites au bon périmètre métier.
+- Limiter les privilèges des composants et des intégrations ; protéger les secrets dans configuration, code, artefacts et télémétrie.
+- Examiner les entrées non fiables, opérations sensibles et dépendances réellement concernées par le changement.
+- Réutiliser les mécanismes Arclith lorsqu’ils répondent au besoin, en vérifiant leur activation et leur intégration.
+- Intégrer ces exigences dès la production et les approfondir dans une revue distincte.
 
-À lire pendant toute implémentation, y compris isolée ; appliquer seulement les risques atteignables du changement.
+## Preuves attendues
 
-- Entrée non fiable ou nouvelle frontière : valider les données et leurs conversions.
-- Opération sensible : faire respecter les autorisations dans le périmètre métier concerné, y compris les refus.
-- Intégration ou accès à une ressource : limiter les privilèges et vérifier l’activation des mécanismes de sécurité du socle retenu.
-- Configuration, artefact ou télémétrie : protéger secrets et données sensibles.
-
-Ce filtre ne déclenche pas un audit général. `review-security` approfondit les chemins concernés avec preuves et impact explicites ; une revue partielle ne garantit pas la sécurité globale du service.
+Relier les constats à un chemin atteignable et à un impact explicite. Examiner les cas refusés autant que les cas autorisés. Ne pas attribuer une garantie globale de sécurité à une revue partielle.

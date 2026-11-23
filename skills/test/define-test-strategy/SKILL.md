@@ -15,9 +15,9 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Relier les comportements et risques du changement aux composants et contrats concernés ; consulter les tests existants.
-2. Choisir les preuves utiles : unité pour la logique isolée, intégration pour les garanties du système réel, contrats pour les consommateurs identifiés. Ajouter crash ou charge seulement si les effets ou objectifs le justifient.
-3. Définir scénarios nominaux, erreurs, limites, assertions et prérequis nécessaires. Dans un parcours tests d’abord, distinguer échec attendu du comportement absent, test défectueux et environnement indisponible.
+1. Relier critères attendus et risques aux composants et contrats concernés.
+2. Choisir les niveaux pertinents et les dépendances nécessaires, sans imposer toutes les catégories à chaque changement.
+3. Définir cas nominaux, erreurs et limites, preuves attendues et place des tests dans le parcours choisi.
 
 ## Résultat et passage de relais
 

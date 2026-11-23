@@ -7,7 +7,7 @@ description: "Implémenter une intention applicative à partir des entités et d
 
 ## Références
 
-Même en invocation isolée, appliquer le [filtre transverse](../../../references/quality-criteria.md), puis consulter uniquement les détails pertinents ci-dessous.
+Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
 
 - [architecture](../../../references/architecture.md)
 - [domain-models](../../../references/domain-models.md)
@@ -15,9 +15,9 @@ Même en invocation isolée, appliquer le [filtre transverse](../../../reference
 
 ## Exécution
 
-1. Vérifier intention, critères de réussite, modèles et ports disponibles. Une règle métier indéterminée demande une précision ; ne pas inventer sa valeur.
-2. Orchestrer au travers des ports ; garder les invariants dans les modèles et les autorisations au niveau où le périmètre métier est connu. Ne pas accéder directement au réseau, au stockage ou aux sources brutes de configuration.
-3. Définir résultat et erreurs sans faux succès. Si plusieurs effets peuvent réussir séparément, préciser les états partiels et la reprise attendue ; transmettre ces fenêtres à la revue de cohérence.
+1. Vérifier les modèles, ports et critères de réussite ; ne pas inventer silencieusement un prérequis manquant.
+2. Orchestrer les opérations nécessaires au travers des ports, en gardant les invariants métier au bon niveau.
+3. Définir résultat et erreurs ; éviter accès direct au réseau, au stockage ou à la configuration brute.
 
 ## Résultat et passage de relais
 

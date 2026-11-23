@@ -1,9 +1,12 @@
-# Socle d’un service Arclith
+# Socle du service
 
-Les instructions opérationnelles sont dans [`scaffold-arclith-service`](../skills/dev/scaffold-arclith-service/SKILL.md), [`apply-arclith-blueprint`](../skills/dev/apply-arclith-blueprint/SKILL.md), [`review-service-foundation`](../skills/review/review-service-foundation/SKILL.md).
+- Identifier la destination, la version du socle Arclith et le blueprint existant demandé avant toute génération.
+- Utiliser les procédures disponibles de la marketplace ou de la documentation Arclith correspondant à cette version ; ne pas inventer des commandes ou des options.
+- Scaffold puis application du blueprint sont deux tâches distinctes. Un blueprint absent ou incompatible bloque le parcours ; ne pas inventer une architecture de remplacement.
+- Ne pas écraser un service existant : comparer le socle et appliquer uniquement les écarts nécessaires, dans le périmètre demandé.
+- Vérifier structure, assemblage des dépendances, configuration, démarrage et signaux d’observabilité de base avant la première fonctionnalité.
+- Enregistrer versions, blueprint appliqué, fichiers produits et commandes réellement exécutées. Ne pas ajouter de fonctionnalité métier à cette étape.
 
-À utiliser seulement lorsque le brief d’architecture technique retient Arclith. Pour les autres projets, suivre le socle défini par ce brief ; ce parcours n’est pas un prérequis universel.
+## Limite de validation
 
-Suivre [l’initialisation Arclith](../workflows/service-initialization.md) : scaffold → blueprint compatible → revue du socle avant fonctionnalité. Les procédures propres à la bibliothèque sont fournies par ses skills ou sa documentation, selon les versions identifiées ; consulter le [profil](profiles/python-arclith.md).
-
-La revue compare les fichiers produits et le blueprint, puis vérifie assemblage, configuration, démarrage et signaux de base. Un service existant se compare, il ne se régénère pas à l’aveugle. Ces preuves ne certifient pas les comportements métier, la performance, la sécurité ou la reprise du service futur.
+Le démarrage du socle et ses signaux ne garantissent pas les comportements métier futurs ni les propriétés de performance, de sécurité et de reprise du service complet.

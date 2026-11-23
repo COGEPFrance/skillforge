@@ -14,9 +14,9 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Identifier la frontière que les tests unitaires ne prouvent pas et préparer les dépendances réelles utiles dans un environnement isolé.
-2. Exercer collaboration, conversions, résultats durables et erreurs pertinentes avec données et nettoyage maîtrisés ; ne pas prétendre valider un stockage ou broker entièrement simulé.
-3. Conserver versions, commande, environnement et résultat ; une dépendance absente est une limite ou un blocage de la garantie visée, jamais un succès.
+1. Identifier la frontière que les tests unitaires ne prouvent pas et préparer une infrastructure isolée.
+2. Exercer composants et dépendances réels concernés, avec données et nettoyage maîtrisés.
+3. Vérifier résultats persistés et erreurs pertinentes ; ne pas prétendre valider un broker ou stockage entièrement simulé.
 
 ## Résultat et passage de relais
 

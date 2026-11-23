@@ -1,9 +1,11 @@
-# Charge et limites mesurées
+# Performance et scalabilité
 
-Les instructions opérationnelles sont dans [`measure-performance`](../skills/test/measure-performance/SKILL.md), [`review-performance`](../skills/review/review-performance/SKILL.md).
+- Définir les volumes et objectifs attendus : latence, débit, ressources et délais de traitement selon le besoin.
+- Examiner complexité algorithmique, accès aux données, appels distants, tailles de lots et bornes de concurrence selon la charge réelle.
+- Mesurer les chemins critiques avant de conclure à un gain ; conserver scénario, jeu de données, environnement, versions et résultats.
+- Distinguer latence individuelle, débit global et accumulation de travail. L’asynchronisme ne prouve pas à lui seul une amélioration.
+- Examiner saturation, limites et coût d’observabilité ; éviter de déplacer un goulot vers une dépendance.
 
-Lire pour un objectif de performance, une évolution de charge ou un risque concret sur un chemin critique.
+## Preuves attendues
 
-En revue, cibler complexité, accès aux données, appels distants, lots et concurrence dans la charge attendue ; ne pas demander un benchmark pour toute modification. Observer saturation, coût des signaux et goulots des dépendances lorsque ces facteurs sont pertinents.
-
-Distinguer latence individuelle, débit global et accumulation. L’asynchronisme ne garantit pas un gain. Une mesure conserve scénario, données, environnement, versions et résultats comparables. Sans objectif, autoriser une exploration en explicitant qu’elle ne certifie ni objectif ni scalabilité.
+Comparer aux objectifs et, si disponible, à une référence dans des conditions comparables. Sans objectif ou mesure suffisante, décrire ce qui reste à établir au lieu de certifier la scalabilité.

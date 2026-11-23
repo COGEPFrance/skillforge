@@ -18,7 +18,7 @@ Examiner l’exactitude et l’utilité d’un document pour son public. Identif
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Comparer affirmations et exemples au comportement validé et aux sources propriétaires.
 3. Vérifier liens, commandes, prérequis et informations obsolètes ; distinguer proposition, exemple non exécuté et procédure vérifiée.
-4. Utiliser les contrôles pertinents disponibles dans un environnement de test isolé et autorisé ; ne pas modifier la production ni les systèmes partagés hors du périmètre de la tâche. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 

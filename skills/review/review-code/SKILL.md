@@ -16,9 +16,9 @@ Examiner la qualité locale du code modifié, sans remplacer les revues de risqu
 ## Examen
 
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
-2. Examiner contrats typés, erreurs actionnables et complexité utile au besoin avec les outils configurés. SRP/KISS/DRY/SOTA seuls ne motivent pas un défaut : démontrer une responsabilité incohérente, un couplage ou une duplication de concept préjudiciable.
+2. Examiner responsabilités, lisibilité, typage, erreurs et complexité utile au besoin.
 3. Relier chaque demande de correction à un défaut concret ; distinguer refactoring nécessaire et dette indépendante.
-4. Utiliser les contrôles pertinents disponibles dans un environnement de test isolé et autorisé ; ne pas modifier la production ni les systèmes partagés hors du périmètre de la tâche. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 

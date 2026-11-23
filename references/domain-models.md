@@ -1,9 +1,12 @@
-# Validation des modèles et mises à jour
+# Modèles et invariants
 
-Les instructions opérationnelles sont dans [`implement-entity`](../skills/dev/implement-entity/SKILL.md), [`review-domain-models`](../skills/review/review-domain-models/SKILL.md).
+- Utiliser Pydantic pour les entités et distinguer identité métier, objets valeur, DTO, commandes et configuration.
+- Définir identité, invariants, transitions autorisées et règles de mutabilité avant d’implémenter une entité.
+- Exprimer les contraintes locales par les types et contraintes de champs ; réserver les validations plus larges aux règles qui les nécessitent.
+- Préciser conversions acceptées, champs supplémentaires et comportement des mises à jour ; une entité doit rester valide pendant tout son cycle de vie.
+- Ne pas réutiliser automatiquement une entité comme contrat HTTP, événement ou document de persistance.
+- Justifier toute construction contournant la validation. Pour Pydantic, vérifier les garanties de la version retenue ; ne pas présumer qu’une copie avec mise à jour revalide les invariants.
 
-Pour les projets Python, utiliser Pydantic pour les entités ; sa présence dans le domaine est une dépendance assumée, avec ou sans Arclith. Pour les autres langages, appliquer les invariants avec les outils retenus par le projet.
+## Preuves attendues
 
-Pour Pydantic, vérifier les garanties de la version installée pour les conversions implicites, champs supplémentaires, mutations et copies avec mise à jour. Ne pas supposer qu’une copie revalide les invariants ; justifier une construction qui contourne la validation.
-
-`review-domain-models` suit les chemins réellement utilisés : construction, modification et transitions. Vérifier un cas invalide après mise à jour, pas seulement une instanciation nominale. L’entité métier ne sert de DTO HTTP, événement ou document persisté que si les contrats restent effectivement compatibles.
+Identifier les cas valides, invalides et les transitions à vérifier, y compris après modification. Une simple instanciation nominale ne démontre pas la préservation des invariants.

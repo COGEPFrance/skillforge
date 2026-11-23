@@ -1,9 +1,12 @@
-# Variations et sources de configuration
+# Configuration
 
-Les instructions opérationnelles sont dans [`implement-configuration`](../skills/dev/implement-configuration/SKILL.md), [`review-configuration`](../skills/review/review-configuration/SKILL.md).
+- Centraliser les variations utiles et identifiées dans des fichiers lisibles, de préférence YAML ou un format équivalent adapté.
+- Configurer les variations d’environnement et de déploiement ainsi que les seuils, délais, tailles de lots et limites pertinents ; ne pas rendre chaque détail paramétrable.
+- Typer et valider la configuration au démarrage, définir les valeurs par défaut et la priorité des sources.
+- Éviter les lectures dispersées de fichiers ou de variables d’environnement dans les composants métier.
+- Fournir les secrets séparément des fichiers partagés ; ne pas les exposer dans les exemples ou les sorties.
+- Ne pas transformer les invariants métier en options désactivables.
 
-Lire lors de l’ajout d’une option, d’une source ou d’un consommateur de configuration.
+## Preuves attendues
 
-Choisir les variations utiles : environnement, déploiement, limites ou délais dont l’exploitation a besoin. Le format appartient au projet ; YAML n’est pas une obligation. Ne pas créer une option pour chaque constante ni pour désactiver un invariant métier.
-
-La revue suit une option de la source au consommateur : type, défaut, priorité, validation et valeur effective après surcharge. Vérifier un cas invalide, l’absence de lecture brute dispersée et la cohérence des exemples sans secrets.
+Pour une option ajoutée ou modifiée, identifier sa source, son type, sa validation, son consommateur et ses valeurs effectives selon les sources. Vérifier le comportement d’une configuration invalide et les exemples maintenus.

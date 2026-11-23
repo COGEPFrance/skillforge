@@ -14,14 +14,13 @@ Examiner l’orchestration et les effets d’un use case. Identifier les fichier
 - [architecture](../../../references/architecture.md)
 - [domain-models](../../../references/domain-models.md)
 - [data-consistency](../../../references/data-consistency.md)
-- [security](../../../references/security.md)
 
 ## Examen
 
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
-2. Suivre entrées, décisions, appels aux ports, résultat et erreurs de l’intention applicative ; vérifier les autorisations au périmètre métier et les cas refusés lorsque l’opération est sensible.
+2. Suivre entrées, décisions, appels aux ports, résultat et erreurs de l’intention applicative.
 3. Rechercher accès directs à l’infrastructure, invariants contournés et effets partiels incohérents ; rester sur ce use case.
-4. Utiliser les contrôles pertinents disponibles dans un environnement de test isolé et autorisé ; ne pas modifier la production ni les systèmes partagés hors du périmètre de la tâche. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 

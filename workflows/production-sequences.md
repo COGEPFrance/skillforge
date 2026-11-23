@@ -1,14 +1,8 @@
 # Parcours de production
 
-Ce parcours décrit les relais d’une tâche complète. Une invocation limitée à un
-skill s’arrête à son résultat et transmet les suites nécessaires ; elle ne lance
-pas seule tout le parcours. Si la demande couvre le parcours complet, poursuivre
-les étapes applicables dans le périmètre déjà autorisé, sans solliciter à nouveau
-une autorisation acquise.
-
 ## Code d’abord
 
-1. Lire les briefs projet et architecture technique. Pour un nouveau service dont le brief retient Arclith, terminer [service-initialization.md](service-initialization.md) ; sinon vérifier le socle prévu par le projet sans déclencher ce parcours Arclith.
+1. Pour un nouveau service, terminer [service-initialization.md](service-initialization.md).
 2. Définir la stratégie de tests pertinente sans rédiger prématurément toute la suite ; produire le code par composants et ses revues intermédiaires selon [feature-implementation.md](feature-implementation.md).
 3. Exécuter les contrôles statiques et tests existants pendant le développement. Passer les revues de structure applicables.
 4. Écrire et exécuter les nouveaux tests pertinents : unitaires, intégration, contrats, crash ou mesures de performance selon le risque. Faire `review-tests`.

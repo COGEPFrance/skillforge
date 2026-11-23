@@ -7,16 +7,16 @@ description: "Corriger un défaut identifié dans un périmètre limité en cons
 
 ## Références
 
-Même en invocation isolée, appliquer le [filtre transverse](../../../references/quality-criteria.md), puis consulter uniquement les détails pertinents ci-dessous.
+Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
 
 - [code-quality](../../../references/code-quality.md)
 - [testing](../../../references/testing.md)
 
 ## Exécution
 
-1. Établir attendu, reproduction et cause ; distinguer fait et hypothèse quand la reproduction est incomplète.
-2. Corriger le composant responsable et les occurrences de la même cause dans le périmètre. Ne pas mutualiser sur la seule ressemblance ni ajouter une abstraction sans besoin.
-3. Exécuter les vérifications existantes pertinentes ; conserver le scénario qui détecte le défaut pour la phase de tests ou l’écrire d’abord selon le parcours retenu. Documenter les limites de reproduction.
+1. Établir comportement attendu, reproduction et cause avant correction ; séparer faits et hypothèses.
+2. Corriger le composant responsable et examiner les occurrences de la même cause dans le périmètre.
+3. Exécuter les tests existants pertinents et transmettre le scénario de régression à la phase de tests, ou l’écrire d’abord si le parcours le prévoit.
 
 ## Résultat et passage de relais
 

@@ -15,9 +15,9 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Pour les effets durables concernés, identifier les coupures avant et après écritures, publications et acquittements ainsi que la reprise attendue.
-2. Injecter des interruptions brutales uniquement dans un environnement de test autorisé, puis redémarrer et rejouer les traitements concernés.
-3. Observer état durable, pertes silencieuses, duplications métier, opérations bloquées et signaux de reprise. Conserver protocole et résultats ; un arrêt propre ne remplace pas cette preuve.
+1. Identifier fenêtres avant et après effets durables, publications et acquittements.
+2. Injecter les interruptions uniquement dans un environnement de test autorisé, redémarrer et rejouer les traitements concernés.
+3. Vérifier état durable, pertes, doublons, idempotence et signaux de reprise ; un arrêt propre ne remplace pas le crash.
 
 ## Résultat et passage de relais
 

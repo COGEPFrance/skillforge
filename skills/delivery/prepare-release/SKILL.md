@@ -14,9 +14,9 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Identifier conventions de version du dépôt, contenu depuis la dernière release et consommateurs affectés.
-2. Préparer version, notes, dépendances et migrations nécessaires ; expliciter transitions et risques de reprise sans garanties non validées.
-3. Transmettre les artefacts préparés à `review-delivery`. Après `PASS` et autorisation, distinguer création du tag, publication du tag et release ; vérifier l’état distant avant et après les actions qui en dépendent.
+1. Identifier conventions de version, contenu depuis la dernière release et consommateurs affectés.
+2. Préparer notes, version, dépendances et migrations nécessaires, sans annoncer de garanties non validées.
+3. Préciser reprise et risques ; distinguer préparation de tag, publication du tag et publication de release.
 
 ## Résultat et passage de relais
 

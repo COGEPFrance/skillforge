@@ -13,9 +13,9 @@ Lire les sections pertinentes de ces références pour le changement ; elles por
 
 ## Exécution
 
-1. Définir public, tâche, résultat attendu et emplacement dans la documentation existante.
-2. Rédiger à partir des sources propriétaires et du comportement validé après les validations requises ; préserver une source de vérité et préférer un renvoi à la duplication.
-3. Vérifier liens, exemples et commandes dans leur contexte ; distinguer proposition, procédure exécutée et exemple non vérifié, sans présenter une garantie absente comme acquise.
+1. Définir public, tâche et emplacement dans la documentation du projet.
+2. Rédiger à partir du comportement vérifié et des sources propriétaires, après les validations requises du parcours.
+3. Vérifier liens et exemples ; identifier clairement les commandes non exécutées et garanties non établies.
 
 ## Résultat et passage de relais
 
