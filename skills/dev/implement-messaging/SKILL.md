@@ -7,7 +7,7 @@ description: "Implémenter un échange asynchrone justifié et ses garanties app
 
 ## Références
 
-Lire les sections pertinentes de ces références pour le changement ; elles portent les critères communs à la production et à la revue.
+Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
 
 - [messaging](../../../references/messaging.md)
 - [data-consistency](../../../references/data-consistency.md)

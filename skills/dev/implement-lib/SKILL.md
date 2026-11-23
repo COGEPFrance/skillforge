@@ -7,7 +7,7 @@ description: "Implémenter un composant réutilisable autonome lorsque la capaci
 
 ## Références
 
-Lire les sections pertinentes de ces références pour le changement ; elles portent les critères communs à la production et à la revue.
+Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
 
 - [architecture](../../../references/architecture.md)
 - [code-quality](../../../references/code-quality.md)

@@ -30,6 +30,20 @@ mise en place du socle font partie du développement et de sa revue.
 | Commits, PR, releases, déploiements et reprise | [Livraison](delivery.md) |
 | Arclith comme base du code, Pydantic et délégation | [Profil Python / Arclith](profiles/python-arclith.md) |
 
+## Sélection des exigences en production
+
+Chaque skill de développement commence par cette sélection, y compris lorsqu’il
+est invoqué seul. Lire les critères de [sécurité](security.md) et examiner leur
+application au changement : autorisations métier, frontières, privilèges et
+secrets. Les intégrer pendant l’implémentation ; ne pas attendre la revue finale.
+
+Parcourir le tableau ci-dessus pour identifier les autres exigences applicables,
+notamment compatibilité, cohérence des données, résilience, observabilité et
+performance, puis lire les sections pertinentes des références retenues.
+Consigner dans le résultat les critères retenus, les motifs des exclusions utiles
+et les preuves disponibles ou manquantes pour la revue. Cette sélection reste
+limitée au changement demandé ; elle ne déclenche pas un audit général.
+
 ## Production et validation
 
 Arclith est la base des services visés. Le [parcours d’initialisation](../workflows/service-initialization.md)

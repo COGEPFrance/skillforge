@@ -7,7 +7,7 @@ description: "Définir un contrat typé de dépendance pour un use case sans ada
 
 ## Références
 
-Lire les sections pertinentes de ces références pour le changement ; elles portent les critères communs à la production et à la revue.
+Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
 
 - [architecture](../../../references/architecture.md)
 - [domain-models](../../../references/domain-models.md)

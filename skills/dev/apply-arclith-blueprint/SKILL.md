@@ -7,7 +7,7 @@ description: "Appliquer un blueprint Arclith existant à un squelette de service
 
 ## Références
 
-Lire les sections pertinentes de ces références pour le changement ; elles portent les critères communs à la production et à la revue.
+Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
 
 - [service-foundation](../../../references/service-foundation.md)
 - [profiles/python-arclith](../../../references/profiles/python-arclith.md)
