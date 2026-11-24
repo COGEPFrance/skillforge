@@ -18,7 +18,7 @@ Examiner la cohérence des effets durables et des publications. Identifier les f
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Identifier transactions, concurrence, conversions et propriétaire des données modifiées.
 3. Examiner coupures entre écritures et messages, migrations et rejeu ; demander les preuves des garanties annoncées.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 

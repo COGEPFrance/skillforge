@@ -20,7 +20,7 @@ Examiner l’assemblage et le chemin d’exécution des composants d’un servic
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Vérifier les implémentations effectivement injectées, leur configuration et leur cycle de vie.
 3. Exercer un chemin représentatif avec les dépendances disponibles ; ne pas conclure sur la seule présence des composants.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 

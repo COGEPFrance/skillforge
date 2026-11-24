@@ -18,7 +18,11 @@ Examiner les frontières hexagonales et l’autonomie des microservices modifié
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Suivre les imports et dépendances effectifs entre domaine, ports, use cases et adapters.
 3. Vérifier propriété des données, assemblage et absence de dépendance aux détails techniques dans le domaine ; justifier chaque abstraction nouvelle.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+
+## Choix du projet
+
+Comparer au brief technique et aux frontières effectivement retenues. Pour Python, Pydantic est une dépendance assumée du domaine. Une divergence structurante doit être explicitée et validée ; ne pas reproduire une dette uniquement parce qu’elle est fréquente. Les [tests d’architecture](../../../references/testing.md#contrôles-darchitecture-et-couverture) peuvent protéger les frontières critiques sans imposer un outil particulier.
 
 ## Restitution
 

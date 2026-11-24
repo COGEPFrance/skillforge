@@ -18,7 +18,7 @@ Examiner les logs, métriques et traces réellement exploitables. Identifier les
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Suivre succès, échec, retry et reprise à travers les signaux disponibles et leur corrélation interservices.
 3. Vérifier émission, exploitation, coût, cardinalité et données sensibles ; signaler un collecteur indisponible au lieu de certifier la chaîne.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 

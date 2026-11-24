@@ -18,7 +18,7 @@ Examiner les risques de sécurité atteignables du changement. Identifier les fi
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Examiner frontières de confiance, autorisations, entrées et opérations sensibles concernées.
 3. Relier les défauts à un chemin et à un effet démontrables ; vérifier les refus et la non-exposition des secrets sans modifier la production.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 

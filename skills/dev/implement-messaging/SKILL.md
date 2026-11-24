@@ -7,12 +7,12 @@ description: "Implémenter un échange asynchrone justifié et ses garanties app
 
 ## Références
 
-Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
+Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
 
 - [messaging](../../../references/messaging.md)
 - [data-consistency](../../../references/data-consistency.md)
 - [resilience](../../../references/resilience.md)
-- [profiles/python-arclith](../../../references/profiles/python-arclith.md)
+- Si le brief retient Arclith : [profil et délégation](../../../references/profiles/python-arclith.md)
 
 ## Exécution
 

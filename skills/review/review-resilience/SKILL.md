@@ -19,7 +19,7 @@ Examiner les défaillances, crashes et possibilités de reprise d’un traitemen
 1. Identifier la révision examinée et la phase demandée : préliminaire ou finale.
 2. Examiner limites, tentatives, erreurs définitives, état durable et points de reprise.
 3. Vérifier les scénarios de crash avant et après effets, acquittements et redémarrage ; distinguer lecture du code et reprise effectivement testée.
-4. Utiliser les contrôles pertinents disponibles, sans mutation de l’environnement réel. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
 
 ## Restitution
 

@@ -1,6 +1,6 @@
 # Sélection et ordre des revues
 
-Avant l’exécution, enregistrer le périmètre, la révision, la phase et la liste ordonnée des agents sélectionnés. Motiver les revues omises parce qu’elles sont hors périmètre ; ne pas omettre une revue applicable pour éviter un blocage.
+Avant l’exécution, enregistrer le périmètre, la révision, la phase active et la liste ordonnée des agents sélectionnés. L’ordre des phases reste libre selon [production-sequences.md](production-sequences.md) ; une revue de phase ne demande pas de produire les artefacts d’une autre phase avant de pouvoir passer. Motiver les revues omises parce qu’elles sont hors périmètre ; ne pas omettre une revue applicable pour éviter un blocage.
 
 ## Revues intermédiaires
 

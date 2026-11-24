@@ -1,24 +1,24 @@
 ---
 name: integrate-service-components
-description: "Assembler des composants existants dans un service Arclith et vérifier leur intégration."
+description: "Assembler les composants existants d’un service et vérifier leur intégration."
 ---
 
 # integrate-service-components
 
 ## Références
 
-Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
+Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
 
 - [architecture](../../../references/architecture.md)
 - [configuration](../../../references/configuration.md)
 - [observability](../../../references/observability.md)
-- [profiles/python-arclith](../../../references/profiles/python-arclith.md)
+- Si le brief retient Arclith : [profil et délégation](../../../references/profiles/python-arclith.md)
 
 ## Exécution
 
-1. Vérifier que contrats et composants nécessaires sont disponibles et revus.
-2. Relier ports, implémentations, configuration et points d’entrée au point d’assemblage du service.
-3. Vérifier la résolution effective des dépendances, le démarrage et un chemin représentatif ; ne pas réimplémenter les composants pour les relier.
+1. Vérifier les composants, contrats et revues nécessaires puis identifier les implémentations réellement à assembler.
+2. Relier dépendances et configuration validée au point d’assemblage du projet, hors métier. Pour un registre, utiliser une initialisation explicite ou celle du framework ; ne pas dépendre d’effets de bord d’imports.
+3. Vérifier démarrage, cycle de vie et un chemin représentatif ; si le choix d’un handler dépend d’une configuration, vérifier sa couverture et le refus explicite d’un type inconnu. Ne pas réimplémenter les composants pour les relier.
 
 ## Résultat et passage de relais
 

@@ -1,13 +1,13 @@
 ---
 name: implement-persistence
-description: "Implémenter la persistance derrière un port en préservant les invariants et la cohérence."
+description: "Implémenter la persistance selon les contrats du projet en préservant les invariants et la cohérence."
 ---
 
 # implement-persistence
 
 ## Références
 
-Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md#sélection-des-exigences-en-production), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
+Commencer par la [sélection des exigences communes](../../../references/quality-criteria.md), même pour une invocation isolée, puis lire les références spécialisées ci-dessous.
 
 - [data-consistency](../../../references/data-consistency.md)
 - [architecture](../../../references/architecture.md)
@@ -15,9 +15,10 @@ Commencer par la [sélection des exigences communes](../../../references/quality
 
 ## Exécution
 
-1. Identifier agrégat ou données possédées, port et frontières transactionnelles.
-2. Implémenter stockage, conversions et concurrence dans l’adapter ; garder le domaine indépendant du schéma technique.
-3. Préparer migrations et reprise nécessaires, sans les exécuter sur un environnement non autorisé.
+1. Identifier les données possédées, invariants, contrat du repository et frontières transactionnelles selon l’architecture du projet ; ne pas créer une couche pour satisfaire ce skill.
+2. Implémenter conversions et concurrence dans le composant de persistance. Les objets métier/persistants connus ont un contrat typé ; garder les documents bruts, noms historiques et détails du driver hors du domaine et des use cases.
+3. Pour Mongo, garder `_id`, BSON, dates, index et compatibilité des anciens formats dans les mappers de l’adapter ; utiliser les emplacements du projet plutôt qu’imposer `adapters/output/`.
+4. Préparer les migrations, garanties de publication et reprises nécessaires, en distinguant retour arrière du code et réversibilité des données ; ne pas exécuter sur un environnement non autorisé.
 
 ## Résultat et passage de relais
 
