@@ -17,7 +17,7 @@ Commencer par la [sélection des exigences communes](../../../references/quality
 
 1. Qualifier le concept : agrégat, entité, objet valeur, commande, query, DTO ou contexte. Identifier identité, cycle de vie et transitions seulement pour les concepts qui les portent ; ne pas les inventer pour un DTO technique. Réutiliser un modèle seulement si sa signification et ses contraintes sont les mêmes.
 2. Pour les projets Python, utiliser des modèles Pydantic explicitement typés pour les classes de données métier, de contrat et de contexte, y compris techniques. Pydantic est une dépendance assumée du domaine ; séparer contrats d’API, événements et représentation persistée.
-3. Pour Python, exprimer les contraintes locales par les types et `Field` ; réserver les validateurs aux transformations non déclaratives et aux invariants croisés. Suivre les [règles Pydantic](../../../references/domain-models.md#python--pydantic) pour validation et héritage.
+3. Pour Python, déclarer chaque champ Pydantic avec `Field`, une `description` explicite et des `examples` représentatifs, synthétiques et sans données sensibles. Exprimer les contraintes locales par les types et les paramètres de `Field` ; réserver les validateurs aux transformations non déclaratives et aux invariants croisés. Suivre les [règles Pydantic](../../../references/domain-models.md#python--pydantic) pour validation et héritage.
 4. Exposer les mises à jour métier par des opérations nommées : valider l’état final proposé avant remplacement et préserver l’ancien état si la validation échoue. Ne pas passer par un export dictionnaire puis merge pour contourner cette opération ; vérifier création et mises à jour invalides.
 
 ## Résultat et passage de relais

@@ -21,11 +21,14 @@ algorithme, collection dynamique ou objet de comportement en modèle.
 - Séparer entité (identité, cycle de vie, invariants), valeur, agrégat, DTO,
   commande, query et contexte. Les placer et les nommer selon leur responsabilité
   et les conventions du projet, sans imposer de chemin ni de suffixe commun.
-- Préférer types et `Field` pour contraintes locales déclaratives. Employer un
-  `field_validator` pour une transformation/validation locale non exprimable
-  ainsi ; un `model_validator` pour un invariant réellement croisé. Ne pas
-  dupliquer une contrainte locale dans un validateur de modèle. Ne pas déduire
-  d’un exemple SIRET/e-mail/téléphone une nouvelle règle métier.
+- Déclarer chaque champ Pydantic avec `Field`, même sans contrainte additionnelle,
+  et renseigner une `description` explicite ainsi que des `examples` représentatifs,
+  synthétiques et sans données sensibles. Les champs hérités conservent les
+  métadonnées de leur base ; ne pas les redéclarer sans besoin.
+- Exprimer les contraintes locales déclaratives par les types et les paramètres
+  de `Field`. Employer un `field_validator` pour une transformation/validation
+  locale non exprimable ainsi ; un `model_validator` pour un invariant réellement
+  croisé. Ne pas dupliquer une contrainte locale dans un validateur de modèle.
 - Une mise à jour métier nommée contrôle champs autorisés et transitions, valide
   tout l’état final avant remplacement et laisse l’ancien état intact en cas
   d’échec. Pour plusieurs champs interdépendants, construire un nouvel état validé
@@ -35,9 +38,8 @@ algorithme, collection dynamique ou objet de comportement en modèle.
 - Garder une chaîne d’héritage Pydantic unique. Ne pas recombiner des bases
   `BaseModel`/entité par des mixins de champs, validateurs, sérialiseurs ou
   configuration. Une base de champs partagés doit porter un contrat cohérent et
-  réellement partagé ; ne pas l’extraire pour la seule ressemblance. Un suffixe
-  `Fields` ou un nom métier peut clarifier son rôle sans devenir un critère
-  bloquant universel.
+  réellement partagé ; ne pas l’extraire pour la seule ressemblance. La nommer
+  selon sa responsabilité et les conventions du projet.
 - Garder les opérations qui protègent les invariants dans l’agrégat et leurs
   détails privés. Ne pas extraire un mixin pour réduire sa taille. Avant de
   supprimer une sous-classe sans ajout, vérifier identité métier, contrats

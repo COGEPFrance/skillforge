@@ -3,7 +3,6 @@
 Source historique : fichiers de `_rules/` à
 `64591f8444339e14a695d1710effd0c687079f9f`. Les liens ci-dessous ciblent cette
 révision immuable ; la disparition du dossier local n’affecte pas la traçabilité.
-Le travail précédent fondé sur `references/` avait été annulé par `db0d9e8`.
 Les exigences désormais applicables sont les références et workflows maintenus,
 avec les précisions utilisateur consignées dans la section suivante. L’archive
 historique n’est ni une dépendance d’exécution ni une règle concurrente.
@@ -52,6 +51,18 @@ invocation d’un skill et l’archive n’est pas un prompt à exécuter en blo
   annuler cet objectif.
 - Retirer les exemples de chemins et suffixes locaux des modèles métier ; les
   références restent autonomes après suppression future des anciennes règles.
+
+## Précisions de revue du 24 novembre 2026
+
+- Chaque champ Pydantic déclaré utilise `Field`, même sans contrainte
+  additionnelle, avec une `description` explicite et des `examples`
+  représentatifs, synthétiques et sans données sensibles. Les champs hérités
+  gardent les métadonnées de leur base sans redéclaration systématique.
+- Retirer les exemples de validations propres à un métier et les suggestions de
+  suffixes des références génériques ; la règle de validation reste exprimée
+  sans cas particulier.
+- Conserver ce journal pour les arbitrages et leur provenance historique ;
+  retirer le récit des manipulations Git, sans intérêt pour l’usage des skills.
 
 Les évaluations de la section « Validation initiale » décrivent l’état antérieur
 et ne certifient pas ces précisions. La mise à jour courante fait l’objet d’une

@@ -6,6 +6,10 @@
 
 - Intègre les règles partagées dans les références de production et de revue,
   notamment contrats typés, modèles Pydantic, invariants et mises à jour validées.
+- Impose `Field` avec description et exemples synthétiques sur chaque champ
+  Pydantic déclaré, en production et en revue ; conserve les métadonnées des
+  champs hérités. Retire les exemples métier et suffixes des critères génériques
+  de modèles, ainsi que le récit du revert dans le journal d’arbitrages.
 - Rend l’ordre des phases code, tests et documentation libre tout en imposant
   une seule phase active, terminée et validée avant la suivante. Clarifie les
   validations préliminaires, les réserves de preuves et les reprises après correction.

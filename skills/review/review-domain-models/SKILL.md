@@ -22,7 +22,7 @@ Examiner les modèles métier et la préservation de leurs invariants. Identifie
 
 ## Points ciblés Python
 
-Appliquer les [critères Pydantic](../../../references/domain-models.md#python--pydantic) : contraintes locales déclaratives, invariants croisés, état inchangé après mise à jour refusée, absence de contournement par copie ou dictionnaire, chaîne d’héritage unique. Vérifier la responsabilité de chaque modèle avant une mutualisation ; un nom ou des champs similaires ne prouvent pas un contrat commun.
+Appliquer les [critères Pydantic](../../../references/domain-models.md#python--pydantic) : chaque champ déclaré utilise `Field` avec `description` explicite et `examples` représentatifs, synthétiques et sans données sensibles ; vérifier les métadonnées héritées sans exiger une redéclaration. Contrôler aussi les contraintes locales déclaratives, invariants croisés, état inchangé après mise à jour refusée, absence de contournement par copie ou dictionnaire, chaîne d’héritage unique. Vérifier la responsabilité de chaque modèle avant une mutualisation ; un nom ou des champs similaires ne prouvent pas un contrat commun.
 
 ## Restitution
 
