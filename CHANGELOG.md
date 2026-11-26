@@ -2,6 +2,17 @@
 
 ## Non publié
 
+### PR [#14 — Configuration et intégration de service](https://github.com/COGEPFrance/skillforge/pull/14)
+
+- Suit les valeurs effectives, unités, priorités, contraintes croisées, modes et
+  moment d’application de la configuration, avec refus des replis non prévus.
+- Vérifie le point d’entrée réel, la sélection et l’usage des composants, les
+  parcours fonctionnels et les ressources à l’arrêt et en démarrage échoué.
+- Distingue preuves par mocks, garanties de fournisseurs réels, dépendances
+  indispensables et capacités optionnelles, sans imposer un framework.
+- Accompagne ces critères de douze cas dans le dépôt de tests : configuration
+  effective, bootstrap livré, ressources et garanties manquantes ou optionnelles.
+
 ### PR [#12 — Méthode et contrôles des revues de PR](https://github.com/COGEPFrance/skillforge/pull/12)
 
 - Cadre les dépôts, sources applicables et diffs complets depuis le merge-base
