@@ -2,7 +2,7 @@
 
 ## Non publié
 
-### Review du code local
+### PR [#13 — Review du code local](https://github.com/COGEPFrance/skillforge/pull/13)
 
 - Précise correction locale, états partagés, erreurs et asynchronisme ; conserve
   la méthode commune et les frontières avec les reviewers spécialisés.
