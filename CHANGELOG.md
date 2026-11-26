@@ -2,7 +2,7 @@
 
 ## Non publié
 
-### Review d’architecture et cas d’essai
+### PR [#10 — Review d’architecture et cas d’essai](https://github.com/COGEPFrance/skillforge/pull/10)
 
 - Fait partir la revue d’architecture des décisions documentées et du besoin du
   projet ; rend les critères hexagonaux et microservices conditionnels.
