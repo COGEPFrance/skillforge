@@ -2,7 +2,7 @@
 
 ## Non publié
 
-### Configuration et intégration de service
+### PR [#14 — Configuration et intégration de service](https://github.com/COGEPFrance/skillforge/pull/14)
 
 - Suit les valeurs effectives, unités, priorités, contraintes croisées, modes et
   moment d’application de la configuration, avec refus des replis non prévus.
