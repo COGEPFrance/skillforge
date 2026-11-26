@@ -2,7 +2,7 @@
 
 ## Non publié
 
-### Contrats et composants
+### PR [#11 — Contrats et composants](https://github.com/COGEPFrance/skillforge/pull/11)
 
 - Précise les responsabilités des reviews lib, modèles métier, ports, use cases
   et adapters ; part du besoin et des sources du contrat avant les mécanismes.
