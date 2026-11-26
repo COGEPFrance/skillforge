@@ -2,7 +2,7 @@
 
 ## Non publié
 
-### Méthode et contrôles des revues de PR
+### PR [#12 — Méthode et contrôles des revues de PR](https://github.com/COGEPFrance/skillforge/pull/12)
 
 - Cadre les dépôts, sources applicables et diffs complets depuis le merge-base
   dans une méthode commune chargée par les 20 skills de revue.
