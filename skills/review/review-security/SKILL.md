@@ -11,6 +11,9 @@ Examiner les risques de sécurité atteignables du changement. Identifier les fi
 
 ## Critères partagés
 
+Appliquer d’abord la [méthode commune de revue](../../../references/review-method.md)
+pour cadrer le dépôt, les sources et la comparaison, même en invocation seule.
+
 - [security](../../../references/security.md)
 
 ## Examen

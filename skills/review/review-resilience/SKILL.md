@@ -11,6 +11,9 @@ Examiner les défaillances, crashes et possibilités de reprise d’un traitemen
 
 ## Critères partagés
 
+Appliquer d’abord la [méthode commune de revue](../../../references/review-method.md)
+pour cadrer le dépôt, les sources et la comparaison, même en invocation seule.
+
 - [resilience](../../../references/resilience.md)
 - [data-consistency](../../../references/data-consistency.md)
 
@@ -20,6 +23,13 @@ Examiner les défaillances, crashes et possibilités de reprise d’un traitemen
 2. Examiner limites, tentatives, erreurs définitives, état durable et points de reprise.
 3. Vérifier les scénarios de crash avant et après effets, acquittements et redémarrage ; distinguer lecture du code et reprise effectivement testée.
 4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+
+## Réservations et effets durables
+
+Si le traitement modifie unicité, verrous, réservations ou plusieurs documents,
+examiner le [cycle de vie des réservations](../../../references/data-consistency.md#cycle-de-vie-des-réservations-et-de-lunicité)
+et les [entrelacements concurrents](../../../references/data-consistency.md#entrelacements-concurrents).
+Vérifier l’état après interruption et reprise, au-delà de la réponse retournée.
 
 ## Restitution
 

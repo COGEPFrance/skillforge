@@ -2,6 +2,17 @@
 
 ## Non publié
 
+### Méthode et contrôles des revues de PR
+
+- Cadre les dépôts, sources applicables et diffs complets depuis le merge-base
+  dans une méthode commune chargée par les 20 skills de revue.
+- Précise la compatibilité des valeurs et validations, l’identité des gardes
+  historiques, le cycle de vie des réservations et les entrelacements concurrents.
+- Exige les preuves de non-régression, de normalisation et d’état durable complet,
+  et la réutilisation des contrats et réponses d’erreur adaptés au flux existant.
+- Définit les gravités et commentaires prêts à publier, sans publication
+  automatique ; conserve les verdicts, contrôles autorisés et choix de tests.
+
 ### PR [#9 — Personnalisation des skills](https://github.com/COGEPFrance/skillforge/pull/9)
 
 - Intègre les règles partagées dans les références de production et de revue,

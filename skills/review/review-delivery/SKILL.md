@@ -11,6 +11,9 @@ Examiner le contenu et les prérequis d’un commit, d’une PR, d’une release
 
 ## Critères partagés
 
+Appliquer d’abord la [méthode commune de revue](../../../references/review-method.md)
+pour cadrer le dépôt, les sources et la comparaison, même en invocation seule.
+
 - [delivery](../../../references/delivery.md)
 - [compatibility](../../../references/compatibility.md)
 

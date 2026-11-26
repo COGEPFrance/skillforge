@@ -12,6 +12,46 @@
 
 Relier les scénarios aux comportements et risques. Pour les tests de crash et de charge, lire aussi les référentiels de résilience et de performance.
 
+## Non-régression et représentations acceptées
+
+- Chaque correction de bug doit être protégée par un test de non-régression
+  capable de détecter le défaut initial ; un test existant suffit s’il couvre
+  réellement ce scénario. En revue, lire préparation, entrées et assertions pour
+  relier chaque comportement modifié à ses preuves, au-delà du pourcentage de
+  couverture. Signaler les comportements ou invariants concrets non vérifiés,
+  même si tous les tests existants passent.
+- Si la validation accepte plusieurs représentations, couvrir au moins une
+  forme acceptée non canonique et son parcours pertinent : normalisation,
+  recherche, comparaison, persistance et sérialisation. Vérifier une identité
+  cohérente ; sinon, refuser explicitement cette forme dans le contrat.
+- Pour les contraintes et configurations modifiées, couvrir les valeurs
+  auparavant supportées et les frontières pertinentes selon les
+  [critères de compatibilité](compatibility.md#valeurs-acceptées-et-validations).
+
+## Cohérence durable et concurrence
+
+Lire ces critères pour les gardes historiques, réservations, verrous, unicité
+ou écritures multiples concernés par le changement. Les scénarios suivent
+l’[invariant et les transitions applicables](data-consistency.md).
+
+- Pour un garde historique, vérifier un enregistrement qui doit bloquer et un
+  autre qui ne partage qu’une partie de la clé et ne doit pas bloquer.
+- Couvrir création, rejeu, remplacement autorisé, changement de propriétaire,
+  désactivation, suppression et nettoyage pertinents, ainsi que les échecs entre
+  écritures. Vérifier absence d’entité partielle, de réservation orpheline et de
+  libération prématurée après refus ou panne.
+- Couvrir les chemins de persistance matériellement différents, notamment une
+  création avant réservation d’unicité. Des tests sur des entités préexistantes
+  ne prouvent pas ce chemin. Inclure les sous-types ou collections distincts
+  lorsque l’invariant est global.
+- Après la fin de toutes les opérations concurrentes, vérifier l’état durable
+  complet des gagnants et perdants : nombre et contenu des entités, claims ou
+  verrous, propriétaires et références selon l’invariant. Le seul nombre de
+  succès ou code d’erreur ne démontre pas l’absence de mutation résiduelle.
+- Utiliser le niveau de test et l’infrastructure isolée qui prouvent la garantie
+  réelle. Ne pas simuler une transaction ou une contrainte de base pour prétendre
+  en avoir démontré le comportement.
+
 ## Tests unitaires Python
 
 Consulter ce détail pour écrire ou modifier des TU Python, pas pour imposer des

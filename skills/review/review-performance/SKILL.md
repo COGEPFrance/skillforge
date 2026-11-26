@@ -11,6 +11,9 @@ Examiner les objectifs et preuves de performance du changement. Identifier les f
 
 ## Critères partagés
 
+Appliquer d’abord la [méthode commune de revue](../../../references/review-method.md)
+pour cadrer le dépôt, les sources et la comparaison, même en invocation seule.
+
 - [performance](../../../references/performance.md)
 
 ## Examen

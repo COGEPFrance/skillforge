@@ -7,6 +7,11 @@
 - Fournir les secrets séparément des fichiers partagés ; ne pas les exposer dans les exemples ou les sorties.
 - Ne pas transformer les invariants métier en options désactivables.
 
+Pour une contrainte, un défaut ou un modèle modifié, appliquer les
+[contrôles de compatibilité des valeurs](compatibility.md#valeurs-acceptées-et-validations)
+en plus du contrôle des configurations invalides : une valeur précédemment
+acceptée peut désormais empêcher le démarrage.
+
 ## Preuves attendues
 
 Pour une option ajoutée ou modifiée, identifier sa source, son type, sa validation, son consommateur et ses valeurs effectives selon les sources. Vérifier le comportement d’une configuration invalide et les exemples maintenus.

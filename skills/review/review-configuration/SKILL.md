@@ -11,6 +11,9 @@ Examiner les sources et consommateurs d’une configuration ajoutée ou modifié
 
 ## Critères partagés
 
+Appliquer d’abord la [méthode commune de revue](../../../references/review-method.md)
+pour cadrer le dépôt, les sources et la comparaison, même en invocation seule.
+
 - [configuration](../../../references/configuration.md)
 
 ## Examen
@@ -23,6 +26,10 @@ Examiner les sources et consommateurs d’une configuration ajoutée ou modifié
 ## Cohérence du changement
 
 Suivre déclaration, alias, chargement, défauts, injection et consommateur jusqu’aux exemples et à la documentation. Pour une suppression ou un remplacement, rechercher les anciens noms et vérifier les occurrences encore valides ; ne pas se limiter au fichier de settings.
+
+Comparer aussi les [valeurs acceptées avant et après](../../../references/compatibility.md#valeurs-acceptées-et-validations),
+notamment frontières, sentinelles et formes normalisées. Suivre une valeur
+auparavant valide dans le chargeur réel jusqu’au démarrage ou au traitement.
 
 ## Restitution
 

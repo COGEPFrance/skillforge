@@ -11,6 +11,9 @@ Examiner les contrats et garanties d’un flux asynchrone. Identifier les fichie
 
 ## Critères partagés
 
+Appliquer d’abord la [méthode commune de revue](../../../references/review-method.md)
+pour cadrer le dépôt, les sources et la comparaison, même en invocation seule.
+
 - [messaging](../../../references/messaging.md)
 - [compatibility](../../../references/compatibility.md)
 

@@ -11,6 +11,18 @@
 
 Présenter les dépendances des composants modifiés, les ports utilisés et les contrôles de frontières disponibles. Justifier une nouvelle abstraction ou dépendance par un besoin concret. Une revue de structure ne prouve pas le comportement en exécution.
 
+## Contrats et erreurs existants
+
+Avant d’ajouter un mapping, un catalogue de messages, un DTO de transformation
+ou une politique d’erreur, rechercher le contrat déjà produit dans le flux
+concerné. Le réutiliser lorsque sa sémantique et ses garanties correspondent au
+besoin. Une autre représentation doit porter une responsabilité ou un invariant
+distinct explicite ; une ressemblance de champs ne suffit pas à les fusionner.
+
+Lorsqu’une réponse d’erreur normalisée existe dans ce flux, préserver ses
+informations et garanties plutôt que reconstruire une erreur depuis l’exception
+brute. Vérifier ce contrat aux frontières entre use case, port et adapter.
+
 ## Contrats Python et dispatch
 
 Consulter ce détail pour créer un contrat, un mixin non-Pydantic ou une famille

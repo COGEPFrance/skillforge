@@ -11,6 +11,9 @@ Examiner la nécessité et le contrat d’un composant réutilisable ajouté ou 
 
 ## Critères partagés
 
+Appliquer d’abord la [méthode commune de revue](../../../references/review-method.md)
+pour cadrer le dépôt, les sources et la comparaison, même en invocation seule.
+
 - [architecture](../../../references/architecture.md)
 - [code-quality](../../../references/code-quality.md)
 - Si le brief retient Arclith : [profil et délégation](../../../references/profiles/python-arclith.md)

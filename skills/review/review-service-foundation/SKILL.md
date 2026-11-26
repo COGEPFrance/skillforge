@@ -13,6 +13,9 @@ Examiner le socle d’un service avant la première fonctionnalité. Identifier 
 
 ## Critères partagés
 
+Appliquer d’abord la [méthode commune de revue](../../../references/review-method.md)
+pour cadrer le dépôt, les sources et la comparaison, même en invocation seule.
+
 - [service-foundation](../../../references/service-foundation.md)
 - [profiles/python-arclith](../../../references/profiles/python-arclith.md)
 

@@ -11,6 +11,9 @@ Examiner la pertinence et la fiabilité des tests et de leurs assertions. Identi
 
 ## Critères partagés
 
+Appliquer d’abord la [méthode commune de revue](../../../references/review-method.md)
+pour cadrer le dépôt, les sources et la comparaison, même en invocation seule.
+
 - [testing](../../../references/testing.md)
 
 ## Examen
@@ -19,6 +22,14 @@ Examiner la pertinence et la fiabilité des tests et de leurs assertions. Identi
 2. Relier les scénarios aux comportements, risques, erreurs et limites du changement.
 3. Vérifier que les assertions détectent le défaut utile, que le composant testé reste réel et que le niveau de test prouve la garantie annoncée.
 4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+
+## Risques comportementaux
+
+Vérifier les [tests de non-régression et représentations acceptées](../../../references/testing.md#non-régression-et-représentations-acceptées)
+pour les corrections et validations modifiées. Pour les gardes historiques,
+réservations et écritures multiples, lire les [critères de cohérence durable et concurrence](../../../references/testing.md#cohérence-durable-et-concurrence) :
+vérifier les chemins de création et l’état final complet des gagnants et perdants,
+pas seulement les codes d’erreur ou le nombre de succès.
 
 ## Points ciblés
 
