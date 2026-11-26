@@ -75,7 +75,8 @@ Sécurité, performance et compatibilité sont prises en compte dès la producti
 et approfondies par des revues distinctes. Résilience et observabilité demandent
 également des preuves applicatives, même si Arclith fournit les mécanismes.
 
-Chaque revue décrit son périmètre et rend un [verdict avec preuves](../workflows/review-result.md).
+Chaque revue applique la [méthode commune](review-method.md), décrit son périmètre
+et rend un [verdict avec preuves](../workflows/review-result.md).
 Un échec ou un prérequis indispensable manquant bloque la suite. Les corrections
 invalident les validations affectées selon la [boucle de reprise](../workflows/correction-loop.md).
 Ces fichiers décrivent les méthodes ; ils ne constituent pas un moteur d’agents.

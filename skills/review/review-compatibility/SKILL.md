@@ -11,6 +11,9 @@ Examiner les transitions de versions et contrats affectés par le changement. Id
 
 ## Critères partagés
 
+Appliquer d’abord la [méthode commune de revue](../../../references/review-method.md)
+pour cadrer le dépôt, les sources et la comparaison, même en invocation seule.
+
 - [compatibility](../../../references/compatibility.md)
 
 ## Examen
@@ -19,6 +22,13 @@ Examiner les transitions de versions et contrats affectés par le changement. Id
 2. Identifier consommateurs et versions des API, événements, données et configurations modifiés.
 3. Examiner coexistence, migration, rejeu et retour arrière ; signaler les combinaisons non vérifiées.
 4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+
+## Valeurs acceptées
+
+Pour un champ, défaut, contrainte ou modèle modifié, appliquer les
+[contrôles avant/après](../../../references/compatibility.md#valeurs-acceptées-et-validations).
+Inclure les valeurs supportées hors défaut et suivre les formes acceptées
+jusqu’à leur usage effectif, y compris le démarrage pour une configuration.
 
 ## Restitution
 

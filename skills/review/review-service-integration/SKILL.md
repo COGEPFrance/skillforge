@@ -11,6 +11,9 @@ Examiner l’assemblage et le chemin d’exécution des composants d’un servic
 
 ## Critères partagés
 
+Appliquer d’abord la [méthode commune de revue](../../../references/review-method.md)
+pour cadrer le dépôt, les sources et la comparaison, même en invocation seule.
+
 - [architecture](../../../references/architecture.md)
 - [configuration](../../../references/configuration.md)
 - [observability](../../../references/observability.md)

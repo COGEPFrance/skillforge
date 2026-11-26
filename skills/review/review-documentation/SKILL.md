@@ -11,6 +11,9 @@ Examiner l’exactitude et l’utilité d’un document pour son public. Identif
 
 ## Critères partagés
 
+Appliquer d’abord la [méthode commune de revue](../../../references/review-method.md)
+pour cadrer le dépôt, les sources et la comparaison, même en invocation seule.
+
 - [documentation](../../../references/documentation.md)
 
 ## Examen

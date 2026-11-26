@@ -11,6 +11,9 @@ Examiner la cohérence des effets durables et des publications. Identifier les f
 
 ## Critères partagés
 
+Appliquer d’abord la [méthode commune de revue](../../../references/review-method.md)
+pour cadrer le dépôt, les sources et la comparaison, même en invocation seule.
+
 - [data-consistency](../../../references/data-consistency.md)
 
 ## Examen
@@ -19,6 +22,12 @@ Examiner la cohérence des effets durables et des publications. Identifier les f
 2. Identifier transactions, concurrence, conversions et propriétaire des données modifiées.
 3. Examiner coupures entre écritures et messages, migrations et rejeu ; demander les preuves des garanties annoncées.
 4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+
+## Contrôles ciblés
+
+- Pour un garde historique, comparer son prédicat à l’[identité métier exacte](../../../references/data-consistency.md#identité-métier-et-historique).
+- Pour unicité, réservations ou écritures multiples, parcourir le [cycle de vie applicable](../../../references/data-consistency.md#cycle-de-vie-des-réservations-et-de-lunicité), y compris refus, échecs et nettoyage.
+- Examiner les [entrelacements concurrents](../../../references/data-consistency.md#entrelacements-concurrents) et les preuves de l’état durable complet après la fin de toutes les opérations.
 
 ## Restitution
 

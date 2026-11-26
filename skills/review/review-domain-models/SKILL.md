@@ -11,6 +11,9 @@ Examiner les modèles métier et la préservation de leurs invariants. Identifie
 
 ## Critères partagés
 
+Appliquer d’abord la [méthode commune de revue](../../../references/review-method.md)
+pour cadrer le dépôt, les sources et la comparaison, même en invocation seule.
+
 - [domain-models](../../../references/domain-models.md)
 
 ## Examen
@@ -19,6 +22,12 @@ Examiner les modèles métier et la préservation de leurs invariants. Identifie
 2. Distinguer entité, valeur, DTO et modèle externe ; examiner identité et invariants.
 3. Suivre création, transitions et mutations pour repérer validations contournées ou couplage au transport et au stockage.
 4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+
+## Compatibilité des validations
+
+Pour une contrainte, un défaut, un validateur ou un modèle modifié, comparer les
+[valeurs acceptées avant et après](../../../references/compatibility.md#valeurs-acceptées-et-validations)
+et leurs représentations jusqu’à la recherche, la persistance et la sérialisation.
 
 ## Points ciblés Python
 

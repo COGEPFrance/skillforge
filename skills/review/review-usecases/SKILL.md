@@ -11,6 +11,9 @@ Examiner l’orchestration et les effets d’un use case. Identifier les fichier
 
 ## Critères partagés
 
+Appliquer d’abord la [méthode commune de revue](../../../references/review-method.md)
+pour cadrer le dépôt, les sources et la comparaison, même en invocation seule.
+
 - [architecture](../../../references/architecture.md)
 - [domain-models](../../../references/domain-models.md)
 - [data-consistency](../../../references/data-consistency.md)
@@ -25,6 +28,9 @@ Examiner l’orchestration et les effets d’un use case. Identifier les fichier
 ## Points ciblés
 
 Vérifier les contrats Pydantic pour Python, les autorisations au périmètre métier et leurs refus. Rechercher parsing de protocole, accès fichier/réseau et conversions de persistance dans l’orchestration. Une boucle simple ou plusieurs ports ne suffisent pas à imposer un nouveau service ; démontrer une responsabilité technique distincte.
+
+Rechercher les [contrats et erreurs déjà produits dans le flux](../../../references/architecture.md#contrats-et-erreurs-existants)
+avant de valider un nouveau mapping, DTO de transformation ou traitement d’erreur.
 
 ## Restitution
 

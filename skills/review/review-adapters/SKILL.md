@@ -11,6 +11,9 @@ Examiner la conformité d’un adapter à son port et ses conversions techniques
 
 ## Critères partagés
 
+Appliquer d’abord la [méthode commune de revue](../../../references/review-method.md)
+pour cadrer le dépôt, les sources et la comparaison, même en invocation seule.
+
 - [architecture](../../../references/architecture.md)
 - [compatibility](../../../references/compatibility.md)
 
@@ -20,6 +23,12 @@ Examiner la conformité d’un adapter à son port et ses conversions techniques
 2. Comparer opérations, résultats et erreurs réels aux garanties du port.
 3. Vérifier conversions, frontière technique et traitement des défaillances, sans déplacer la décision métier dans l’adapter.
 4. Utiliser les contrôles pertinents disponibles, dans un environnement de test isolé et autorisé, sans mutation de la production. Relier les constats à un emplacement et un effet ; séparer faits et hypothèses.
+
+## Contrats et erreurs réutilisés
+
+Appliquer les critères de [contrats et erreurs existants](../../../references/architecture.md#contrats-et-erreurs-existants)
+aux conversions et erreurs : préserver une réponse normalisée adaptée plutôt
+que la reconstruire depuis une exception brute ou ajouter un contrat équivalent.
 
 ## Restitution
 

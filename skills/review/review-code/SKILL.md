@@ -11,6 +11,9 @@ Examiner la qualité locale du code modifié, sans remplacer les revues de risqu
 
 ## Critères partagés
 
+Appliquer d’abord la [méthode commune de revue](../../../references/review-method.md)
+pour cadrer le dépôt, les sources et la comparaison, même en invocation seule.
+
 - [code-quality](../../../references/code-quality.md)
 
 ## Examen
