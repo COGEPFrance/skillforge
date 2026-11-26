@@ -39,6 +39,11 @@ Le catalogue source doit rester accompagné de ses références. Le format
 d’installation et le moteur d’agents restent à définir ; le diagnostic reste
 optionnel et ses skills ne sont pas encore créés.
 
+Pour finaliser progressivement les reviewers, suivre le
+[protocole d’évaluation des skills](workflows/skill-evaluation.md). Le dépôt
+séparé [skillforge-tests](https://github.com/COGEPFrance/skillforge-tests) héberge les projets d’essai, leurs résultats attendus
+et l’outillage de préparation ; les instructions restent dans ce catalogue.
+
 ## Traçabilité
 
 Le [journal des arbitrages](docs/skill-personalization-decisions.md) conserve

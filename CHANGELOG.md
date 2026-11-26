@@ -2,6 +2,18 @@
 
 ## Non publié
 
+### PR [#10 — Review d’architecture et cas d’essai](https://github.com/COGEPFrance/skillforge/pull/10)
+
+- Fait partir la revue d’architecture des décisions documentées et du besoin du
+  projet ; rend les critères hexagonaux et microservices conditionnels.
+- Ajoute une lecture globale des responsabilités, dépendances et scénarios,
+  avec distinction entre review de changement et review globale du projet.
+- Précise le traitement des décisions absentes ou contradictoires, de la dette
+  indépendante et des frontières avec les autres reviewers.
+- Définit l’évaluation progressive des skills avec le dépôt local séparé
+  `skillforge-tests`, ses cas et ses attentes. L’outillage de préparation ne
+  remplace ni une exécution du reviewer ni l’évaluation de ses constats.
+
 ### PR [#9 — Personnalisation des skills](https://github.com/COGEPFrance/skillforge/pull/9)
 
 - Intègre les règles partagées dans les références de production et de revue,
