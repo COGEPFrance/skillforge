@@ -2,6 +2,17 @@
 
 ## Non publié
 
+### PR [#13 — Review du code local](https://github.com/COGEPFrance/skillforge/pull/13)
+
+- Précise correction locale, états partagés, erreurs et asynchronisme ; conserve
+  la méthode commune et les frontières avec les reviewers spécialisés.
+- Renforce petites fonctions, responsabilité unique, entrées/sorties limitées
+  et mutualisation d’un même traitement, y compris avant toute divergence.
+- Autorise les spécialisations par héritage ou dérivation lorsque le contrat
+  commun tient ; évite l’héritage imposé et les objets fourre-tout.
+- Accompagne ces critères de neuf cas dans le dépôt de tests, dont des fonctions
+  correctes à l’exécution mais insuffisamment découpées ou inutilement dupliquées.
+
 ### PR [#12 — Méthode et contrôles des revues de PR](https://github.com/COGEPFrance/skillforge/pull/12)
 
 - Cadre les dépôts, sources applicables et diffs complets depuis le merge-base
