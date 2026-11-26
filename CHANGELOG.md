@@ -2,6 +2,18 @@
 
 ## Non publié
 
+### PR [#11 — Contrats et composants](https://github.com/COGEPFrance/skillforge/pull/11)
+
+- Précise les responsabilités des reviews lib, modèles métier, ports, use cases
+  et adapters ; part du besoin et des sources du contrat avant les mécanismes.
+- Examine les garanties des bibliothèques sans imposer plusieurs consommateurs,
+  les transitions métier avant Pydantic, la sémantique des ports, l’ordre des
+  décisions et effets, et les garanties réellement obtenues par les adapters.
+- Distingue périmètre changement/projet, hypothèses et décisions indispensables,
+  preuves disponibles et limites des autres revues spécialisées.
+- Ajoute seize cas dans le dépôt de tests compagnon, dont une régression sur les
+  garanties définies dans la documentation sans répétition dans les docstrings.
+
 ### PR [#10 — Review d’architecture et cas d’essai](https://github.com/COGEPFrance/skillforge/pull/10)
 
 - Fait partir la revue d’architecture des décisions documentées et du besoin du

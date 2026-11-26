@@ -7,6 +7,15 @@
 - Ne pas réutiliser automatiquement une entité comme contrat HTTP, événement ou document de persistance.
 - Justifier toute construction contournant la validation. Pour Pydantic, vérifier les garanties de la version retenue ; ne pas présumer qu’une copie avec mise à jour revalide les invariants.
 
+## Règles métier avant mécanismes
+
+Partir des sources des règles métier, des états permis et des transitions, puis
+examiner les mécanismes qui les protègent. Une validation de champs correcte ne
+prouve pas qu’une transition est autorisée. Inversement, ne pas inventer de règle
+métier pour combler un silence documentaire : distinguer faits, hypothèses et
+décision indispensable à faire préciser. Vérifier les chemins publics réellement
+utilisés et les consommateurs avant de conclure sur un contournement possible.
+
 ## Preuves attendues
 
 Identifier les cas valides, invalides et les transitions à vérifier, y compris après modification. Une simple instanciation nominale ne démontre pas la préservation des invariants.

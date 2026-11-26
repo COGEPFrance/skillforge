@@ -1,5 +1,10 @@
 # Éprouver un skill de review
 
+Dans ce projet, isoler chaque étape d’évolution des reviews sur une branche
+dédiée, dans Skillforge comme dans son dépôt de tests. Garder les branches déjà
+en review inchangées ; si une étape dépend d’une PR non fusionnée, expliciter
+cette dépendance lors de sa livraison.
+
 Les instructions et critères maintenus appartiennent à Skillforge. Les projets
 synthétiques, requêtes, attentes et tests de comportement sont hébergés dans le
 dépôt séparé [skillforge-tests](https://github.com/COGEPFrance/skillforge-tests).
@@ -44,3 +49,14 @@ Sept cas couvrent l’hexagonal valide et sa violation, un monolithe modulaire
 valide, une documentation absente, des décisions contradictoires et une même
 dette examinée en périmètre changement puis projet. Le README du dépôt de tests
 porte les commandes d’exécution et les critères restent à côté des cas.
+
+## Contrats et composants
+
+Après accord sur leur contrat, éprouver `review-lib`, `review-domain-models`,
+`review-ports`, `review-usecases` et `review-adapters` avec un cas conforme, un
+défaut démontrable et une décision ou preuve indispensable manquante par skill.
+Les cas doivent notamment distinguer une fonction utile avec un consommateur,
+une transition métier invalide malgré des champs corrects, les garanties
+sémantiques d’un port, l’ordre des décisions et effets, et le moment réel du
+succès d’un adapter. Les tests de corpus vérifient le comportement voulu des
+cas, y compris la manifestation des défauts ; ils ne valident pas le reviewer.
